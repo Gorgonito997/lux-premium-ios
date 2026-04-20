@@ -3,7 +3,7 @@ import Combine
 
 @MainActor
 final class ClientHomeViewModel: ObservableObject {
-    @Published var developments: [Development] = []
+    @Published var promotionGroups: [ClientPromotionGroup] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
 
@@ -18,8 +18,10 @@ final class ClientHomeViewModel: ObservableObject {
         errorMessage = nil
 
         do {
-            developments = try await developmentsRepository.getVisibleDevelopments()
+            let developments = try await developmentsRepository.getVisibleDevelopments()
+            promotionGroups = DevelopmentGroupingMapper.map(developments)
         } catch {
+            promotionGroups = []
             errorMessage = error.localizedDescription
         }
 

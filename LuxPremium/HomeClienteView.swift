@@ -28,7 +28,7 @@ struct HomeClienteView: View {
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity)
                     Spacer()
-                } else if viewModel.developments.isEmpty {
+                } else if viewModel.promotionGroups.isEmpty {
                     Spacer()
                     Text("No hay promociones disponibles.")
                         .font(.body)
@@ -36,19 +36,19 @@ struct HomeClienteView: View {
                         .frame(maxWidth: .infinity)
                     Spacer()
                 } else {
-                    List(viewModel.developments) { development in
+                    List(viewModel.promotionGroups) { group in
                         NavigationLink {
-                            DevelopmentDetailView(developmentId: development.id)
+                            ClientPromotionLotsView(group: group)
                         } label: {
                             VStack(alignment: .leading, spacing: 6) {
-                                Text(development.name)
+                                Text(group.displayName)
                                     .font(.headline)
 
-                                Text(development.location)
+                                Text(group.location)
                                     .font(.subheadline)
                                     .foregroundStyle(.secondary)
 
-                                Text(development.status)
+                                Text("Lotes: \(group.developments.count)")
                                     .font(.footnote)
                                     .foregroundStyle(.secondary)
                             }

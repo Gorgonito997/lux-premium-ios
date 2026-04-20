@@ -69,6 +69,7 @@ final class DevelopmentsRepository {
 
         return Development(
             id: document.documentID,
+            baseId: data["baseId"] as? String ?? "",
             name: data["name"] as? String ?? "",
             location: data["location"] as? String ?? "",
             status: data["status"] as? String ?? "",

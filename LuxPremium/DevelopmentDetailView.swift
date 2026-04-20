@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 struct DevelopmentDetailView: View {
@@ -70,11 +71,11 @@ struct DevelopmentDetailView: View {
                         Text(unit.typology)
                             .font(.headline)
 
-                        Text("Precio: \(unit.price)")
+                        Text(priceText(unit.price))
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
 
-                        Text("Metros: \(unit.sqm, specifier: "%.2f") m2")
+                        Text("Superficie: \(unit.sqm, specifier: "%.2f") m2")
                             .font(.footnote)
                             .foregroundStyle(.secondary)
 
@@ -82,7 +83,7 @@ struct DevelopmentDetailView: View {
                             .font(.footnote)
                             .foregroundStyle(.secondary)
 
-                        Text("Disponibilidad: \(unit.availability)")
+                        Text(availabilityText(unit.availability))
                             .font(.footnote)
                             .foregroundStyle(.secondary)
 
@@ -137,6 +138,19 @@ struct DevelopmentDetailView: View {
         }
 
         openURL(url)
+    }
+
+    private func priceText(_ price: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+
+        let formattedPrice = formatter.string(from: NSNumber(value: price)) ?? "\(price)"
+        return "Precio: \(formattedPrice) EUR"
+    }
+
+    private func availabilityText(_ availability: String) -> String {
+        let value = availability.trimmingCharacters(in: .whitespacesAndNewlines)
+        return value.isEmpty ? "Disponibilidad: No indicada" : "Disponibilidad: \(value)"
     }
 }
 

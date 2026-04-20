@@ -2,6 +2,7 @@ import Foundation
 
 struct Development: Identifiable, Codable {
     var id: String = ""
+    var baseId: String = ""
     var name: String = ""
     var location: String = ""
     var status: String = ""
