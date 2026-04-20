@@ -9,10 +9,6 @@ final class LoginViewModel: ObservableObject {
 
     init(authRepository: AuthRepository = AuthRepository()) {
         self.authRepository = authRepository
-
-        if let uid = authRepository.getCurrentUserId() {
-            state.uid = uid
-        }
     }
 
     func signIn() async {
@@ -29,9 +25,7 @@ final class LoginViewModel: ObservableObject {
 
         do {
             let uid = try await authRepository.signIn(email: email, password: password)
-            let role = try await authRepository.getUserRole(uid: uid)
             state.uid = uid
-            state.role = role
         } catch {
             state.errorMessage = error.localizedDescription
         }
