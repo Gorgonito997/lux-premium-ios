@@ -40,6 +40,30 @@ final class DevelopmentsRepository {
         }
     }
 
+    func getClientDocuments(developmentId: String) async throws -> [DevelopmentDocument] {
+        let snapshot = try await db.collection("developments")
+            .document(developmentId)
+            .collection("documents")
+            .whereField("isVisible", isEqualTo: true)
+            .getDocuments()
+
+        return snapshot.documents
+            .map { document in
+                let data = document.data()
+
+                return DevelopmentDocument(
+                    id: document.documentID,
+                    name: data["name"] as? String ?? "",
+                    category: data["category"] as? String ?? "",
+                    fileType: data["fileType"] as? String ?? "",
+                    downloadUrl: data["downloadUrl"] as? String ?? "",
+                    isVisible: data["isVisible"] as? Bool ?? false,
+                    sortOrder: Self.intValue(from: data["sortOrder"])
+                )
+            }
+            .sorted { $0.sortOrder < $1.sortOrder }
+    }
+
     private static func development(from document: DocumentSnapshot) -> Development {
         let data = document.data() ?? [:]
 

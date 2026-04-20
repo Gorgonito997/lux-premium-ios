@@ -50,6 +50,14 @@ struct DevelopmentDetailView: View {
                 }
             }
 
+            NavigationLink {
+                ClientDocumentsView(developmentId: developmentId)
+            } label: {
+                Text("Ver documentos")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+
             Text("Unidades")
                 .font(.title2)
                 .fontWeight(.semibold)
