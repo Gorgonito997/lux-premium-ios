@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 struct ClientPromotionLotsView: View {
@@ -25,21 +26,23 @@ struct ClientPromotionLotsView: View {
                 NavigationLink {
                     DevelopmentDetailView(developmentId: development.id)
                 } label: {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(development.name)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(displayLotName(for: development))
                             .font(.headline)
 
-                        Text(development.status)
+                        Text(development.name)
                             .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                            .foregroundColor(.secondary)
 
-                        if !development.location.isEmpty {
-                            Text(development.location)
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                        }
+                        Text(development.location)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+
+                        Text(development.status)
+                            .font(.caption2)
+                            .foregroundColor(.gray)
                     }
-                    .padding(.vertical, 4)
+                    .padding(.vertical, 6)
                 }
             }
             .listStyle(.plain)
@@ -47,6 +50,22 @@ struct ClientPromotionLotsView: View {
         .padding()
         .navigationTitle("Lotes")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func displayLotName(for development: Development) -> String {
+        let trimmedName = development.name.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if trimmedName.lowercased().contains("lote") {
+            return trimmedName
+        }
+
+        let lower = development.id.lowercased()
+        if let range = lower.range(of: "_lote") {
+            let suffix = development.id[range.upperBound...]
+            return "Lote \(suffix)"
+        }
+
+        return trimmedName.isEmpty ? development.id : trimmedName
     }
 }
 

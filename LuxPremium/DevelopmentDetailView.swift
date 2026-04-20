@@ -39,16 +39,15 @@ struct DevelopmentDetailView: View {
             if let development = viewModel.development {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(development.name)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
+                        .font(.title)
+                        .fontWeight(.semibold)
 
                     Text(development.location)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .foregroundColor(.secondary)
 
                     Text(development.status)
                         .font(.footnote)
-                        .foregroundStyle(.secondary)
+                        .foregroundColor(.gray)
                 }
             }
 
@@ -67,31 +66,33 @@ struct DevelopmentDetailView: View {
                 Spacer()
             } else {
                 List(viewModel.units) { unit in
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(unit.typology)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(unit.id)
                             .font(.headline)
 
-                        Text(priceText(unit.price))
+                        Text(unit.typology)
                             .font(.subheadline)
-                            .foregroundStyle(.secondary)
 
-                        Text("Superficie: \(unit.sqm, specifier: "%.2f") m2")
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
+                        Text(formatPrice(unit.price))
+                            .font(.title3)
+                            .fontWeight(.semibold)
 
-                        Text("Dormitorios: \(unit.bedrooms)")
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
+                        HStack(spacing: 12) {
+                            Text("\(unit.sqm, specifier: "%.0f") m²")
+                            Text("\(unit.bedrooms) hab.")
+                        }
+                        .font(.caption)
+                        .foregroundColor(.secondary)
 
-                        Text(availabilityText(unit.availability))
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
+                        Text(availabilityLabel(unit.availability))
+                            .font(.caption)
+                            .foregroundColor(availabilityColor(unit.availability))
 
                         Text("Certificado energetico: \(unit.energyCertificate)")
                             .font(.footnote)
                             .foregroundStyle(.secondary)
                     }
-                    .padding(.vertical, 4)
+                    .padding(.vertical, 6)
                 }
                 .listStyle(.plain)
             }
@@ -130,6 +131,7 @@ struct DevelopmentDetailView: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity)
     }
 
     private func openUrl(_ urlString: String) {
@@ -140,17 +142,40 @@ struct DevelopmentDetailView: View {
         openURL(url)
     }
 
-    private func priceText(_ price: Int) -> String {
+    private func formatPrice(_ value: Int) -> String {
         let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-
-        let formattedPrice = formatter.string(from: NSNumber(value: price)) ?? "\(price)"
-        return "Precio: \(formattedPrice) EUR"
+        formatter.numberStyle = .currency
+        formatter.maximumFractionDigits = 0
+        formatter.locale = Locale(identifier: "pt_PT")
+        return formatter.string(from: NSNumber(value: value)) ?? "\(value)"
     }
 
-    private func availabilityText(_ availability: String) -> String {
-        let value = availability.trimmingCharacters(in: .whitespacesAndNewlines)
-        return value.isEmpty ? "Disponibilidad: No indicada" : "Disponibilidad: \(value)"
+    private func availabilityLabel(_ value: String) -> String {
+        let lower = value.lowercased()
+
+        if lower.contains("available") {
+            return "Disponible"
+        } else if lower.contains("reserved") {
+            return "Reservado"
+        } else if lower.contains("sold") {
+            return "Vendido"
+        }
+
+        return value.capitalized
+    }
+
+    private func availabilityColor(_ value: String) -> Color {
+        let lower = value.lowercased()
+
+        if lower.contains("available") {
+            return .green
+        } else if lower.contains("reserved") {
+            return .orange
+        } else if lower.contains("sold") {
+            return .red
+        }
+
+        return .gray
     }
 }
 
