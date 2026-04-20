@@ -74,7 +74,9 @@ final class DevelopmentsRepository {
             status: data["status"] as? String ?? "",
             coverImageUrl: data["coverImageUrl"] as? String ?? "",
             isVisible: data["isVisible"] as? Bool ?? false,
-            soldCount: Self.intValue(from: data["soldCount"])
+            soldCount: Self.intValue(from: data["soldCount"]),
+            driveImagesFolderUrl: data["driveImagesFolderUrl"] as? String ?? "",
+            driveWorkImagesFolderUrl: data["driveWorkImagesFolderUrl"] as? String ?? ""
         )
     }
 

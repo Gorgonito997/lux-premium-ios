@@ -3,6 +3,7 @@ import SwiftUI
 struct DevelopmentDetailView: View {
     let developmentId: String
 
+    @Environment(\.openURL) private var openURL
     @StateObject private var viewModel = DevelopmentDetailViewModel()
 
     var body: some View {
@@ -50,13 +51,7 @@ struct DevelopmentDetailView: View {
                 }
             }
 
-            NavigationLink {
-                ClientDocumentsView(developmentId: developmentId)
-            } label: {
-                Text("Ver documentos")
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.bordered)
+            actions
 
             Text("Unidades")
                 .font(.title2)
@@ -100,6 +95,48 @@ struct DevelopmentDetailView: View {
                 .listStyle(.plain)
             }
         }
+    }
+
+    private var actions: some View {
+        VStack(spacing: 8) {
+            NavigationLink {
+                ClientDocumentsView(developmentId: developmentId)
+            } label: {
+                Text("Ver documentos")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+
+            if let development = viewModel.development {
+                if !development.driveImagesFolderUrl.isEmpty {
+                    Button {
+                        openUrl(development.driveImagesFolderUrl)
+                    } label: {
+                        Text("Ver imagenes 3D")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                }
+
+                if !development.driveWorkImagesFolderUrl.isEmpty {
+                    Button {
+                        openUrl(development.driveWorkImagesFolderUrl)
+                    } label: {
+                        Text("Ver imagenes de obra")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                }
+            }
+        }
+    }
+
+    private func openUrl(_ urlString: String) {
+        guard let url = URL(string: urlString) else {
+            return
+        }
+
+        openURL(url)
     }
 }
 

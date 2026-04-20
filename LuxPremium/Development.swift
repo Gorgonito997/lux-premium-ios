@@ -8,4 +8,6 @@ struct Development: Identifiable, Codable {
     var coverImageUrl: String = ""
     var isVisible: Bool = false
     var soldCount: Int = 0
+    var driveImagesFolderUrl: String = ""
+    var driveWorkImagesFolderUrl: String = ""
 }
