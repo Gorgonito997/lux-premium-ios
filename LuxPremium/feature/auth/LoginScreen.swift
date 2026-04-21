@@ -12,9 +12,12 @@ struct LoginScreen: View {
     var body: some View {
         ZStack {
             // --- FONDO Y CAPA DE CONTRASTE ---
-            Image("fondo_login")
-                .resizable()
-                .scaledToFill()
+            Color.clear
+                .background(
+                    Image("fondo_login")
+                        .resizable()
+                        .scaledToFill()
+                )
                 .ignoresSafeArea()
 
             Color.black.opacity(0.10)
