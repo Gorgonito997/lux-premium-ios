@@ -2,6 +2,7 @@ import SwiftUI
 import UIKit
 
 struct LoginScreen: View {
+    @ObservedObject var viewModel: LoginViewModel
     @State private var email = ""
     @State private var password = ""
     @State private var passwordVisible = false
@@ -254,5 +255,5 @@ struct LuxTextField: View {
 }
 
 #Preview {
-    LoginScreen()
+    LoginScreen(viewModel: LoginViewModel())
 }
