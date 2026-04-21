@@ -1,182 +1,285 @@
 import SwiftUI
+import UIKit
 
 struct LoginScreen: View {
-    @ObservedObject var viewModel: LoginViewModel
-
+    @State private var email = ""
+    @State private var password = ""
     @State private var passwordVisible = false
     @State private var selectedRole = "CLIENT"
+    @State private var isLoading = false
 
     var body: some View {
-        LuxScreen {
-            VStack(spacing: 0) {
-                Spacer().frame(height: 24)
-                hero
-                Spacer().frame(height: 16)
-                formCard
-                Spacer().frame(height: 32)
+        ZStack {
+            // --- FONDO Y CAPA DE CONTRASTE ---
+            Image("fondo_login")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+
+            Color.black.opacity(0.10)
+                .ignoresSafeArea()
+
+            // --- CONTENIDO PRINCIPAL ---
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 0) {
+                    Spacer().frame(height: 24)
+
+                    // Logotipo
+                    Image("logotipo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 130)
+                        .padding(.horizontal, 20)
+
+                    Spacer().frame(height: 14)
+
+                    Text("ACCESO RESERVADO")
+                        .foregroundStyle(Color(hex: "E0E0E0"))
+                        .font(.system(size: 13, weight: .light))
+                        .tracking(1.2)
+
+                    Spacer().frame(height: 16)
+
+                    // --- FORMULARIO (Surface) ---
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("Iniciar sesión")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.white)
+
+                        Spacer().frame(height: 8)
+
+                        Text("Introduce tus credenciales para continuar")
+                            .font(.subheadline)
+                            .foregroundStyle(Color(hex: "9E9E9E"))
+
+                        Spacer().frame(height: 20)
+
+                        Text("SELECCIONA EL TIPO DE ACCESO")
+                            .font(.system(size: 12, weight: .medium))
+                            .foregroundStyle(Color(hex: "BDBDBD"))
+                            .tracking(0.8)
+
+                        Spacer().frame(height: 12)
+
+                        // Selector de Rol
+                        HStack(spacing: 12) {
+                            RoleBox(text: "Cliente", isSelected: selectedRole == "CLIENT") {
+                                selectedRole = "CLIENT"
+                            }
+                            RoleBox(text: "Broker", isSelected: selectedRole == "BROKER") {
+                                selectedRole = "BROKER"
+                            }
+                        }
+
+                        Spacer().frame(height: 20)
+
+                        // Campos de Texto
+                        LuxTextField(value: $email, label: "Correo electrónico", keyboardType: .emailAddress, isPasswordVisible: .constant(false))
+
+                        Spacer().frame(height: 14)
+
+                        LuxTextField(value: $password, label: "Contraseña", isPassword: true, isPasswordVisible: $passwordVisible)
+
+                        // Botón Olvidaste Contraseña
+                        HStack {
+                            Spacer()
+                            Button("¿Olvidaste tu contraseña?") { }
+                            .font(.system(size: 12))
+                            .foregroundStyle(Color(hex: "CFCFCF"))
+                            .padding(.top, 8)
+                        }
+
+                        Spacer().frame(height: 18)
+
+                        // Botón ENTRAR
+                        Button(action: { }) {
+                            Text("ENTRAR")
+                                .font(.callout)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.black)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 16)
+                                .background(Color.white)
+                                .cornerRadius(16)
+                        }
+
+                        Spacer().frame(height: 12)
+
+                        // Botón Google
+                        Button(action: { }) {
+                            HStack {
+                                Text("G")
+                                    .fontWeight(.bold)
+                                Text("Continuar con Google")
+                                    .fontWeight(.semibold)
+                            }
+                            .font(.callout)
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .background(Color(hex: "181818").opacity(0.8))
+                            .cornerRadius(16)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color(hex: "383838"), lineWidth: 1)
+                            )
+                        }
+
+                        Spacer().frame(height: 18)
+
+                        Divider().background(Color(hex: "232323"))
+
+                        Spacer().frame(height: 12)
+
+                        // Botón Registro
+                        HStack(spacing: 4) {
+                            Text("¿No tienes cuenta?")
+                                .foregroundStyle(Color(hex: "AFAFAF"))
+
+                            Button("Regístrate") { }
+                            .foregroundStyle(.white)
+                            .fontWeight(.semibold)
+                        }
+                        .font(.subheadline)
+                        .frame(maxWidth: .infinity)
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 22)
+                    .background(Color(hex: "111111").opacity(0.55))
+                    .cornerRadius(24)
+
+                    Spacer().frame(height: 32)
+                }
+                .padding(.horizontal, 24)
+                .padding(.bottom, 60)
             }
-            .frame(maxWidth: 520)
-            .frame(maxWidth: .infinity)
         }
+        // --- BOTÓN DE IDIOMA TOP RIGHT ---
         .overlay(alignment: .topTrailing) {
             Menu {
                 Button("English") { }
                 Button("Español") { }
                 Button("Português") { }
             } label: {
-                LuxToolbarChip(systemImage: "globe")
+                Image(systemName: "globe")
+                    .foregroundStyle(.white)
+                    .padding(10)
+                    .background(Color(hex: "141414").opacity(0.8))
+                    .cornerRadius(14)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 14)
+                            .stroke(Color(hex: "2A2A2A"), lineWidth: 1)
+                    )
             }
             .padding(.trailing, 14)
             .padding(.top, 10)
         }
     }
+} // <--- AQUÍ SE CIERRA LA PANTALLA PRINCIPAL
 
-    private var hero: some View {
-        VStack(spacing: 0) {
-            Image("logotipo")
-                .resizable()
-                .scaledToFit()
+// MARK: - Componentes Secundarios
+
+struct RoleBox: View {
+    let text: String
+    let isSelected: Bool
+    let onClick: () -> Void
+
+    var body: some View {
+        Button(action: onClick) {
+            Text(text)
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundStyle(isSelected ? .black : .white)
                 .frame(maxWidth: .infinity)
-                .frame(height: 130)
-                .padding(.horizontal, 20)
-
-            Spacer().frame(height: 14)
-
-            Text("ACCESO RESERVADO")
-                .foregroundStyle(Color(hex: "E0E0E0"))
-                .font(.system(size: 13, weight: .light))
-                .tracking(1.2)
+                .padding(.vertical, 14)
+                .background(isSelected ? Color(hex: "EDEDED") : Color(hex: "181818").opacity(0.8))
+                .cornerRadius(16)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(isSelected ? Color(hex: "EDEDED") : Color(hex: "2E2E2E"), lineWidth: 1)
+                )
         }
-    }
-
-    private var formCard: some View {
-        LuxPanel(padding: 22) {
-            LuxSectionTitle(
-                "Iniciar sesion",
-                subtitle: "Introduce tus credenciales para continuar"
-            )
-
-            Spacer().frame(height: 4)
-
-            fieldLabel("Selecciona el tipo de acceso")
-
-            HStack(spacing: 12) {
-                Button("Cliente") {
-                    selectedRole = "CLIENT"
-                }
-                .buttonStyle(LuxRoleButtonStyle(isSelected: selectedRole == "CLIENT"))
-
-                Button("Broker") {
-                    selectedRole = "BROKER"
-                }
-                .buttonStyle(LuxRoleButtonStyle(isSelected: selectedRole == "BROKER"))
-            }
-
-            Spacer().frame(height: 8)
-
-            LuxInputField(
-                value: $viewModel.state.email,
-                label: "Correo electronico",
-                keyboardType: .emailAddress
-            )
-            .textInputAutocapitalization(.never)
-            .autocorrectionDisabled()
-            .disabled(viewModel.state.isLoading)
-
-            LuxInputField(
-                value: $viewModel.state.password,
-                label: "Contrasena",
-                isPassword: true,
-                isPasswordVisible: $passwordVisible
-            )
-            .disabled(viewModel.state.isLoading)
-
-            HStack {
-                Spacer()
-
-                Button("¿Olvidaste tu contrasena?") { }
-                    .font(.system(size: 12))
-                    .foregroundStyle(Color(hex: "CFCFCF"))
-                    .padding(.top, 8)
-            }
-
-            if let errorMessage = viewModel.state.errorMessage {
-                Text(errorMessage)
-                    .font(.footnote)
-                    .foregroundStyle(LuxTheme.danger)
-            }
-
-            Button {
-                Task {
-                    await viewModel.signIn()
-                }
-            } label: {
-                if viewModel.state.isLoading {
-                    ProgressView()
-                        .tint(.black)
-                } else {
-                    Text("ENTRAR")
-                        .font(.callout)
-                        .fontWeight(.semibold)
-                }
-            }
-            .buttonStyle(LuxPrimaryButtonStyle())
-            .disabled(viewModel.state.isLoading)
-
-            Button(action: { }) {
-                HStack(spacing: 6) {
-                    Text("G")
-                        .fontWeight(.bold)
-                    Text("Continuar con Google")
-                        .fontWeight(.semibold)
-                }
-                .font(.callout)
-            }
-            .buttonStyle(LuxSecondaryButtonStyle())
-
-            Divider()
-                .background(Color(hex: "232323"))
-
-            HStack(spacing: 4) {
-                Text("¿No tienes cuenta?")
-                    .foregroundStyle(Color(hex: "AFAFAF"))
-
-                Button("Registrate") { }
-                    .foregroundStyle(.white)
-                    .fontWeight(.semibold)
-            }
-            .font(.subheadline)
-            .frame(maxWidth: .infinity)
-        }
-    }
-
-    private func fieldLabel(_ text: String) -> some View {
-        Text(text.uppercased())
-            .font(.system(size: 12, weight: .medium))
-            .foregroundStyle(Color(hex: "BDBDBD"))
-            .tracking(0.8)
     }
 }
 
-private struct LuxRoleButtonStyle: ButtonStyle {
-    let isSelected: Bool
+struct LuxTextField: View {
+    @Binding var value: String
+    var label: String
+    var keyboardType: UIKeyboardType = .default
+    var isPassword: Bool = false
+    var isPasswordVisible: Binding<Bool>? = nil
 
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.system(size: 13, weight: .semibold))
-            .foregroundStyle(isSelected ? .black : .white)
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 14)
-            .background(isSelected ? LuxTheme.accent : LuxTheme.controlFill)
-            .cornerRadius(16)
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(isSelected ? LuxTheme.accent : Color(hex: "2E2E2E"), lineWidth: 1)
-            )
-            .opacity(configuration.isPressed ? 0.92 : 1)
+    var body: some View {
+        ZStack(alignment: .leading) {
+            if value.isEmpty {
+                Text(label)
+                    .foregroundStyle(Color(hex: "BDBDBD"))
+                    .padding(.horizontal, 16)
+            }
+
+            HStack {
+                if isPassword, let visible = isPasswordVisible {
+                    if !visible.wrappedValue {
+                        SecureField("", text: $value)
+                            .foregroundStyle(.white)
+                            .submitLabel(.done)
+                    } else {
+                        TextField("", text: $value)
+                            .foregroundStyle(.white)
+                            .keyboardType(keyboardType)
+                            .submitLabel(.done)
+                    }
+
+                    Button(action: { visible.wrappedValue.toggle() }) {
+                        Image(systemName: visible.wrappedValue ? "eye.slash.fill" : "eye.fill")
+                            .foregroundStyle(Color(hex: "CCCCCC"))
+                    }
+                } else {
+                    TextField("", text: $value)
+                        .foregroundStyle(.white)
+                        .keyboardType(keyboardType)
+                        .submitLabel(.next)
+                }
+            }
+            .padding()
+        }
+        .background(Color(hex: "181818").opacity(0.8))
+        .cornerRadius(16)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color(hex: "383838"), lineWidth: 1)
+        )
+    }
+}
+
+// MARK: - Extensión de Colores HEX
+extension Color {
+    init(hex: String) {
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        var int: UInt64 = 0
+        Scanner(string: hex).scanHexInt64(&int)
+        let a, r, g, b: UInt64
+        switch hex.count {
+        case 3: // RGB (12-bit)
+            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+        case 6: // RGB (24-bit)
+            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+        case 8: // ARGB (32-bit)
+            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+        default:
+            (a, r, g, b) = (1, 1, 1, 0)
+        }
+        self.init(
+            .sRGB,
+            red: Double(r) / 255,
+            green: Double(g) / 255,
+            blue:  Double(b) / 255,
+            opacity: Double(a) / 255
+        )
     }
 }
 
 #Preview {
-    LoginScreen(viewModel: LoginViewModel())
+    LoginScreen()
 }
