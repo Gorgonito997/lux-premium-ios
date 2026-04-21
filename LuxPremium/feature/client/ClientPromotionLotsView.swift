@@ -63,26 +63,14 @@ struct ClientPromotionLotsView: View {
                     .foregroundStyle(LuxTheme.textPrimary)
 
                 if !development.name.isEmpty {
-                    Text(development.name)
-                        .font(.subheadline)
-                        .foregroundStyle(LuxTheme.textSecondary)
+                    LuxMetaText(text: development.name)
                 }
 
                 if !development.location.isEmpty {
-                    Text(development.location)
-                        .font(.subheadline)
-                        .foregroundStyle(LuxTheme.textSecondary)
+                    LuxMetaText(text: development.location)
                 }
 
-                Text(development.status)
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(LuxTheme.accent)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 8)
-                    .background(
-                        Capsule()
-                            .fill(Color.white.opacity(0.08))
-                    )
+                LuxValueBadge(development.status)
             }
         }
     }

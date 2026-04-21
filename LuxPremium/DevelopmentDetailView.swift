@@ -36,24 +36,17 @@ struct DevelopmentDetailView: View {
 
             if let development = viewModel.development {
                 LuxPanel {
-                    Text("Estado: \(translatedAvailability(development.status))")
-                        .font(.footnote)
-                        .foregroundStyle(LuxTheme.textSecondary)
-
-                    Text("Unidades: \(viewModel.units.count)")
-                        .font(.footnote)
-                        .foregroundStyle(LuxTheme.textSecondary)
+                    HStack(spacing: 12) {
+                        LuxValueBadge("Estado: \(translatedAvailability(development.status))")
+                        LuxValueBadge("Unidades: \(viewModel.units.count)")
+                    }
 
                     VStack(alignment: .leading, spacing: 10) {
                         if !development.location.isEmpty {
-                            Text(development.location)
-                                .font(.subheadline)
-                                .foregroundStyle(LuxTheme.textSecondary)
+                            LuxMetaText(text: development.location)
                         }
 
-                        Text("Ficha premium del lote preparada para integrar carruseles, renders e imagenes de avance sin rehacer la estructura.")
-                            .font(.subheadline)
-                            .foregroundStyle(LuxTheme.textSecondary)
+                        LuxMetaText(text: "Ficha premium del lote preparada para integrar carruseles, renders e imagenes de avance sin rehacer la estructura.")
                     }
                 }
             }
@@ -190,32 +183,18 @@ struct DevelopmentDetailView: View {
 
                     Spacer()
 
-                    Text(translatedAvailability(unit.availability))
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(availabilityColor(unit.availability))
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 8)
-                        .background(
-                            Capsule()
-                                .fill(Color.white.opacity(0.08))
-                        )
+                    LuxValueBadge(translatedAvailability(unit.availability), inverted: isAvailable(unit.availability))
                 }
 
                 Text(formatPrice(unit.price))
-                    .font(.system(size: 26, weight: .bold, design: .serif))
-                    .foregroundStyle(LuxTheme.accent)
+                    .font(.system(size: 26, weight: .semibold))
+                    .foregroundStyle(.white)
 
-                Text("Superficie: \(unit.sqm, specifier: "%.0f") m2")
-                    .font(.footnote)
-                    .foregroundStyle(LuxTheme.textSecondary)
+                LuxMetaText(text: "Superficie: \(unit.sqm, specifier: "%.0f") m2")
 
-                Text("Dormitorios: \(unit.bedrooms)")
-                    .font(.footnote)
-                    .foregroundStyle(LuxTheme.textSecondary)
+                LuxMetaText(text: "Dormitorios: \(unit.bedrooms)")
 
-                Text("Certificado energetico: \(unit.energyCertificate)")
-                    .font(.footnote)
-                    .foregroundStyle(LuxTheme.textSecondary)
+                LuxMetaText(text: "Certificado energetico: \(unit.energyCertificate)")
             }
         }
     }
@@ -250,18 +229,8 @@ struct DevelopmentDetailView: View {
         return value.capitalized
     }
 
-    private func availabilityColor(_ value: String) -> Color {
-        let lower = value.lowercased()
-
-        if lower.contains("available") {
-            return LuxTheme.success
-        } else if lower.contains("reserved") {
-            return LuxTheme.warning
-        } else if lower.contains("sold") {
-            return LuxTheme.danger
-        }
-
-        return LuxTheme.textSecondary
+    private func isAvailable(_ value: String) -> Bool {
+        value.lowercased().contains("available")
     }
 }
 

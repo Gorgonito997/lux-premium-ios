@@ -55,16 +55,13 @@ struct HomeClienteView: View {
             LuxSectionTitle(
                 "Promociones",
                 eyebrow: "Area cliente",
-                subtitle: "Explora las promociones disponibles con el mismo estilo visual del acceso principal."
+                subtitle: "Explora las promociones disponibles con la nueva presentacion del area privada."
             )
 
-            Text("Cliente: \(shortUid)")
-                .font(.footnote)
-                .foregroundStyle(LuxTheme.textSecondary)
-
-            Text("Role: \(isLoadingRole ? "Cargando..." : role)")
-                .font(.footnote)
-                .foregroundStyle(LuxTheme.textSecondary)
+            HStack(spacing: 12) {
+                LuxValueBadge("Cliente: \(shortUid)")
+                LuxValueBadge(isLoadingRole ? "Role: Cargando..." : "Role: \(role)")
+            }
 
             if let roleErrorMessage {
                 Text(roleErrorMessage)
@@ -97,14 +94,10 @@ struct HomeClienteView: View {
                     .foregroundStyle(LuxTheme.textPrimary)
 
                 if !group.location.isEmpty {
-                    Text(group.location)
-                        .font(.subheadline)
-                        .foregroundStyle(LuxTheme.textSecondary)
+                    LuxMetaText(text: group.location)
                 }
 
-                Text("\(group.developments.count) lotes disponibles")
-                    .font(.subheadline.weight(.medium))
-                    .foregroundStyle(LuxTheme.accent)
+                LuxMetaText(text: "\(group.developments.count) lotes disponibles")
             }
         }
     }

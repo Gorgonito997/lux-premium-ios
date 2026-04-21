@@ -1,16 +1,20 @@
 import SwiftUI
+import UIKit
 
 enum LuxTheme {
-    static let accent = Color(red: 0.78, green: 0.67, blue: 0.42)
-    static let accentStrong = Color(red: 0.62, green: 0.50, blue: 0.26)
+    static let accent = Color(hex: "EDEDED")
+    static let accentStrong = Color(hex: "CFCFCF")
     static let textPrimary = Color.white
-    static let textSecondary = Color.white.opacity(0.72)
-    static let panelFill = Color.white.opacity(0.14)
-    static let panelBorder = Color.white.opacity(0.18)
-    static let shadow = Color.black.opacity(0.28)
-    static let success = Color(red: 0.43, green: 0.80, blue: 0.59)
-    static let warning = Color(red: 0.92, green: 0.68, blue: 0.32)
-    static let danger = Color(red: 0.90, green: 0.41, blue: 0.35)
+    static let textSecondary = Color(hex: "BDBDBD")
+    static let mutedText = Color(hex: "9E9E9E")
+    static let panelFill = Color(hex: "111111").opacity(0.55)
+    static let panelBorder = Color(hex: "383838")
+    static let controlFill = Color(hex: "181818").opacity(0.8)
+    static let controlBorder = Color(hex: "383838")
+    static let shadow = Color.black.opacity(0.22)
+    static let success = Color(hex: "A8E6B0")
+    static let warning = Color(hex: "F1C27D")
+    static let danger = Color(hex: "F19999")
 }
 
 struct LuxBackground: View {
@@ -21,14 +25,7 @@ struct LuxBackground: View {
                 .scaledToFill()
                 .ignoresSafeArea()
 
-            LinearGradient(
-                colors: [
-                    Color.black.opacity(0.30),
-                    Color.black.opacity(0.72)
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
+            Color.black.opacity(0.10)
             .ignoresSafeArea()
         }
     }
@@ -49,7 +46,7 @@ struct LuxScreen<Content: View>: View {
                 VStack(alignment: .leading, spacing: 20) {
                     content
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 24)
                 .padding(.top, 20)
                 .padding(.bottom, 32)
             }
@@ -73,14 +70,14 @@ struct LuxPanel<Content: View>: View {
         .padding(padding)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
-            RoundedRectangle(cornerRadius: 28, style: .continuous)
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
                 .fill(LuxTheme.panelFill)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 28, style: .continuous)
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
                         .stroke(LuxTheme.panelBorder, lineWidth: 1)
                 )
         )
-        .shadow(color: LuxTheme.shadow, radius: 24, x: 0, y: 16)
+        .shadow(color: LuxTheme.shadow, radius: 20, x: 0, y: 10)
     }
 }
 
@@ -99,19 +96,20 @@ struct LuxSectionTitle: View {
         VStack(alignment: .leading, spacing: 8) {
             if !eyebrow.isEmpty {
                 Text(eyebrow.uppercased())
-                    .font(.caption.weight(.semibold))
-                    .tracking(2)
-                    .foregroundStyle(LuxTheme.accent)
+                    .font(.system(size: 12, weight: .medium))
+                    .tracking(0.8)
+                    .foregroundStyle(LuxTheme.textSecondary)
             }
 
             Text(title)
-                .font(.system(size: 30, weight: .bold, design: .serif))
+                .font(.title2)
+                .fontWeight(.semibold)
                 .foregroundStyle(LuxTheme.textPrimary)
 
             if let subtitle, !subtitle.isEmpty {
                 Text(subtitle)
-                    .font(.body)
-                    .foregroundStyle(LuxTheme.textSecondary)
+                    .font(.subheadline)
+                    .foregroundStyle(LuxTheme.mutedText)
             }
         }
     }
@@ -126,8 +124,8 @@ struct LuxImagePlaceholder: View {
         ZStack(alignment: .bottomLeading) {
             LinearGradient(
                 colors: [
-                    LuxTheme.accentStrong.opacity(0.75),
-                    Color.black.opacity(0.82)
+                    Color(hex: "202020").opacity(0.82),
+                    Color.black.opacity(0.62)
                 ],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
@@ -136,7 +134,7 @@ struct LuxImagePlaceholder: View {
             VStack(alignment: .leading, spacing: 8) {
                 Image(systemName: "photo.artframe")
                     .font(.system(size: 26, weight: .medium))
-                    .foregroundStyle(LuxTheme.accent)
+                    .foregroundStyle(Color(hex: "CCCCCC"))
 
                 Text(title)
                     .font(.headline)
@@ -150,10 +148,110 @@ struct LuxImagePlaceholder: View {
         }
         .frame(maxWidth: .infinity)
         .frame(height: height)
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .overlay(
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(Color.white.opacity(0.14), lineWidth: 1)
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(LuxTheme.controlBorder, lineWidth: 1)
+        )
+    }
+}
+
+struct LuxMetaText: View {
+    let text: String
+
+    var body: some View {
+        Text(text)
+            .font(.system(size: 13))
+            .foregroundStyle(LuxTheme.textSecondary)
+    }
+}
+
+struct LuxValueBadge: View {
+    let text: String
+    let inverted: Bool
+
+    init(_ text: String, inverted: Bool = false) {
+        self.text = text
+        self.inverted = inverted
+    }
+
+    var body: some View {
+        Text(text)
+            .font(.system(size: 13, weight: .semibold))
+            .foregroundStyle(inverted ? .black : .white)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 14)
+            .background(inverted ? LuxTheme.accent : LuxTheme.controlFill)
+            .cornerRadius(16)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(inverted ? LuxTheme.accent : LuxTheme.controlBorder, lineWidth: 1)
+            )
+    }
+}
+
+struct LuxToolbarChip: View {
+    let systemImage: String
+
+    var body: some View {
+        Image(systemName: systemImage)
+            .foregroundStyle(.white)
+            .padding(10)
+            .background(Color(hex: "141414").opacity(0.8))
+            .cornerRadius(14)
+            .overlay(
+                RoundedRectangle(cornerRadius: 14)
+                    .stroke(Color(hex: "2A2A2A"), lineWidth: 1)
+            )
+    }
+}
+
+struct LuxInputField: View {
+    @Binding var value: String
+    var label: String
+    var keyboardType: UIKeyboardType = .default
+    var isPassword: Bool = false
+    var isPasswordVisible: Binding<Bool>? = nil
+
+    var body: some View {
+        ZStack(alignment: .leading) {
+            if value.isEmpty {
+                Text(label)
+                    .foregroundStyle(LuxTheme.textSecondary)
+                    .padding(.horizontal, 16)
+            }
+
+            HStack {
+                if isPassword, let visible = isPasswordVisible {
+                    if visible.wrappedValue {
+                        TextField("", text: $value)
+                            .foregroundStyle(.white)
+                            .keyboardType(keyboardType)
+                            .submitLabel(.done)
+                    } else {
+                        SecureField("", text: $value)
+                            .foregroundStyle(.white)
+                            .submitLabel(.done)
+                    }
+
+                    Button(action: { visible.wrappedValue.toggle() }) {
+                        Image(systemName: visible.wrappedValue ? "eye.slash.fill" : "eye.fill")
+                            .foregroundStyle(Color(hex: "CCCCCC"))
+                    }
+                } else {
+                    TextField("", text: $value)
+                        .foregroundStyle(.white)
+                        .keyboardType(keyboardType)
+                        .submitLabel(.next)
+                }
+            }
+            .padding()
+        }
+        .background(LuxTheme.controlFill)
+        .cornerRadius(16)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(LuxTheme.controlBorder, lineWidth: 1)
         )
     }
 }
@@ -192,7 +290,7 @@ struct LuxEmptyState: View {
             VStack(alignment: .center, spacing: 14) {
                 Image(systemName: systemImage)
                     .font(.system(size: 32, weight: .medium))
-                    .foregroundStyle(LuxTheme.accent)
+                    .foregroundStyle(Color(hex: "CCCCCC"))
 
                 Text(title)
                     .font(.headline)
@@ -217,8 +315,8 @@ struct LuxPrimaryButtonStyle: ButtonStyle {
             .padding(.vertical, 16)
             .frame(maxWidth: .infinity)
             .background(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(LuxTheme.accent)
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(.white)
             )
             .opacity(configuration.isPressed ? 0.88 : 1)
             .scaleEffect(configuration.isPressed ? 0.99 : 1)
@@ -234,11 +332,11 @@ struct LuxSecondaryButtonStyle: ButtonStyle {
             .padding(.vertical, 16)
             .frame(maxWidth: .infinity)
             .background(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(Color.white.opacity(0.10))
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(LuxTheme.controlFill)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 18, style: .continuous)
-                            .stroke(Color.white.opacity(0.14), lineWidth: 1)
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .stroke(LuxTheme.controlBorder, lineWidth: 1)
                     )
             )
             .opacity(configuration.isPressed ? 0.88 : 1)
@@ -253,19 +351,47 @@ struct LuxInputModifier: ViewModifier {
             .padding(.horizontal, 16)
             .padding(.vertical, 16)
             .background(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(Color.white.opacity(0.10))
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(LuxTheme.controlFill)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 18, style: .continuous)
-                            .stroke(Color.white.opacity(0.12), lineWidth: 1)
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .stroke(LuxTheme.controlBorder, lineWidth: 1)
                     )
             )
-            .tint(LuxTheme.accent)
+            .tint(.white)
     }
 }
 
 extension View {
     func luxInputStyle() -> some View {
         modifier(LuxInputModifier())
+    }
+}
+
+extension Color {
+    init(hex: String) {
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        var int: UInt64 = 0
+        Scanner(string: hex).scanHexInt64(&int)
+        let a, r, g, b: UInt64
+
+        switch hex.count {
+        case 3:
+            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+        case 6:
+            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+        case 8:
+            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+        default:
+            (a, r, g, b) = (1, 1, 1, 0)
+        }
+
+        self.init(
+            .sRGB,
+            red: Double(r) / 255,
+            green: Double(g) / 255,
+            blue: Double(b) / 255,
+            opacity: Double(a) / 255
+        )
     }
 }

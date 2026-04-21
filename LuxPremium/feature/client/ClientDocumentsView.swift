@@ -92,13 +92,9 @@ struct ClientDocumentsView: View {
                     .foregroundStyle(LuxTheme.textPrimary)
                     .multilineTextAlignment(.leading)
 
-                Text(document.category)
-                    .font(.subheadline)
-                    .foregroundStyle(LuxTheme.textSecondary)
+                LuxMetaText(text: document.category)
 
-                Text(document.fileType)
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(LuxTheme.accent)
+                LuxValueBadge(document.fileType)
             }
         }
     }
