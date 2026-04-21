@@ -21,10 +21,8 @@ struct LoginScreen: View {
                 .ignoresSafeArea()
 
             // --- CONTENIDO PRINCIPAL ---
-            GeometryReader { geometry in
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 0) {
-                        Spacer()
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 0) {
 
                     // Logotipo
                     Image("logotipo")
@@ -55,12 +53,14 @@ struct LoginScreen: View {
                         Text("Introduce tus credenciales para continuar")
                             .font(.subheadline)
                             .foregroundStyle(Color(hex: "9E9E9E"))
+                            .fixedSize(horizontal: false, vertical: true)
 
                         Spacer().frame(height: 20)
 
                         Text("SELECCIONA EL TIPO DE ACCESO")
                             .font(.system(size: 12, weight: .medium))
                             .foregroundStyle(Color(hex: "BDBDBD"))
+                            .fixedSize(horizontal: false, vertical: true)
                             .tracking(0.8)
 
                         Spacer().frame(height: 12)
@@ -152,11 +152,9 @@ struct LoginScreen: View {
                     .background(Color(hex: "111111").opacity(0.55))
                     .cornerRadius(24)
 
-                    Spacer()
                 }
                 .padding(.horizontal, 24)
-                .frame(minHeight: geometry.size.height)
-                }
+                .frame(maxWidth: .infinity)
             }
         }
         // --- BOTÓN DE IDIOMA TOP RIGHT ---
