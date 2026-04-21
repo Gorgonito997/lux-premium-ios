@@ -21,16 +21,17 @@ struct LoginScreen: View {
                 .ignoresSafeArea()
 
             // --- CONTENIDO PRINCIPAL ---
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 0) {
-                    Spacer().frame(height: 24)
+            GeometryReader { geometry in
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 0) {
+                        Spacer()
 
                     // Logotipo
                     Image("logotipo")
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: .infinity)
-                        .frame(height: 130)
+                        .frame(height: 90)
                         .padding(.horizontal, 20)
 
                     Spacer().frame(height: 14)
@@ -151,10 +152,11 @@ struct LoginScreen: View {
                     .background(Color(hex: "111111").opacity(0.55))
                     .cornerRadius(24)
 
-                    Spacer().frame(height: 32)
+                    Spacer()
                 }
                 .padding(.horizontal, 24)
-                .padding(.bottom, 60)
+                .frame(minHeight: geometry.size.height)
+                }
             }
         }
         // --- BOTÓN DE IDIOMA TOP RIGHT ---
