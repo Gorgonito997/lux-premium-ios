@@ -8,106 +8,110 @@ struct DevelopmentDetailView: View {
     @StateObject private var viewModel = DevelopmentDetailViewModel()
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        LuxScreen {
             if viewModel.isLoading {
-                Spacer()
-                ProgressView("Cargando promocion")
-                    .frame(maxWidth: .infinity)
-                Spacer()
+                loadingState
             } else if let errorMessage = viewModel.errorMessage {
-                Spacer()
-                Text(errorMessage)
-                    .font(.footnote)
-                    .foregroundStyle(.red)
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
-                Spacer()
+                errorState(errorMessage)
             } else {
                 content
             }
         }
-        .padding()
-        .navigationTitle("Detalle")
+        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.hidden, for: .navigationBar)
         .task(id: developmentId) {
             await viewModel.load(developmentId: developmentId)
         }
     }
 
     private var content: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 20) {
+            hero
+
             if let development = viewModel.development {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(development.name)
-                        .font(.title)
-                        .fontWeight(.semibold)
+                LuxPanel {
+                    HStack {
+                        LuxInfoPill(title: "Estado", value: translatedAvailability(development.status))
+                        Spacer()
+                        LuxInfoPill(title: "Unidades", value: "\(viewModel.units.count)")
+                    }
 
-                    Text(development.location)
-                        .foregroundColor(.secondary)
+                    VStack(alignment: .leading, spacing: 10) {
+                        if !development.location.isEmpty {
+                            Label(development.location, systemImage: "mappin.and.ellipse")
+                                .font(.subheadline)
+                                .foregroundStyle(LuxTheme.textSecondary)
+                        }
 
-                    Text(development.status)
-                        .font(.footnote)
-                        .foregroundColor(.gray)
+                        Text("Ficha premium del lote preparada para integrar carruseles, renders e imagenes de avance sin rehacer la estructura.")
+                            .font(.subheadline)
+                            .foregroundStyle(LuxTheme.textSecondary)
+                    }
                 }
             }
 
             actions
 
-            Text("Unidades")
-                .font(.title2)
-                .fontWeight(.semibold)
+            LuxSectionTitle(
+                "Unidades",
+                eyebrow: "Inventario",
+                subtitle: "Cada unidad mantiene una presentacion clara y consistente con el acceso principal."
+            )
 
             if viewModel.units.isEmpty {
-                Spacer()
-                Text("No hay unidades disponibles.")
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity)
-                Spacer()
+                LuxEmptyState(
+                    title: "No hay unidades disponibles",
+                    subtitle: "Cuando se publiquen unidades visibles apareceran aqui con el mismo estilo visual."
+                )
             } else {
-                List(viewModel.units) { unit in
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(unit.id)
-                            .font(.headline)
-
-                        Text(unit.typology)
-                            .font(.subheadline)
-
-                        Text(formatPrice(unit.price))
-                            .font(.title3)
-                            .fontWeight(.semibold)
-
-                        HStack(spacing: 12) {
-                            Text("\(unit.sqm, specifier: "%.0f") m²")
-                            Text("\(unit.bedrooms) hab.")
-                        }
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-
-                        Text(availabilityLabel(unit.availability))
-                            .font(.caption)
-                            .foregroundColor(availabilityColor(unit.availability))
-
-                        Text("Certificado energetico: \(unit.energyCertificate)")
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
+                VStack(spacing: 16) {
+                    ForEach(viewModel.units) { unit in
+                        unitCard(unit)
                     }
-                    .padding(.vertical, 6)
                 }
-                .listStyle(.plain)
             }
         }
     }
 
+    private var hero: some View {
+        LuxPanel {
+            if let development = viewModel.development {
+                LuxSectionTitle(
+                    development.name.isEmpty ? "Detalle del lote" : development.name,
+                    eyebrow: "Detalle",
+                    subtitle: "Vista preparada para portada principal, galeria y recursos multimedia."
+                )
+            } else {
+                LuxSectionTitle(
+                    "Detalle del lote",
+                    eyebrow: "Detalle",
+                    subtitle: "Vista preparada para portada principal, galeria y recursos multimedia."
+                )
+            }
+
+            LuxImagePlaceholder(
+                title: "Imagen principal",
+                subtitle: "Aqui podreis conectar la imagen de portada o el render principal de la promocion.",
+                height: 240
+            )
+        }
+    }
+
     private var actions: some View {
-        VStack(spacing: 8) {
+        LuxPanel {
+            LuxSectionTitle(
+                "Recursos",
+                eyebrow: "Accesos",
+                subtitle: "Documentacion e imagenes externas agrupadas con el mismo lenguaje visual."
+            )
+
             NavigationLink {
                 ClientDocumentsView(developmentId: developmentId)
             } label: {
                 Text("Ver documentos")
-                    .frame(maxWidth: .infinity)
             }
-            .buttonStyle(.bordered)
+            .buttonStyle(LuxPrimaryButtonStyle())
 
             if let development = viewModel.development {
                 if !development.driveImagesFolderUrl.isEmpty {
@@ -115,9 +119,8 @@ struct DevelopmentDetailView: View {
                         openUrl(development.driveImagesFolderUrl)
                     } label: {
                         Text("Ver imagenes 3D")
-                            .frame(maxWidth: .infinity)
                     }
-                    .buttonStyle(.bordered)
+                    .buttonStyle(LuxSecondaryButtonStyle())
                 }
 
                 if !development.driveWorkImagesFolderUrl.isEmpty {
@@ -125,13 +128,86 @@ struct DevelopmentDetailView: View {
                         openUrl(development.driveWorkImagesFolderUrl)
                     } label: {
                         Text("Ver imagenes de obra")
-                            .frame(maxWidth: .infinity)
                     }
-                    .buttonStyle(.bordered)
+                    .buttonStyle(LuxSecondaryButtonStyle())
                 }
             }
         }
-        .frame(maxWidth: .infinity)
+    }
+
+    private var loadingState: some View {
+        LuxPanel {
+            VStack(spacing: 16) {
+                ProgressView()
+                    .tint(LuxTheme.accent)
+                    .scaleEffect(1.2)
+
+                Text("Cargando promocion")
+                    .font(.headline)
+                    .foregroundStyle(LuxTheme.textPrimary)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 24)
+        }
+    }
+
+    private func errorState(_ message: String) -> some View {
+        LuxPanel {
+            VStack(spacing: 14) {
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .font(.system(size: 28))
+                    .foregroundStyle(LuxTheme.warning)
+
+                Text(message)
+                    .font(.subheadline)
+                    .foregroundStyle(LuxTheme.textPrimary)
+                    .multilineTextAlignment(.center)
+            }
+            .frame(maxWidth: .infinity)
+        }
+    }
+
+    private func unitCard(_ unit: PropertyUnit) -> some View {
+        LuxPanel {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(unit.id)
+                            .font(.title3.weight(.semibold))
+                            .foregroundStyle(LuxTheme.textPrimary)
+
+                        Text(unit.typology)
+                            .font(.subheadline)
+                            .foregroundStyle(LuxTheme.textSecondary)
+                    }
+
+                    Spacer()
+
+                    Text(translatedAvailability(unit.availability))
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(availabilityColor(unit.availability))
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .background(
+                            Capsule()
+                                .fill(Color.white.opacity(0.08))
+                        )
+                }
+
+                Text(formatPrice(unit.price))
+                    .font(.system(size: 26, weight: .bold, design: .serif))
+                    .foregroundStyle(LuxTheme.accent)
+
+                HStack(spacing: 10) {
+                    LuxInfoPill(title: "Superficie", value: "\(unit.sqm, specifier: "%.0f") m2")
+                    LuxInfoPill(title: "Dormitorios", value: "\(unit.bedrooms)")
+                }
+
+                Text("Certificado energetico: \(unit.energyCertificate)")
+                    .font(.footnote)
+                    .foregroundStyle(LuxTheme.textSecondary)
+            }
+        }
     }
 
     private func openUrl(_ urlString: String) {
@@ -146,11 +222,11 @@ struct DevelopmentDetailView: View {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.maximumFractionDigits = 0
-        formatter.locale = Locale(identifier: "pt_PT")
+        formatter.locale = Locale(identifier: "es_ES")
         return formatter.string(from: NSNumber(value: value)) ?? "\(value)"
     }
 
-    private func availabilityLabel(_ value: String) -> String {
+    private func translatedAvailability(_ value: String) -> String {
         let lower = value.lowercased()
 
         if lower.contains("available") {
@@ -168,14 +244,14 @@ struct DevelopmentDetailView: View {
         let lower = value.lowercased()
 
         if lower.contains("available") {
-            return .green
+            return LuxTheme.success
         } else if lower.contains("reserved") {
-            return .orange
+            return LuxTheme.warning
         } else if lower.contains("sold") {
-            return .red
+            return LuxTheme.danger
         }
 
-        return .gray
+        return LuxTheme.textSecondary
     }
 }
 

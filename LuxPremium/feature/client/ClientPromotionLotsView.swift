@@ -5,51 +5,79 @@ struct ClientPromotionLotsView: View {
     let group: ClientPromotionGroup
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            VStack(alignment: .leading, spacing: 8) {
-                Text(group.displayName)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+        LuxScreen {
+            LuxPanel {
+                LuxSectionTitle(
+                    group.displayName,
+                    eyebrow: "Promocion",
+                    subtitle: group.location.isEmpty ? "Selecciona un lote para ver el detalle completo." : group.location
+                )
 
-                if !group.location.isEmpty {
-                    Text(group.location)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
+                LuxImagePlaceholder(
+                    title: "Galeria principal",
+                    subtitle: "Este bloque queda listo para conectar la fotografia o render destacado de la promocion.",
+                    height: 220
+                )
             }
 
-            Text("Lotes")
-                .font(.title2)
-                .fontWeight(.semibold)
+            LuxSectionTitle(
+                "Lotes",
+                eyebrow: "Disponibilidad",
+                subtitle: "Cada tarjeta mantiene espacio preparado para futuras imagenes de unidad o fachada."
+            )
 
-            List(group.developments) { development in
-                NavigationLink {
-                    DevelopmentDetailView(developmentId: development.id)
-                } label: {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(displayLotName(for: development))
-                            .font(.headline)
-
-                        Text(development.name)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-
-                        Text(development.location)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-
-                        Text(development.status)
-                            .font(.caption2)
-                            .foregroundColor(.gray)
+            VStack(spacing: 16) {
+                ForEach(group.developments) { development in
+                    NavigationLink {
+                        DevelopmentDetailView(developmentId: development.id)
+                    } label: {
+                        lotCard(for: development)
                     }
-                    .padding(.vertical, 6)
+                    .buttonStyle(.plain)
                 }
             }
-            .listStyle(.plain)
         }
-        .padding()
-        .navigationTitle("Lotes")
+        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.hidden, for: .navigationBar)
+    }
+
+    private func lotCard(for development: Development) -> some View {
+        LuxPanel {
+            LuxImagePlaceholder(
+                title: displayLotName(for: development),
+                subtitle: "Zona reservada para la imagen de portada del lote.",
+                height: 160
+            )
+
+            VStack(alignment: .leading, spacing: 8) {
+                Text(displayLotName(for: development))
+                    .font(.title3.weight(.semibold))
+                    .foregroundStyle(LuxTheme.textPrimary)
+
+                if !development.name.isEmpty {
+                    Text(development.name)
+                        .font(.subheadline)
+                        .foregroundStyle(LuxTheme.textSecondary)
+                }
+
+                if !development.location.isEmpty {
+                    Label(development.location, systemImage: "mappin.and.ellipse")
+                        .font(.subheadline)
+                        .foregroundStyle(LuxTheme.textSecondary)
+                }
+
+                Text(development.status)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(LuxTheme.accent)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(
+                        Capsule()
+                            .fill(Color.white.opacity(0.08))
+                    )
+            }
+        }
     }
 
     private func displayLotName(for development: Development) -> String {

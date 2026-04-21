@@ -12,53 +12,33 @@ struct HomeClienteView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading, spacing: 16) {
+            LuxScreen {
                 header
 
                 if viewModel.isLoading {
-                    Spacer()
-                    ProgressView("Cargando promociones")
-                        .frame(maxWidth: .infinity)
-                    Spacer()
+                    loadingState(title: "Cargando promociones")
                 } else if let errorMessage = viewModel.errorMessage {
-                    Spacer()
-                    Text(errorMessage)
-                        .font(.footnote)
-                        .foregroundStyle(.red)
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: .infinity)
-                    Spacer()
+                    errorState(errorMessage)
                 } else if viewModel.promotionGroups.isEmpty {
-                    Spacer()
-                    Text("No hay promociones disponibles.")
-                        .font(.body)
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity)
-                    Spacer()
+                    LuxEmptyState(
+                        title: "Aun no hay promociones visibles",
+                        subtitle: "En cuanto haya promociones publicadas apareceran aqui con el mismo formato visual del acceso.",
+                        systemImage: "building.2.crop.circle"
+                    )
                 } else {
-                    List(viewModel.promotionGroups) { group in
-                        NavigationLink {
-                            ClientPromotionLotsView(group: group)
-                        } label: {
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text(group.displayName)
-                                    .font(.headline)
-
-                                Text(group.location)
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-
-                                Text("Lotes: \(group.developments.count)")
-                                    .font(.footnote)
-                                    .foregroundStyle(.secondary)
+                    VStack(spacing: 16) {
+                        ForEach(viewModel.promotionGroups) { group in
+                            NavigationLink {
+                                ClientPromotionLotsView(group: group)
+                            } label: {
+                                promotionCard(group)
                             }
-                            .padding(.vertical, 4)
+                            .buttonStyle(.plain)
                         }
                     }
-                    .listStyle(.plain)
                 }
             }
-            .padding()
+            .navigationBarHidden(true)
             .task {
                 await viewModel.loadDevelopments()
             }
@@ -66,37 +46,92 @@ struct HomeClienteView: View {
     }
 
     private var header: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Text("Promociones")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+        LuxPanel {
+            LuxSectionTitle(
+                "Promociones",
+                eyebrow: "Area cliente",
+                subtitle: "Explora las promociones disponibles con una presentacion unificada y preparada para imagenes reales."
+            )
 
-                Spacer()
-
-                Button("Cerrar sesion") {
-                    signOut()
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 12) {
+                    LuxInfoPill(title: "Cliente", value: shortUid)
+                    LuxInfoPill(title: "Role", value: isLoadingRole ? "Cargando..." : role)
                 }
-                .buttonStyle(.bordered)
-            }
-
-            Text("UID: \(uid)")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-
-            if isLoadingRole {
-                ProgressView("Cargando role")
-            } else {
-                Text("Role: \(role)")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
             }
 
             if let roleErrorMessage {
                 Text(roleErrorMessage)
                     .font(.footnote)
-                    .foregroundStyle(.red)
+                    .foregroundStyle(LuxTheme.warning)
             }
+
+            Button("Cerrar sesion") {
+                signOut()
+            }
+            .buttonStyle(LuxSecondaryButtonStyle())
+        }
+    }
+
+    private var shortUid: String {
+        String(uid.prefix(10))
+    }
+
+    private func promotionCard(_ group: ClientPromotionGroup) -> some View {
+        LuxPanel {
+            LuxImagePlaceholder(
+                title: group.displayName,
+                subtitle: "Espacio preparado para la imagen principal de la promocion.",
+                height: 180
+            )
+
+            VStack(alignment: .leading, spacing: 8) {
+                Text(group.displayName)
+                    .font(.title3.weight(.semibold))
+                    .foregroundStyle(LuxTheme.textPrimary)
+
+                if !group.location.isEmpty {
+                    Label(group.location, systemImage: "mappin.and.ellipse")
+                        .font(.subheadline)
+                        .foregroundStyle(LuxTheme.textSecondary)
+                }
+
+                Text("\(group.developments.count) lotes disponibles")
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(LuxTheme.accent)
+            }
+        }
+    }
+
+    private func loadingState(title: String) -> some View {
+        LuxPanel {
+            VStack(spacing: 16) {
+                ProgressView()
+                    .tint(LuxTheme.accent)
+                    .scaleEffect(1.2)
+
+                Text(title)
+                    .font(.headline)
+                    .foregroundStyle(LuxTheme.textPrimary)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 24)
+        }
+    }
+
+    private func errorState(_ message: String) -> some View {
+        LuxPanel {
+            VStack(spacing: 14) {
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .font(.system(size: 28))
+                    .foregroundStyle(LuxTheme.warning)
+
+                Text(message)
+                    .font(.subheadline)
+                    .foregroundStyle(LuxTheme.textPrimary)
+                    .multilineTextAlignment(.center)
+            }
+            .frame(maxWidth: .infinity)
         }
     }
 
