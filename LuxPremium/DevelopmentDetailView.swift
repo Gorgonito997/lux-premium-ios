@@ -9,13 +9,18 @@ struct DevelopmentDetailView: View {
 
     var body: some View {
         LuxScreen {
-            if viewModel.isLoading {
-                loadingState
-            } else if let errorMessage = viewModel.errorMessage {
-                errorState(errorMessage)
-            } else {
-                content
+            VStack(spacing: 24) {
+                if viewModel.isLoading {
+                    loadingState
+                } else if let errorMessage = viewModel.errorMessage {
+                    errorState(errorMessage)
+                } else {
+                    content
+                }
             }
+            .frame(maxWidth: 520)
+            .frame(maxWidth: .infinity)
+            .padding(.top, 24)
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
@@ -26,20 +31,22 @@ struct DevelopmentDetailView: View {
     }
 
     private var content: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: 24) {
             hero
 
             if let development = viewModel.development {
                 LuxPanel {
-                    HStack {
-                        LuxInfoPill(title: "Estado", value: translatedAvailability(development.status))
-                        Spacer()
-                        LuxInfoPill(title: "Unidades", value: "\(viewModel.units.count)")
-                    }
+                    Text("Estado: \(translatedAvailability(development.status))")
+                        .font(.footnote)
+                        .foregroundStyle(LuxTheme.textSecondary)
+
+                    Text("Unidades: \(viewModel.units.count)")
+                        .font(.footnote)
+                        .foregroundStyle(LuxTheme.textSecondary)
 
                     VStack(alignment: .leading, spacing: 10) {
                         if !development.location.isEmpty {
-                            Label(development.location, systemImage: "mappin.and.ellipse")
+                            Text(development.location)
                                 .font(.subheadline)
                                 .foregroundStyle(LuxTheme.textSecondary)
                         }
@@ -93,7 +100,7 @@ struct DevelopmentDetailView: View {
             LuxImagePlaceholder(
                 title: "Imagen principal",
                 subtitle: "Aqui podreis conectar la imagen de portada o el render principal de la promocion.",
-                height: 240
+                height: 210
             )
         }
     }
@@ -198,10 +205,13 @@ struct DevelopmentDetailView: View {
                     .font(.system(size: 26, weight: .bold, design: .serif))
                     .foregroundStyle(LuxTheme.accent)
 
-                HStack(spacing: 10) {
-                    LuxInfoPill(title: "Superficie", value: "\(unit.sqm, specifier: "%.0f") m2")
-                    LuxInfoPill(title: "Dormitorios", value: "\(unit.bedrooms)")
-                }
+                Text("Superficie: \(unit.sqm, specifier: "%.0f") m2")
+                    .font(.footnote)
+                    .foregroundStyle(LuxTheme.textSecondary)
+
+                Text("Dormitorios: \(unit.bedrooms)")
+                    .font(.footnote)
+                    .foregroundStyle(LuxTheme.textSecondary)
 
                 Text("Certificado energetico: \(unit.energyCertificate)")
                     .font(.footnote)

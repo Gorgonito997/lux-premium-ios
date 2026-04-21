@@ -13,30 +13,35 @@ struct HomeClienteView: View {
     var body: some View {
         NavigationStack {
             LuxScreen {
-                header
+                VStack(spacing: 24) {
+                    header
 
-                if viewModel.isLoading {
-                    loadingState(title: "Cargando promociones")
-                } else if let errorMessage = viewModel.errorMessage {
-                    errorState(errorMessage)
-                } else if viewModel.promotionGroups.isEmpty {
-                    LuxEmptyState(
-                        title: "Aun no hay promociones visibles",
-                        subtitle: "En cuanto haya promociones publicadas apareceran aqui con el mismo formato visual del acceso.",
-                        systemImage: "building.2.crop.circle"
-                    )
-                } else {
-                    VStack(spacing: 16) {
-                        ForEach(viewModel.promotionGroups) { group in
-                            NavigationLink {
-                                ClientPromotionLotsView(group: group)
-                            } label: {
-                                promotionCard(group)
+                    if viewModel.isLoading {
+                        loadingState(title: "Cargando promociones")
+                    } else if let errorMessage = viewModel.errorMessage {
+                        errorState(errorMessage)
+                    } else if viewModel.promotionGroups.isEmpty {
+                        LuxEmptyState(
+                            title: "Aun no hay promociones visibles",
+                            subtitle: "En cuanto haya promociones publicadas apareceran aqui con el mismo formato visual del acceso.",
+                            systemImage: "building.2.crop.circle"
+                        )
+                    } else {
+                        VStack(spacing: 16) {
+                            ForEach(viewModel.promotionGroups) { group in
+                                NavigationLink {
+                                    ClientPromotionLotsView(group: group)
+                                } label: {
+                                    promotionCard(group)
+                                }
+                                .buttonStyle(.plain)
                             }
-                            .buttonStyle(.plain)
                         }
                     }
                 }
+                .frame(maxWidth: 520)
+                .frame(maxWidth: .infinity)
+                .padding(.top, 24)
             }
             .navigationBarHidden(true)
             .task {
@@ -50,15 +55,16 @@ struct HomeClienteView: View {
             LuxSectionTitle(
                 "Promociones",
                 eyebrow: "Area cliente",
-                subtitle: "Explora las promociones disponibles con una presentacion unificada y preparada para imagenes reales."
+                subtitle: "Explora las promociones disponibles con el mismo estilo visual del acceso principal."
             )
 
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12) {
-                    LuxInfoPill(title: "Cliente", value: shortUid)
-                    LuxInfoPill(title: "Role", value: isLoadingRole ? "Cargando..." : role)
-                }
-            }
+            Text("Cliente: \(shortUid)")
+                .font(.footnote)
+                .foregroundStyle(LuxTheme.textSecondary)
+
+            Text("Role: \(isLoadingRole ? "Cargando..." : role)")
+                .font(.footnote)
+                .foregroundStyle(LuxTheme.textSecondary)
 
             if let roleErrorMessage {
                 Text(roleErrorMessage)
@@ -82,7 +88,7 @@ struct HomeClienteView: View {
             LuxImagePlaceholder(
                 title: group.displayName,
                 subtitle: "Espacio preparado para la imagen principal de la promocion.",
-                height: 180
+                height: 168
             )
 
             VStack(alignment: .leading, spacing: 8) {
@@ -91,7 +97,7 @@ struct HomeClienteView: View {
                     .foregroundStyle(LuxTheme.textPrimary)
 
                 if !group.location.isEmpty {
-                    Label(group.location, systemImage: "mappin.and.ellipse")
+                    Text(group.location)
                         .font(.subheadline)
                         .foregroundStyle(LuxTheme.textSecondary)
                 }

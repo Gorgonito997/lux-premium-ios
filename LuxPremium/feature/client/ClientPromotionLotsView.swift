@@ -6,36 +6,43 @@ struct ClientPromotionLotsView: View {
 
     var body: some View {
         LuxScreen {
-            LuxPanel {
-                LuxSectionTitle(
-                    group.displayName,
-                    eyebrow: "Promocion",
-                    subtitle: group.location.isEmpty ? "Selecciona un lote para ver el detalle completo." : group.location
-                )
+            VStack(spacing: 24) {
+                LuxPanel {
+                    LuxSectionTitle(
+                        group.displayName,
+                        eyebrow: "Promocion",
+                        subtitle: group.location.isEmpty ? "Selecciona un lote para ver el detalle completo." : group.location
+                    )
 
-                LuxImagePlaceholder(
-                    title: "Galeria principal",
-                    subtitle: "Este bloque queda listo para conectar la fotografia o render destacado de la promocion.",
-                    height: 220
-                )
-            }
+                    LuxImagePlaceholder(
+                        title: "Galeria principal",
+                        subtitle: "Este bloque queda listo para conectar la fotografia o render destacado de la promocion.",
+                        height: 200
+                    )
+                }
 
-            LuxSectionTitle(
-                "Lotes",
-                eyebrow: "Disponibilidad",
-                subtitle: "Cada tarjeta mantiene espacio preparado para futuras imagenes de unidad o fachada."
-            )
+                LuxPanel {
+                    LuxSectionTitle(
+                        "Lotes",
+                        eyebrow: "Disponibilidad",
+                        subtitle: "Cada tarjeta mantiene espacio preparado para futuras imagenes de unidad o fachada."
+                    )
 
-            VStack(spacing: 16) {
-                ForEach(group.developments) { development in
-                    NavigationLink {
-                        DevelopmentDetailView(developmentId: development.id)
-                    } label: {
-                        lotCard(for: development)
+                    VStack(spacing: 16) {
+                        ForEach(group.developments) { development in
+                            NavigationLink {
+                                DevelopmentDetailView(developmentId: development.id)
+                            } label: {
+                                lotCard(for: development)
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
-                    .buttonStyle(.plain)
                 }
             }
+            .frame(maxWidth: 520)
+            .frame(maxWidth: .infinity)
+            .padding(.top, 24)
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
@@ -47,7 +54,7 @@ struct ClientPromotionLotsView: View {
             LuxImagePlaceholder(
                 title: displayLotName(for: development),
                 subtitle: "Zona reservada para la imagen de portada del lote.",
-                height: 160
+                height: 148
             )
 
             VStack(alignment: .leading, spacing: 8) {
@@ -62,7 +69,7 @@ struct ClientPromotionLotsView: View {
                 }
 
                 if !development.location.isEmpty {
-                    Label(development.location, systemImage: "mappin.and.ellipse")
+                    Text(development.location)
                         .font(.subheadline)
                         .foregroundStyle(LuxTheme.textSecondary)
                 }
