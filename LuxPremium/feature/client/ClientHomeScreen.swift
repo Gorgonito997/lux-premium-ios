@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ClientHomeScreen: View {
-    // Callbacks de navegación (Equivalentes a los de Compose)
+    // Callbacks de navegación
     var onLogout: () -> Void
     var onNavigateToAssistant: () -> Void
     var onNavigateToDetail: (String) -> Void
@@ -10,15 +10,12 @@ struct ClientHomeScreen: View {
     @ObservedObject var viewModel: ClientHomeViewModel
 
     var body: some View {
-        // NavigationStack equivale al Scaffold con TopAppBar
         NavigationStack {
             ZStack {
-                // Fondo adaptable a modo claro/oscuro (MaterialTheme.colorScheme.background)
                 Color(UIColor.systemBackground)
                     .ignoresSafeArea()
 
                 // --- GESTIÓN DE ESTADOS ---
-                // (Asegúrate de que las variables isLoading, errorMessage y promotions existan en tu ViewModel)
                 if viewModel.isLoading {
                     ProgressView()
                         .tint(Color.accentColor)
@@ -26,6 +23,8 @@ struct ClientHomeScreen: View {
                     VStack(spacing: 16) {
                         Text(errorMessage)
                             .foregroundColor(.red)
+
+                        // ¡El botón ahora soporta funciones async!
                         Button("Reintentar") {
                             Task {
                                 await viewModel.loadDevelopments()
@@ -33,12 +32,12 @@ struct ClientHomeScreen: View {
                         }
                     }
                     .padding(24)
-                } else if viewModel.promotions.isEmpty {
+                } else if viewModel.promotionGroups.isEmpty { // <--- CORREGIDO AQUÍ
                     Text("No hay promociones disponibles")
                         .font(.body)
                         .foregroundColor(Color(UIColor.label).opacity(0.6))
                 } else {
-                    // --- LISTA PRINCIPAL (Equivalente a LazyColumn) ---
+                    // --- LISTA PRINCIPAL ---
                     ScrollView {
                         LazyVStack(spacing: 20) {
 
@@ -56,7 +55,6 @@ struct ClientHomeScreen: View {
 
                                 Spacer().frame(height: 16)
 
-                                // Línea divisoria (HorizontalDivider)
                                 Rectangle()
                                     .fill(Color(UIColor.separator).opacity(0.3))
                                     .frame(width: 40, height: 1)
@@ -66,7 +64,6 @@ struct ClientHomeScreen: View {
                                 // --- BANNER GIGANTE DE IA ---
                                 Button(action: onNavigateToAssistant) {
                                     HStack(spacing: 16) {
-                                        // Icono
                                         RoundedRectangle(cornerRadius: 14)
                                             .fill(Color.accentColor)
                                             .frame(width: 56, height: 56)
@@ -75,7 +72,6 @@ struct ClientHomeScreen: View {
                                                     .foregroundColor(.white)
                                             )
 
-                                        // Textos
                                         VStack(alignment: .leading, spacing: 4) {
                                             Text("Asistente Lux")
                                                 .font(.headline)
@@ -103,17 +99,17 @@ struct ClientHomeScreen: View {
                             .padding(.bottom, 8)
                             .frame(maxWidth: .infinity, alignment: .leading)
 
-                            // Tarjetas de propiedades (items(promotions))
-                            ForEach(viewModel.promotions, id: \.baseId) { promotion in
-                                // Accedemos al representativeDevelopment igual que en Android
-                                let development = promotion.representativeDevelopment
+                            // Tarjetas de propiedades (CORREGIDO AQUÍ TAMBIÉN)
+                            ForEach(viewModel.promotionGroups, id: \.baseId) { group in
+                                let development = group.representativeDevelopment
 
                                 DevelopmentCard(
-                                    id: promotion.baseId,
                                     title: development.name,
                                     location: development.location,
                                     price: development.status,
                                     status: "",
+                                    id: development.id,
+                                    badgeCount: 0,
                                     onClick: {
                                         onNavigateToDetail(development.id)
                                     }
@@ -145,6 +141,12 @@ struct ClientHomeScreen: View {
             .overlay(alignment: .bottomTrailing) {
                 PremiumContactFab()
                     .padding(16)
+            }
+            // --- DISPARADOR INICIAL (Carga los datos automáticamente) ---
+            .task {
+                if viewModel.promotionGroups.isEmpty {
+                    await viewModel.loadDevelopments()
+                }
             }
         }
     }
