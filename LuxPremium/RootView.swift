@@ -5,6 +5,7 @@ struct RootView: View {
     @State private var role: String = "CLIENT"
     @State private var isLoadingRole: Bool = false
     @State private var roleErrorMessage: String?
+    @State private var brokerSelectedBaseId: String?
 
     @AppStorage("app_language") private var language: String = "es"
 
@@ -29,11 +30,24 @@ struct RootView: View {
         if isLoadingRole {
             RoleLoadingView()
         } else if normalizedRole == "BROKER" {
-            BrokerHomeScreen(
-                onLogout: sessionManager.logOut,
-                onNavigateToLots: {},
-                onNavigateToOpportunities: {}
-            )
+            if let brokerSelectedBaseId {
+                BrokerPromotionLotsView(
+                    baseId: brokerSelectedBaseId,
+                    onBack: {
+                        self.brokerSelectedBaseId = nil
+                    },
+                    onNavigateToDetail: { developmentId in
+                        print("Navegar al detalle broker del desarrollo: \(developmentId)")
+                    }
+                )
+            } else {
+                BrokerHomeScreen(
+                    onLogout: sessionManager.logOut,
+                    onNavigateToLots: { baseId in
+                        brokerSelectedBaseId = baseId
+                    }
+                )
+            }
         } else {
             ZStack(alignment: .top) {
                 ClientHomeScreen(
@@ -68,6 +82,7 @@ struct RootView: View {
             role = "CLIENT"
             isLoadingRole = false
             roleErrorMessage = nil
+            brokerSelectedBaseId = nil
             return
         }
 

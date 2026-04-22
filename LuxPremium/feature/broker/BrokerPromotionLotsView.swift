@@ -1,18 +1,21 @@
 import SwiftUI
 
-struct BrokerHomeScreen: View {
-    var onLogout: () -> Void
-    var onNavigateToLots: (String) -> Void
+struct BrokerPromotionLotsView: View {
+    let baseId: String
+    let onBack: () -> Void
+    let onNavigateToDetail: (String) -> Void
 
-    @StateObject private var viewModel: BrokerHomeViewModel
+    @StateObject private var viewModel: BrokerPromotionLotsViewModel
 
     init(
-        onLogout: @escaping () -> Void,
-        onNavigateToLots: @escaping (String) -> Void,
-        viewModel: BrokerHomeViewModel = BrokerHomeViewModel()
+        baseId: String,
+        onBack: @escaping () -> Void,
+        onNavigateToDetail: @escaping (String) -> Void,
+        viewModel: BrokerPromotionLotsViewModel = BrokerPromotionLotsViewModel()
     ) {
-        self.onLogout = onLogout
-        self.onNavigateToLots = onNavigateToLots
+        self.baseId = baseId
+        self.onBack = onBack
+        self.onNavigateToDetail = onNavigateToDetail
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -29,23 +32,17 @@ struct BrokerHomeScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Text("BROKER DESK")
-                        .font(.system(size: 13, weight: .bold))
-                        .tracking(1.5)
+                    Button(action: onBack) {
+                        HStack(spacing: 6) {
+                            Image(systemName: "chevron.left")
+                            Text("Promociones")
+                        }
                         .foregroundColor(.white)
-                }
-
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: onLogout) {
-                        Image(systemName: "rectangle.portrait.and.arrow.right")
-                            .foregroundColor(.white)
                     }
                 }
             }
-            .task {
-                if viewModel.promotionGroups.isEmpty {
-                    await viewModel.loadPromotions()
-                }
+            .task(id: baseId) {
+                await viewModel.loadLots(baseId: baseId)
             }
         }
     }
@@ -56,33 +53,31 @@ struct BrokerHomeScreen: View {
             ProgressView()
                 .tint(.white)
         } else if let errorMessage = viewModel.errorMessage {
-            BrokerHomeErrorView(
+            BrokerLotsErrorView(
                 message: errorMessage,
                 onRetry: {
-                    Task { await viewModel.loadPromotions() }
+                    Task { await viewModel.loadLots(baseId: baseId) }
                 }
             )
             .padding(24)
-        } else if viewModel.promotionGroups.isEmpty {
-            BrokerHomeEmptyView()
+        } else if viewModel.developments.isEmpty {
+            BrokerLotsEmptyView(baseId: baseId)
                 .padding(24)
         } else {
             ScrollView {
                 LazyVStack(spacing: 20) {
                     header
 
-                    ForEach(viewModel.promotionGroups) { group in
-                        let coverId = group.developments.first?.id ?? group.baseId
-
+                    ForEach(viewModel.developments) { development in
                         DevelopmentCard(
-                            title: group.displayName,
-                            location: group.location,
-                            price: lotsLabel(for: group.developments.count),
+                            title: displayLotTitle(for: development),
+                            location: development.location,
+                            price: development.status,
                             status: "",
-                            id: coverId,
+                            id: development.id,
                             badgeCount: 0,
                             onClick: {
-                                onNavigateToLots(group.baseId)
+                                onNavigateToDetail(development.id)
                             }
                         )
                     }
@@ -95,13 +90,13 @@ struct BrokerHomeScreen: View {
 
     private var header: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("Promociones broker")
+            Text("Lotes de la promoción")
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
 
-            Text("Consulta las promociones activas y entra al listado de lotes de cada una.")
-                .font(.subheadline)
+            Text(baseId)
+                .font(.headline)
                 .foregroundColor(.gray)
 
             Spacer().frame(height: 16)
@@ -115,12 +110,18 @@ struct BrokerHomeScreen: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    private func lotsLabel(for count: Int) -> String {
-        count == 1 ? "1 lote disponible" : "\(count) lotes disponibles"
+    private func displayLotTitle(for development: Development) -> String {
+        let trimmedName = development.name.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if !trimmedName.isEmpty {
+            return trimmedName
+        }
+
+        return development.id
     }
 }
 
-private struct BrokerHomeErrorView: View {
+private struct BrokerLotsErrorView: View {
     let message: String
     let onRetry: () -> Void
 
@@ -130,7 +131,7 @@ private struct BrokerHomeErrorView: View {
                 .font(.system(size: 28))
                 .foregroundColor(.white)
 
-            Text("No se pudieron cargar las promociones")
+            Text("No se pudieron cargar los lotes")
                 .font(.headline)
                 .foregroundColor(.white)
 
@@ -150,18 +151,20 @@ private struct BrokerHomeErrorView: View {
     }
 }
 
-private struct BrokerHomeEmptyView: View {
+private struct BrokerLotsEmptyView: View {
+    let baseId: String
+
     var body: some View {
         VStack(spacing: 16) {
-            Image(systemName: "building.2.crop.circle")
+            Image(systemName: "square.grid.2x2")
                 .font(.system(size: 30))
                 .foregroundColor(.white)
 
-            Text("No hay promociones disponibles")
+            Text("No hay lotes disponibles")
                 .font(.headline)
                 .foregroundColor(.white)
 
-            Text("Cuando existan promociones visibles para broker apareceran aqui.")
+            Text("La promoción \(baseId) no tiene lotes visibles en este momento.")
                 .font(.subheadline)
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
@@ -171,8 +174,9 @@ private struct BrokerHomeEmptyView: View {
 }
 
 #Preview {
-    BrokerHomeScreen(
-        onLogout: {},
-        onNavigateToLots: { _ in }
+    BrokerPromotionLotsView(
+        baseId: "promo-preview",
+        onBack: {},
+        onNavigateToDetail: { _ in }
     )
 }

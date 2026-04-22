@@ -3,7 +3,7 @@ import Foundation
 enum DevelopmentGroupingMapper {
     static func map(_ developments: [Development]) -> [ClientPromotionGroup] {
         let grouped = Dictionary(grouping: developments) { development in
-            baseId(for: development)
+            resolvedBaseId(for: development)
         }
 
         return grouped.map { baseId, developments in
@@ -20,7 +20,7 @@ enum DevelopmentGroupingMapper {
         .sorted { $0.displayName < $1.displayName }
     }
 
-    private static func baseId(for development: Development) -> String {
+    static func resolvedBaseId(for development: Development) -> String {
         let baseId = development.baseId.trimmingCharacters(in: .whitespacesAndNewlines)
 
         if !baseId.isEmpty {
