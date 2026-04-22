@@ -98,25 +98,25 @@ struct LoginScreen: View {
 
                         Spacer().frame(height: 18)
 
-                        // Botón ENTRAR (Versión Premium con carga)
-                        PrimaryButton(
-                            action: {
-                                viewModel.state.email = email
-                                viewModel.state.password = password
-                                Task {
-                                    await viewModel.signIn()
-                                }
-                            },
-                            isLoading: viewModel.state.isLoading
-                        ) {
+                        // Botón ENTRAR
+                        Button(action: {
+                            // 1. Le pasamos lo que has escrito al "cerebro"
+                            viewModel.state.email = email
+                            viewModel.state.password = password
+
+                            // 2. Llamamos a la función de Firebase de Diego
+                            Task {
+                                await viewModel.signIn()
+                            }
+                        }) {
                             Text("ENTRAR")
-                                    .font(.callout)
-                                    .fontWeight(.semibold)
-                                    .foregroundStyle(.black)
-                                    .frame(maxWidth: .infinity)
-                                    .padding(.vertical, 14)
-                                    .background(Color.white)
-                                    .cornerRadius(16)
+                                .font(.callout)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.black)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 14)
+                                .background(Color.white)
+                                .cornerRadius(16)
                         }
 
                         Spacer().frame(height: 12)

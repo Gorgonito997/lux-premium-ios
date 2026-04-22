@@ -1,86 +1,77 @@
 import SwiftUI
 
 struct ClientHomeScreen: View {
-    // Callbacks de navegación
     var onLogout: () -> Void
     var onNavigateToAssistant: () -> Void
     var onNavigateToDetail: (String) -> Void
 
-    // Tu ViewModel real
     @ObservedObject var viewModel: ClientHomeViewModel
 
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(UIColor.systemBackground)
-                    .ignoresSafeArea()
+                // Fondo Negro Puro
+                Color.black.ignoresSafeArea()
 
-                // --- GESTIÓN DE ESTADOS ---
                 if viewModel.isLoading {
-                    ProgressView()
-                        .tint(Color.accentColor)
+                    ProgressView().tint(.white)
                 } else if let errorMessage = viewModel.errorMessage {
                     VStack(spacing: 16) {
-                        Text(errorMessage)
-                            .foregroundColor(.red)
-
-                        // ¡El botón ahora soporta funciones async!
+                        Text(errorMessage).foregroundColor(.red)
                         Button("Reintentar") {
-                            Task {
-                                await viewModel.loadDevelopments()
-                            }
+                            Task { await viewModel.loadDevelopments() }
                         }
+                        .foregroundColor(.white)
                     }
                     .padding(24)
-                } else if viewModel.promotionGroups.isEmpty { // <--- CORREGIDO AQUÍ
+                } else if viewModel.promotionGroups.isEmpty {
                     Text("No hay promociones disponibles")
-                        .font(.body)
-                        .foregroundColor(Color(UIColor.label).opacity(0.6))
+                        .foregroundColor(.gray)
                 } else {
-                    // --- LISTA PRINCIPAL ---
                     ScrollView {
                         LazyVStack(spacing: 20) {
 
-                            // Cabecera estática
-                            VStack(alignment: .leading, spacing: 0) {
-                                Text("Bienvenido,")
+                            // --- CABECERA ---
+                            VStack(alignment: .leading, spacing: 6) {
+                                Text("Bienvenido a Lux Premium")
                                     .font(.title2)
-                                    .foregroundColor(Color(UIColor.label))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
 
-                                Spacer().frame(height: 8)
-
-                                Text("Encuentra tu próximo hogar exclusivo")
-                                    .font(.body)
-                                    .foregroundColor(Color(UIColor.label).opacity(0.6))
+                                Text("Descubre nuestras promociones más selectas.")
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
 
                                 Spacer().frame(height: 16)
 
                                 Rectangle()
-                                    .fill(Color(UIColor.separator).opacity(0.3))
+                                    .fill(Color.gray.opacity(0.3))
                                     .frame(width: 40, height: 1)
 
                                 Spacer().frame(height: 24)
 
-                                // --- BANNER GIGANTE DE IA ---
+                                // --- BANNER ASISTENTE IA ---
                                 Button(action: onNavigateToAssistant) {
                                     HStack(spacing: 16) {
+                                        // Icono blanco con destellos negros
                                         RoundedRectangle(cornerRadius: 14)
-                                            .fill(Color.accentColor)
+                                            .fill(Color.white)
                                             .frame(width: 56, height: 56)
                                             .overlay(
                                                 Image(systemName: "sparkles")
-                                                    .foregroundColor(.white)
+                                                    .foregroundColor(.black)
+                                                    .font(.system(size: 24))
                                             )
 
                                         VStack(alignment: .leading, spacing: 4) {
-                                            Text("Asistente Lux")
+                                            Text("Asistente IA")
                                                 .font(.headline)
                                                 .fontWeight(.bold)
-                                                .foregroundColor(Color(UIColor.label))
+                                                .foregroundColor(.white)
 
-                                            Text("Pregúntame lo que necesites")
-                                                .font(.subheadline)
-                                                .foregroundColor(Color(UIColor.label).opacity(0.7))
+                                            Text("Pregunta por esta promoción, la unidad o los siguientes pasos")
+                                                .font(.caption)
+                                                .foregroundColor(.gray)
                                                 .lineLimit(2)
                                                 .multilineTextAlignment(.leading)
                                         }
@@ -88,27 +79,25 @@ struct ClientHomeScreen: View {
                                     }
                                     .padding(20)
                                 }
-                                .background(Color.accentColor.opacity(0.1))
+                                .background(Color(white: 0.12)) // Gris muy oscuro
                                 .cornerRadius(20)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 20)
-                                        .stroke(Color.accentColor.opacity(0.3), lineWidth: 1)
+                                        .stroke(Color.gray.opacity(0.3), lineWidth: 1)
                                 )
                                 .buttonStyle(PlainButtonStyle())
                             }
                             .padding(.bottom, 8)
                             .frame(maxWidth: .infinity, alignment: .leading)
 
-                            // Tarjetas de propiedades
+                            // --- TARJETAS ---
                             ForEach(viewModel.promotionGroups) { group in
-
-                                // Sacamos la primera casa del grupo para usar su precio y su ID
                                 let firstDev = group.developments.first
 
                                 DevelopmentCard(
                                     title: group.displayName,
                                     location: group.location,
-                                    price: firstDev?.status ?? "", // El precio suele venir en el status
+                                    price: firstDev?.status ?? "",
                                     status: "",
                                     id: firstDev?.id ?? group.baseId,
                                     badgeCount: 0,
@@ -120,33 +109,34 @@ struct ClientHomeScreen: View {
                                 )
                             }
                         }
-                        .padding(.horizontal, 24)
+                        .padding(.horizontal, 20)
                         .padding(.vertical, 16)
                     }
                 }
             }
-            // --- TopAppBar ---
+            // Forzamos que la barra superior sea negra con texto blanco
+            .toolbarBackground(Color.black, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Text("INICIO CLIENTE")
-                        .font(.system(size: 14, weight: .semibold))
+                    Text("CATÁLOGO EXCLUSIVO")
+                        .font(.system(size: 13, weight: .bold))
                         .tracking(1.5)
-                        .foregroundColor(Color(UIColor.label))
+                        .foregroundColor(.white)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: onLogout) {
                         Image(systemName: "rectangle.portrait.and.arrow.right")
-                            .foregroundColor(Color(UIColor.label))
+                            .foregroundColor(.white)
                     }
                 }
             }
-            // --- FloatingActionButton ---
             .overlay(alignment: .bottomTrailing) {
                 PremiumContactFab()
-                    .padding(16)
+                    .padding(20)
             }
-            // --- DISPARADOR INICIAL (Carga los datos automáticamente) ---
             .task {
                 if viewModel.promotionGroups.isEmpty {
                     await viewModel.loadDevelopments()
