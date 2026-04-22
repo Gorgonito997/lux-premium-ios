@@ -6,6 +6,7 @@ struct RootView: View {
     @State private var isLoadingRole: Bool = false
     @State private var roleErrorMessage: String?
     @State private var brokerSelectedBaseId: String?
+    @State private var brokerSelectedDevelopmentId: String?
 
     @AppStorage("app_language") private var language: String = "es"
 
@@ -30,20 +31,37 @@ struct RootView: View {
         if isLoadingRole {
             RoleLoadingView()
         } else if normalizedRole == "BROKER" {
-            if let brokerSelectedBaseId {
+            if let brokerSelectedDevelopmentId {
+                DevelopmentDetailView(
+                    developmentId: brokerSelectedDevelopmentId,
+                    onBack: {
+                        self.brokerSelectedDevelopmentId = nil
+                    },
+                    onOpenDocuments: { developmentId in
+                        print("Abrir documentos broker del desarrollo: \(developmentId)")
+                    },
+                    onOpenContracts: { developmentId in
+                        print("Abrir contracts broker del desarrollo: \(developmentId)")
+                    },
+                    onOpenProposal: { developmentId in
+                        print("Abrir proposal broker del desarrollo: \(developmentId)")
+                    }
+                )
+            } else if let brokerSelectedBaseId {
                 BrokerPromotionLotsView(
                     baseId: brokerSelectedBaseId,
                     onBack: {
                         self.brokerSelectedBaseId = nil
                     },
                     onNavigateToDetail: { developmentId in
-                        print("Navegar al detalle broker del desarrollo: \(developmentId)")
+                        brokerSelectedDevelopmentId = developmentId
                     }
                 )
             } else {
                 BrokerHomeScreen(
                     onLogout: sessionManager.logOut,
                     onNavigateToLots: { baseId in
+                        brokerSelectedDevelopmentId = nil
                         brokerSelectedBaseId = baseId
                     }
                 )
@@ -83,6 +101,7 @@ struct RootView: View {
             isLoadingRole = false
             roleErrorMessage = nil
             brokerSelectedBaseId = nil
+            brokerSelectedDevelopmentId = nil
             return
         }
 

@@ -3,16 +3,35 @@ import SwiftUI
 
 struct DevelopmentDetailView: View {
     let developmentId: String
+    let onBack: (() -> Void)?
+    let onOpenDocuments: ((String) -> Void)?
+    let onOpenContracts: ((String) -> Void)?
+    let onOpenProposal: ((String) -> Void)?
 
     @Environment(\.openURL) private var openURL
-    @StateObject private var viewModel = DevelopmentDetailViewModel()
+    @StateObject private var viewModel: DevelopmentDetailViewModel
+
+    init(
+        developmentId: String,
+        onBack: (() -> Void)? = nil,
+        onOpenDocuments: ((String) -> Void)? = nil,
+        onOpenContracts: ((String) -> Void)? = nil,
+        onOpenProposal: ((String) -> Void)? = nil
+    ) {
+        self.developmentId = developmentId
+        self.onBack = onBack
+        self.onOpenDocuments = onOpenDocuments
+        self.onOpenContracts = onOpenContracts
+        self.onOpenProposal = onOpenProposal
+        _viewModel = StateObject(wrappedValue: DevelopmentDetailViewModel())
+    }
 
     var body: some View {
         LuxScreen {
             VStack(spacing: 24) {
                 if viewModel.isLoading {
                     loadingState
-                } else if let errorMessage = viewModel.errorMessage {
+                } else if viewModel.development == nil, let errorMessage = viewModel.errorMessage {
                     errorState(errorMessage)
                 } else {
                     content
@@ -25,6 +44,19 @@ struct DevelopmentDetailView: View {
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
+        .toolbar {
+            if let onBack {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: onBack) {
+                        HStack(spacing: 6) {
+                            Image(systemName: "chevron.left")
+                            Text("Lotes")
+                        }
+                    }
+                    .foregroundStyle(LuxTheme.textPrimary)
+                }
+            }
+        }
         .task(id: developmentId) {
             await viewModel.load(developmentId: developmentId)
         }
@@ -32,6 +64,10 @@ struct DevelopmentDetailView: View {
 
     private var content: some View {
         VStack(alignment: .leading, spacing: 24) {
+            if let errorMessage = viewModel.errorMessage, viewModel.development != nil {
+                inlineWarning(errorMessage)
+            }
+
             hero
 
             if let development = viewModel.development {
@@ -39,6 +75,7 @@ struct DevelopmentDetailView: View {
                     HStack(spacing: 12) {
                         LuxValueBadge("Estado: \(translatedAvailability(development.status))")
                         LuxValueBadge("Unidades: \(viewModel.units.count)")
+                        LuxValueBadge("Docs: \(viewModel.documents.count)")
                     }
 
                     VStack(alignment: .leading, spacing: 10) {
@@ -52,6 +89,7 @@ struct DevelopmentDetailView: View {
             }
 
             actions
+            documentsSection
 
             LuxSectionTitle(
                 "Unidades",
@@ -90,28 +128,67 @@ struct DevelopmentDetailView: View {
                 )
             }
 
-            LuxImagePlaceholder(
-                title: "Imagen principal",
-                subtitle: "Aqui podreis conectar la imagen de portada o el render principal de la promocion.",
-                height: 210
-            )
+            if let development = viewModel.development {
+                Image(DevelopmentImageMapper.mapIdToDrawable(development.id))
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 210)
+                    .frame(maxWidth: .infinity)
+                    .clipped()
+                    .clipShape(RoundedRectangle(cornerRadius: 24))
+            } else {
+                LuxImagePlaceholder(
+                    title: "Imagen principal",
+                    subtitle: "Aqui podreis conectar la imagen de portada o el render principal de la promocion.",
+                    height: 210
+                )
+            }
         }
     }
 
     private var actions: some View {
         LuxPanel {
             LuxSectionTitle(
-                "Recursos",
+                isBrokerMode ? "Acciones broker" : "Recursos",
                 eyebrow: "Accesos",
-                subtitle: "Documentacion e imagenes externas agrupadas con el mismo lenguaje visual."
+                subtitle: isBrokerMode
+                    ? "Accesos preparados para documentos, contratos y propuesta sin bloquear el flujo actual."
+                    : "Documentacion e imagenes externas agrupadas con el mismo lenguaje visual."
             )
 
-            NavigationLink {
-                ClientDocumentsView(developmentId: developmentId)
-            } label: {
-                Text("Ver documentos")
+            if let onOpenDocuments {
+                Button {
+                    onOpenDocuments(developmentId)
+                } label: {
+                    Text("Documentos")
+                }
+                .buttonStyle(LuxPrimaryButtonStyle())
+            } else {
+                NavigationLink {
+                    ClientDocumentsView(developmentId: developmentId)
+                } label: {
+                    Text("Ver documentos")
+                }
+                .buttonStyle(LuxPrimaryButtonStyle())
             }
-            .buttonStyle(LuxPrimaryButtonStyle())
+
+            if let onOpenContracts {
+                Button {
+                    onOpenContracts(developmentId)
+                } label: {
+                    Text("Contracts")
+                }
+                .buttonStyle(LuxSecondaryButtonStyle())
+            }
+
+            if let onOpenProposal {
+                Button {
+                    onOpenProposal(developmentId)
+                } label: {
+                    Text("Proposal")
+                }
+                .buttonStyle(LuxSecondaryButtonStyle())
+            }
 
             if let development = viewModel.development {
                 if !development.driveImagesFolderUrl.isEmpty {
@@ -135,6 +212,29 @@ struct DevelopmentDetailView: View {
         }
     }
 
+    private var documentsSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            LuxSectionTitle(
+                "Documentacion",
+                eyebrow: "Soporte",
+                subtitle: "Resumen de documentos visibles ya cargados para este development."
+            )
+
+            if viewModel.documents.isEmpty {
+                LuxEmptyState(
+                    title: "No hay documentos visibles",
+                    subtitle: "El detail sigue operativo y quedara listo para conectar el bloque final de documentos."
+                )
+            } else {
+                VStack(spacing: 16) {
+                    ForEach(viewModel.documents) { document in
+                        documentCard(document)
+                    }
+                }
+            }
+        }
+    }
+
     private var loadingState: some View {
         LuxPanel {
             VStack(spacing: 16) {
@@ -151,6 +251,27 @@ struct DevelopmentDetailView: View {
         }
     }
 
+    private func inlineWarning(_ message: String) -> some View {
+        LuxPanel {
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(spacing: 10) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .foregroundStyle(LuxTheme.warning)
+
+                    Text("Parte del contenido no se ha podido cargar")
+                        .font(.headline)
+                        .foregroundStyle(LuxTheme.textPrimary)
+                }
+
+                Text(message)
+                    .font(.subheadline)
+                    .foregroundStyle(LuxTheme.textSecondary)
+                    .multilineTextAlignment(.leading)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+
     private func errorState(_ message: String) -> some View {
         LuxPanel {
             VStack(spacing: 14) {
@@ -164,6 +285,23 @@ struct DevelopmentDetailView: View {
                     .multilineTextAlignment(.center)
             }
             .frame(maxWidth: .infinity)
+        }
+    }
+
+    private func documentCard(_ document: DevelopmentDocument) -> some View {
+        LuxPanel {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(document.name.isEmpty ? document.id : document.name)
+                    .font(.headline)
+                    .foregroundStyle(LuxTheme.textPrimary)
+                    .multilineTextAlignment(.leading)
+
+                if !document.category.isEmpty {
+                    LuxMetaText(text: document.category)
+                }
+
+                LuxValueBadge(document.fileType.isEmpty ? "Documento" : document.fileType)
+            }
         }
     }
 
@@ -231,6 +369,10 @@ struct DevelopmentDetailView: View {
 
     private func isAvailable(_ value: String) -> Bool {
         value.lowercased().contains("available")
+    }
+
+    private var isBrokerMode: Bool {
+        onOpenDocuments != nil || onOpenContracts != nil || onOpenProposal != nil || onBack != nil
     }
 }
 
