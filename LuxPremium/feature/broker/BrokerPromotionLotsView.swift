@@ -10,13 +10,12 @@ struct BrokerPromotionLotsView: View {
     init(
         baseId: String,
         onBack: @escaping () -> Void,
-        onNavigateToDetail: @escaping (String) -> Void,
-        viewModel: BrokerPromotionLotsViewModel = BrokerPromotionLotsViewModel()
+        onNavigateToDetail: @escaping (String) -> Void
     ) {
         self.baseId = baseId
         self.onBack = onBack
         self.onNavigateToDetail = onNavigateToDetail
-        _viewModel = StateObject(wrappedValue: viewModel)
+        _viewModel = StateObject(wrappedValue: BrokerPromotionLotsViewModel())
     }
 
     var body: some View {

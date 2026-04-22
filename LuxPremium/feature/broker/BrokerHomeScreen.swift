@@ -8,12 +8,11 @@ struct BrokerHomeScreen: View {
 
     init(
         onLogout: @escaping () -> Void,
-        onNavigateToLots: @escaping (String) -> Void,
-        viewModel: BrokerHomeViewModel = BrokerHomeViewModel()
+        onNavigateToLots: @escaping (String) -> Void
     ) {
         self.onLogout = onLogout
         self.onNavigateToLots = onNavigateToLots
-        _viewModel = StateObject(wrappedValue: viewModel)
+        _viewModel = StateObject(wrappedValue: BrokerHomeViewModel())
     }
 
     var body: some View {
