@@ -6,19 +6,38 @@ struct RootView: View {
     @State private var isLoadingRole: Bool = false
     @State private var roleErrorMessage: String?
 
-    // 1. AÑADIMOS LA VARIABLE DEL IDIOMA AQUÍ
-    // Esto guarda el idioma en el iPhone y avisa a todas las pantallas si cambia
     @AppStorage("app_language") private var language: String = "es"
 
     private let authRepository = AuthRepository()
 
     var body: some View {
         Group {
-            if sessionManager.isAuthenticated, let _ = sessionManager.currentUid {
+            if sessionManager.isAuthenticated, sessionManager.currentUid != nil {
+                authenticatedContent
+            } else {
+                LoginView()
+            }
+        }
+        .environment(\.locale, Locale(identifier: language))
+        .task(id: sessionManager.currentUid) {
+            await loadRoleIfNeeded()
+        }
+    }
 
+    @ViewBuilder
+    private var authenticatedContent: some View {
+        if isLoadingRole {
+            RoleLoadingView()
+        } else if normalizedRole == "BROKER" {
+            BrokerHomeScreen(
+                onLogout: sessionManager.logOut,
+                onNavigateToLots: {},
+                onNavigateToOpportunities: {}
+            )
+        } else {
+            ZStack(alignment: .top) {
                 ClientHomeScreen(
                     onLogout: {
-                        // 1. Llama a la función de tu SessionManager para cerrar la sesión en Firebase
                         sessionManager.logOut()
                     },
                     onNavigateToAssistant: {
@@ -30,21 +49,24 @@ struct RootView: View {
                     viewModel: ClientHomeViewModel()
                 )
 
-            } else {
-                LoginView()
+                if let roleErrorMessage, !roleErrorMessage.isEmpty {
+                    RoleErrorBanner(message: roleErrorMessage)
+                        .padding(.horizontal, 16)
+                        .padding(.top, 8)
+                }
             }
         }
-        // 2. INYECTAMOS EL IDIOMA A TODA LA APP AQUÍ
-        // Esto le dice a SwiftUI: "Traduce todo lo que haya dentro del Group a este idioma"
-        .environment(\.locale, Locale(identifier: language))
-        .task(id: sessionManager.currentUid) {
-            await loadRoleIfNeeded()
-        }
+    }
+
+    private var normalizedRole: String {
+        let trimmedRole = role.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmedRole.isEmpty ? "CLIENT" : trimmedRole.uppercased()
     }
 
     private func loadRoleIfNeeded() async {
         guard let uid = sessionManager.currentUid else {
             role = "CLIENT"
+            isLoadingRole = false
             roleErrorMessage = nil
             return
         }
@@ -68,6 +90,60 @@ private struct LoginView: View {
 
     var body: some View {
         LoginScreen(viewModel: viewModel)
+    }
+}
+
+private struct RoleLoadingView: View {
+    var body: some View {
+        ZStack {
+            LinearGradient(
+                colors: [Color.black, Color(white: 0.12)],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
+
+            VStack(spacing: 16) {
+                ProgressView()
+                    .tint(.white)
+                    .scaleEffect(1.1)
+
+                Text("Preparando tu experiencia")
+                    .font(.headline)
+                    .foregroundColor(.white)
+
+                Text("Estamos validando tu perfil de acceso.")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
+            .padding(24)
+        }
+    }
+}
+
+private struct RoleErrorBanner: View {
+    let message: String
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .foregroundColor(.yellow)
+
+            Text("No se pudo cargar el rol. Se ha abierto el flujo cliente. \(message)")
+                .font(.footnote)
+                .foregroundColor(.white)
+                .multilineTextAlignment(.leading)
+
+            Spacer(minLength: 0)
+        }
+        .padding(12)
+        .background(Color.black.opacity(0.9))
+        .clipShape(RoundedRectangle(cornerRadius: 14))
+        .overlay(
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(Color.white.opacity(0.12), lineWidth: 1)
+        )
+        .shadow(color: .black.opacity(0.2), radius: 10, y: 4)
     }
 }
 
