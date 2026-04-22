@@ -28,7 +28,7 @@ final class SessionManager: ObservableObject {
         }
     }
 
-        func logout() {
+        func logOut() {
             do {
                 try Auth.auth().signOut()
                 // Al hacer esto, Firebase avisará al "listener" y
