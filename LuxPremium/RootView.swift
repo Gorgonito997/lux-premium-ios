@@ -11,12 +11,24 @@ struct RootView: View {
     var body: some View {
         Group {
             if sessionManager.isAuthenticated, let uid = sessionManager.currentUid {
-                HomeClienteView(
-                    uid: uid,
-                    role: role,
-                    isLoadingRole: isLoadingRole,
-                    roleErrorMessage: roleErrorMessage
+
+                // --- AQUÍ ESTÁ EL CAMBIO PRINCIPAL ---
+                ClientHomeScreen(
+                    onLogout: {
+                        // Aquí llamaremos a la función de cerrar sesión de tu SessionManager
+                        // sessionManager.signOut()
+                        print("Cerrar sesión presionado")
+                    },
+                    onNavigateToAssistant: {
+                        print("Ir al asistente IA")
+                    },
+                    onNavigateToDetail: { propertyId in
+                        print("Navegar a los detalles de la propiedad: \(propertyId)")
+                    },
+                    viewModel: ClientHomeViewModel()
                 )
+                // -------------------------------------
+
             } else {
                 LoginView()
             }
