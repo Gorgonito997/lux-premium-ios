@@ -6,13 +6,16 @@ struct RootView: View {
     @State private var isLoadingRole: Bool = false
     @State private var roleErrorMessage: String?
 
+    // 1. AÑADIMOS LA VARIABLE DEL IDIOMA AQUÍ
+    // Esto guarda el idioma en el iPhone y avisa a todas las pantallas si cambia
+    @AppStorage("app_language") private var language: String = "es"
+
     private let authRepository = AuthRepository()
 
     var body: some View {
         Group {
             if sessionManager.isAuthenticated, let _ = sessionManager.currentUid {
 
-                // --- AQUÍ ESTÁ EL CAMBIO PRINCIPAL ---
                 ClientHomeScreen(
                     onLogout: {
                         // Aquí llamaremos a la función de cerrar sesión de tu SessionManager
@@ -27,12 +30,14 @@ struct RootView: View {
                     },
                     viewModel: ClientHomeViewModel()
                 )
-                // -------------------------------------
 
             } else {
                 LoginView()
             }
         }
+        // 2. INYECTAMOS EL IDIOMA A TODA LA APP AQUÍ
+        // Esto le dice a SwiftUI: "Traduce todo lo que haya dentro del Group a este idioma"
+        .environment(\.locale, Locale(identifier: language))
         .task(id: sessionManager.currentUid) {
             await loadRoleIfNeeded()
         }

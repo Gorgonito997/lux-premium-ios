@@ -9,6 +9,9 @@ struct LoginScreen: View {
     @State private var selectedRole = "CLIENT"
     @State private var isLoading = false
 
+    // --- 1. AÑADIMOS LA VARIABLE DEL IDIOMA ---
+    @AppStorage("app_language") private var language: String = "es"
+
     var body: some View {
         ZStack {
             // --- FONDO Y CAPA DE CONTRASTE ---
@@ -100,11 +103,9 @@ struct LoginScreen: View {
 
                         // Botón ENTRAR
                         Button(action: {
-                            // 1. Le pasamos lo que has escrito al "cerebro"
                             viewModel.state.email = email
                             viewModel.state.password = password
 
-                            // 2. Llamamos a la función de Firebase de Diego
                             Task {
                                 await viewModel.signIn()
                             }
@@ -172,9 +173,10 @@ struct LoginScreen: View {
         // --- BOTÓN DE IDIOMA TOP RIGHT ---
         .overlay(alignment: .topTrailing) {
             Menu {
-                Button("English") { }
-                Button("Español") { }
-                Button("Português") { }
+                // --- 2. CONECTAMOS LOS BOTONES PARA CAMBIAR LA VARIABLE ---
+                Button("English") { language = "en" }
+                Button("Español") { language = "es" }
+                Button("Português") { language = "pt" }
             } label: {
                 Image(systemName: "globe")
                     .foregroundStyle(.white)
@@ -190,12 +192,13 @@ struct LoginScreen: View {
             .padding(.top, 10)
         }
     }
-} // <--- AQUÍ SE CIERRA LA PANTALLA PRINCIPAL
+}
 
 // MARK: - Componentes Secundarios
 
 struct RoleBox: View {
-    let text: String
+    // --- 3. TRUCO PRO: Usar LocalizedStringKey para que se traduzca automáticamente ---
+    let text: LocalizedStringKey
     let isSelected: Bool
     let onClick: () -> Void
 
@@ -218,7 +221,8 @@ struct RoleBox: View {
 
 struct LuxTextField: View {
     @Binding var value: String
-    var label: String
+    // --- 3. TRUCO PRO: Usar LocalizedStringKey ---
+    var label: LocalizedStringKey
     var keyboardType: UIKeyboardType = .default
     var isPassword: Bool = false
     var isPasswordVisible: Binding<Bool>? = nil
