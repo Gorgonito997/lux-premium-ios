@@ -190,7 +190,7 @@ struct DevelopmentDetailView: View {
                     .font(.system(size: 26, weight: .semibold))
                     .foregroundStyle(.white)
 
-                LuxMetaText(text: "Superficie: \(unit.sqm, specifier: "%.0f") m2")
+                LuxMetaText(text: "Superficie: \(Int(unit.sqm)) m2")
 
                 LuxMetaText(text: "Dormitorios: \(unit.bedrooms)")
 
