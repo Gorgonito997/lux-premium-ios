@@ -98,22 +98,25 @@ struct LoginScreen: View {
 
                         Spacer().frame(height: 18)
 
-                        // Botón ENTRAR
-                        Button(action: {
-                            // Le pasamos el email y la contraseña al cerebro para que haga el login
-                            Task {
-                                await viewModel.login(email: email, password: password)
-                            }
-                        }) {
-                            // Mantenemos tu diseño premium intacto
+                        // Botón ENTRAR (Versión Premium con carga)
+                        PrimaryButton(
+                            action: {
+                                viewModel.state.email = email
+                                viewModel.state.password = password
+                                Task {
+                                    await viewModel.signIn()
+                                }
+                            },
+                            isLoading: viewModel.state.isLoading
+                        ) {
                             Text("ENTRAR")
-                                .font(.callout)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.black)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 14)
-                                .background(Color.white)
-                                .cornerRadius(16)
+                                    .font(.callout)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(.black)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 14)
+                                    .background(Color.white)
+                                    .cornerRadius(16)
                         }
 
                         Spacer().frame(height: 12)
