@@ -5,10 +5,10 @@ struct ClientHomeScreen: View {
     var onLogout: () -> Void
     var onNavigateToAssistant: () -> Void
     var onNavigateToDetail: (String) -> Void
-    
+
     // Tu ViewModel real
     @ObservedObject var viewModel: ClientHomeViewModel
-    
+
     var body: some View {
         // NavigationStack equivale al Scaffold con TopAppBar
         NavigationStack {
@@ -16,7 +16,7 @@ struct ClientHomeScreen: View {
                 // Fondo adaptable a modo claro/oscuro (MaterialTheme.colorScheme.background)
                 Color(UIColor.systemBackground)
                     .ignoresSafeArea()
-                
+
                 // --- GESTIÓN DE ESTADOS ---
                 // (Asegúrate de que las variables isLoading, errorMessage y promotions existan en tu ViewModel)
                 if viewModel.isLoading {
@@ -26,7 +26,11 @@ struct ClientHomeScreen: View {
                     VStack(spacing: 16) {
                         Text(errorMessage)
                             .foregroundColor(.red)
-                        Button("Reintentar", action: viewModel.loadDevelopments)
+                        Button("Reintentar") {
+                            Task {
+                                await viewModel.loadDevelopments()
+                            }
+                        }
                     }
                     .padding(24)
                 } else if viewModel.promotions.isEmpty {
@@ -37,28 +41,28 @@ struct ClientHomeScreen: View {
                     // --- LISTA PRINCIPAL (Equivalente a LazyColumn) ---
                     ScrollView {
                         LazyVStack(spacing: 20) {
-                            
+
                             // Cabecera estática
                             VStack(alignment: .leading, spacing: 0) {
                                 Text("Bienvenido,")
                                     .font(.title2)
                                     .foregroundColor(Color(UIColor.label))
-                                
+
                                 Spacer().frame(height: 8)
-                                
+
                                 Text("Encuentra tu próximo hogar exclusivo")
                                     .font(.body)
                                     .foregroundColor(Color(UIColor.label).opacity(0.6))
-                                
+
                                 Spacer().frame(height: 16)
-                                
+
                                 // Línea divisoria (HorizontalDivider)
                                 Rectangle()
                                     .fill(Color(UIColor.separator).opacity(0.3))
                                     .frame(width: 40, height: 1)
-                                
+
                                 Spacer().frame(height: 24)
-                                
+
                                 // --- BANNER GIGANTE DE IA ---
                                 Button(action: onNavigateToAssistant) {
                                     HStack(spacing: 16) {
@@ -70,14 +74,14 @@ struct ClientHomeScreen: View {
                                                 Image(systemName: "sparkles")
                                                     .foregroundColor(.white)
                                             )
-                                        
+
                                         // Textos
                                         VStack(alignment: .leading, spacing: 4) {
                                             Text("Asistente Lux")
                                                 .font(.headline)
                                                 .fontWeight(.bold)
                                                 .foregroundColor(Color(UIColor.label))
-                                            
+
                                             Text("Pregúntame lo que necesites")
                                                 .font(.subheadline)
                                                 .foregroundColor(Color(UIColor.label).opacity(0.7))
@@ -98,12 +102,12 @@ struct ClientHomeScreen: View {
                             }
                             .padding(.bottom, 8)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            
+
                             // Tarjetas de propiedades (items(promotions))
                             ForEach(viewModel.promotions, id: \.baseId) { promotion in
                                 // Accedemos al representativeDevelopment igual que en Android
                                 let development = promotion.representativeDevelopment
-                                
+
                                 DevelopmentCard(
                                     id: promotion.baseId,
                                     title: development.name,
