@@ -27,4 +27,14 @@ final class SessionManager: ObservableObject {
             Auth.auth().removeStateDidChangeListener(authHandle)
         }
     }
+
+        func logout() {
+            do {
+                try Auth.auth().signOut()
+                // Al hacer esto, Firebase avisará al "listener" y
+                // isAuthenticated se pondrá en false automáticamente.
+            } catch {
+                print("Error al cerrar sesión: \(error.localizedDescription)")
+            }
+        }
 }
