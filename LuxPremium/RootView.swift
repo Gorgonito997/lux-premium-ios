@@ -18,9 +18,8 @@ struct RootView: View {
 
                 ClientHomeScreen(
                     onLogout: {
-                        // Aquí llamaremos a la función de cerrar sesión de tu SessionManager
-                        // sessionManager.signOut()
-                        print("Cerrar sesión presionado")
+                        // 1. Llama a la función de tu SessionManager para cerrar la sesión en Firebase
+                        sessionManager.signOut()
                     },
                     onNavigateToAssistant: {
                         print("Ir al asistente IA")
