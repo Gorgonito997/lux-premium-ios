@@ -99,19 +99,23 @@ struct ClientHomeScreen: View {
                             .padding(.bottom, 8)
                             .frame(maxWidth: .infinity, alignment: .leading)
 
-                            // Tarjetas de propiedades (CORREGIDO AQUÍ TAMBIÉN)
-                            ForEach(viewModel.promotionGroups, id: \.baseId) { group in
-                                let development = group.representativeDevelopment
+                            // Tarjetas de propiedades
+                            ForEach(viewModel.promotionGroups) { group in
+
+                                // Sacamos la primera casa del grupo para usar su precio y su ID
+                                let firstDev = group.developments.first
 
                                 DevelopmentCard(
-                                    title: development.name,
-                                    location: development.location,
-                                    price: development.status,
+                                    title: group.displayName,
+                                    location: group.location,
+                                    price: firstDev?.status ?? "", // El precio suele venir en el status
                                     status: "",
-                                    id: development.id,
+                                    id: firstDev?.id ?? group.baseId,
                                     badgeCount: 0,
                                     onClick: {
-                                        onNavigateToDetail(development.id)
+                                        if let devId = firstDev?.id {
+                                            onNavigateToDetail(devId)
+                                        }
                                     }
                                 )
                             }

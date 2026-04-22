@@ -10,7 +10,7 @@ struct RootView: View {
 
     var body: some View {
         Group {
-            if sessionManager.isAuthenticated, let uid = sessionManager.currentUid {
+            if sessionManager.isAuthenticated, let _ = sessionManager.currentUid {
 
                 // --- AQUÍ ESTÁ EL CAMBIO PRINCIPAL ---
                 ClientHomeScreen(
