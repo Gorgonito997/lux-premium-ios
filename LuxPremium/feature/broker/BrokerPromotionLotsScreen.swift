@@ -15,7 +15,7 @@ struct BrokerPromotionLotsScreen: View {
         self.baseId = baseId
         self.onBack = onBack
         self.onNavigateToDetail = onNavigateToDetail
-        _viewModel = StateObject(wrappedValue: BrokerPromotionLotsViewModel(baseId: baseId))
+        _viewModel = StateObject(wrappedValue: BrokerPromotionLotsViewModel())
     }
 
     var body: some View {
@@ -34,7 +34,7 @@ struct BrokerPromotionLotsScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text(viewModel.promotionName.uppercased())
+                    Text(baseId.uppercased())
                         .font(.caption)
                         .fontWeight(.semibold)
                         .tracking(1.5)
@@ -98,7 +98,6 @@ struct BrokerPromotionLotsScreen: View {
         }
     }
 }
-
 // MARK: - Componente Fila de Lote
 
 struct LotItem: View {
@@ -193,18 +192,3 @@ struct LotStatusBadge: View {
         }
     }
 }
-
-// MARK: - Extensión Color (Si no la tienes definida ya globalmente)
-#if !DEBUG
-extension Color {
-    init(hex: UInt, alpha: Double = 1) {
-        self.init(
-            .sRGB,
-            red: Double((hex >> 16) & 0xff) / 255,
-            green: Double((hex >> 08) & 0xff) / 255,
-            blue: Double((hex >> 00) & 0xff) / 255,
-            opacity: alpha
-        )
-    }
-}
-#endif

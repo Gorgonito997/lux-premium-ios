@@ -61,7 +61,7 @@ struct BrokerContractsScreen: View {
 
         } else {
             // Filtramos solo los contratos
-            let docs = viewModel.documents.filter { $0.category == "Contratos" }
+            let docs = viewModel.documents.filter { $0.isContractDocument }
 
             if docs.isEmpty {
                 Text("No hay contratos disponibles.")
