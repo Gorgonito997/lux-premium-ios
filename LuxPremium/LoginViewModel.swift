@@ -12,6 +12,8 @@ final class LoginViewModel: ObservableObject {
     }
 
     func signIn() async {
+        guard !state.isLoading else { return }
+
         let email = state.email.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = state.password
 
