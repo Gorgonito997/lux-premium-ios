@@ -188,7 +188,7 @@ struct BrokerDevelopmentDetailScreen: View {
 
 // MARK: - Componentes Visuales
 
-struct PremiumCompactActionCard: View {
+private struct PremiumCompactActionCard: View {
     let title: String
     let icon: String
     let onClick: () -> Void

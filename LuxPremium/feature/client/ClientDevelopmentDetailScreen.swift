@@ -251,7 +251,7 @@ struct ClientDetailActionsGrid: View {
 }
 
 // MARK: - Tarjeta Compacta (Botón Cuadrícula)
-struct PremiumCompactActionCard: View {
+private struct PremiumCompactActionCard: View {
     let title: String
     let icon: String
     let onClick: () -> Void

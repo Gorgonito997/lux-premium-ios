@@ -2,6 +2,12 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
+struct AppUser {
+    let id: String
+    let role: String
+    let personalDriveFolderUrl: String?
+}
+
 final class AuthRepository {
     private let auth = Auth.auth()
     private let db = Firestore.firestore()
@@ -25,4 +31,19 @@ final class AuthRepository {
         let document = try await db.collection("users").document(uid).getDocument()
         return document.get("role") as? String ?? "CLIENT"
     }
+
+    func getCurrentUserProfile() async throws -> AppUser? {
+            guard let uid = auth.currentUser?.uid else { return nil }
+
+            let document = try await db.collection("users").document(uid).getDocument()
+
+            let role = document.get("role") as? String ?? "CLIENT"
+            let personalDriveFolderUrl = document.get("personalDriveFolderUrl") as? String
+
+            return AppUser(
+                id: uid,
+                role: role,
+                personalDriveFolderUrl: personalDriveFolderUrl
+            )
+        }
 }

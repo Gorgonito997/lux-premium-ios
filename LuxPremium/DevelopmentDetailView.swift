@@ -165,7 +165,10 @@ struct DevelopmentDetailView: View {
                 .buttonStyle(LuxPrimaryButtonStyle())
             } else {
                 NavigationLink {
-                    ClientDocumentsScreen(developmentId: developmentId)
+                    ClientDocumentsScreen(
+                        devId: developmentId,
+                        onBack: { }
+                    )
                 } label: {
                     Text("Ver documentos")
                 }
