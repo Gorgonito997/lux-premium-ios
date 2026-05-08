@@ -68,8 +68,7 @@ struct RootView: View {
                     },
                     onNavigateToDetail: { propertyId in
                         print("Navegar a los detalles de la propiedad: \(propertyId)")
-                    },
-                    viewModel: ClientHomeViewModel()
+                    }
                 )
 
                 if let roleErrorMessage, !roleErrorMessage.isEmpty {
