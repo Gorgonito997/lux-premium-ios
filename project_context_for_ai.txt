@@ -3,8 +3,8 @@ CONTEXTO DE PROYECTO PARA IA / CODEX
 ROOT_PATH: C:\Users\Diego CM\IdeaProjects\lux-premium-ios
 MAX_FILE_KB: 250
 MAX_TOTAL_MB: 15
-TOTAL_PRIORITY_FILES: 2
-TOTAL_OTHER_TEXT_FILES: 47
+TOTAL_PRIORITY_FILES: 1
+TOTAL_OTHER_TEXT_FILES: 56
 
 INSTRUCCIÓN PARA LA IA:
 Lee este archivo completo como contexto del proyecto. Asume que quiero ayuda técnica precisa, con cambios mínimos, seguros y coherentes con la arquitectura existente. Prioriza mantener compatibilidad con Firebase, iOS, Android, modelos de datos, navegación y estructura real del repositorio.
@@ -46,6 +46,16 @@ lux-premium-ios/
 │   │   │   ├── AuthUiState.swift
 │   │   │   ├── AuthViewModel.swift
 │   │   │   └── LoginScreen.swift
+│   │   ├── broker/
+│   │   │   ├── BrokerContractsScreen.swift
+│   │   │   ├── BrokerDevelopmentDetailScreen.swift
+│   │   │   ├── BrokerDocumentsScreen.swift
+│   │   │   ├── BrokerHomeScreen.swift
+│   │   │   ├── BrokerHomeViewModel.swift
+│   │   │   ├── BrokerPromotionLotsScreen.swift
+│   │   │   ├── BrokerPromotionLotsView.swift
+│   │   │   ├── BrokerPromotionLotsViewModel.swift
+│   │   │   └── ProposalScreen.swift
 │   │   ├── client/
 │   │   │   ├── ClientDocumentsView.swift
 │   │   │   ├── ClientDocumentsViewModel.swift
@@ -99,350 +109,11 @@ lux-premium-ios/
 │   └── LuxPremiumUITestsLaunchTests.swift
 ├── .gitignore
 ├── export_project_context.py
-├── GoogleService-Info.plist
 ├── Localizable.xcstrings
 └── project_context_for_ai.txt
 
 ARCHIVOS PRIORITARIOS
 ----------------------------------------------------------------------------------------------------
-
-====================================================================================================
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-FILE: GoogleService-Info.plist
-SIZE_KB: 1.2
-=
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>CLIENT_ID</key>
-	<string>635872399400-p19t0gbbqbepps0360dcqj7lsvuan8gv.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.635872399400-p19t0gbbqbepps0360dcqj7lsvuan8gv</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>635872399400-6foeiteqc1s782pm85mqfopvvt98meik.apps.googleusercontent.com</string>
-	<key>API_KEY</key>
-	<string>AIzaSyAXee5Uxe1HMYuLowvcy-E5WcrrQw6b5TA</string>
-	<key>GCM_SENDER_ID</key>
-	<string>635872399400</string>
-	<key>PLIST_VERSION</key>
-	<string>1</string>
-	<key>BUNDLE_ID</key>
-	<string>desarrollo.LuxPremium</string>
-	<key>PROJECT_ID</key>
-	<string>lux-premium-app</string>
-	<key>STORAGE_BUCKET</key>
-	<string>lux-premium-app.firebasestorage.app</string>
-	<key>IS_ADS_ENABLED</key>
-	<false></false>
-	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
-	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
-	<key>IS_GCM_ENABLED</key>
-	<true></true>
-	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
-	<key>GOOGLE_APP_ID</key>
-	<string>1:635872399400:ios:748e59d43bd588ebe9651d</string>
-</dict>
-</plist>
 
 ====================================================================================================
 FILE: LuxPremium.xcodeproj/project.pbxproj
@@ -6552,320 +6223,339 @@ struct Development: Identifiable, Codable {
 
 ====================================================================================================
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 FILE: LuxPremium/DevelopmentDetailView.swift
-SIZE_KB: 8.0
+SIZE_KB: 13.0
 =
 import Foundation
 import SwiftUI
 
 struct DevelopmentDetailView: View {
     let developmentId: String
+    let onBack: (() -> Void)?
+    let onOpenDocuments: ((String) -> Void)?
+    let onOpenContracts: ((String) -> Void)?
+    let onOpenProposal: ((String) -> Void)?
 
     @Environment(\.openURL) private var openURL
-    @StateObject private var viewModel = DevelopmentDetailViewModel()
+    @StateObject private var viewModel: DevelopmentDetailViewModel
+
+    init(
+        developmentId: String,
+        onBack: (() -> Void)? = nil,
+        onOpenDocuments: ((String) -> Void)? = nil,
+        onOpenContracts: ((String) -> Void)? = nil,
+        onOpenProposal: ((String) -> Void)? = nil
+    ) {
+        self.developmentId = developmentId
+        self.onBack = onBack
+        self.onOpenDocuments = onOpenDocuments
+        self.onOpenContracts = onOpenContracts
+        self.onOpenProposal = onOpenProposal
+        _viewModel = StateObject(wrappedValue: DevelopmentDetailViewModel())
+    }
 
     var body: some View {
         LuxScreen {
             VStack(spacing: 24) {
                 if viewModel.isLoading {
                     loadingState
-                } else if let errorMessage = viewModel.errorMessage {
+                } else if viewModel.development == nil, let errorMessage = viewModel.errorMessage {
                     errorState(errorMessage)
                 } else {
                     content
@@ -6878,6 +6568,19 @@ struct DevelopmentDetailView: View {
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
+        .toolbar {
+            if let onBack {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: onBack) {
+                        HStack(spacing: 6) {
+                            Image(systemName: "chevron.left")
+                            Text("Lotes")
+                        }
+                    }
+                    .foregroundStyle(LuxTheme.textPrimary)
+                }
+            }
+        }
         .task(id: developmentId) {
             await viewModel.load(developmentId: developmentId)
         }
@@ -6885,6 +6588,10 @@ struct DevelopmentDetailView: View {
 
     private var content: some View {
         VStack(alignment: .leading, spacing: 24) {
+            if let errorMessage = viewModel.errorMessage, viewModel.development != nil {
+                inlineWarning(errorMessage)
+            }
+
             hero
 
             if let development = viewModel.development {
@@ -6892,6 +6599,7 @@ struct DevelopmentDetailView: View {
                     HStack(spacing: 12) {
                         LuxValueBadge("Estado: \(translatedAvailability(development.status))")
                         LuxValueBadge("Unidades: \(viewModel.units.count)")
+                        LuxValueBadge("Docs: \(viewModel.documents.count)")
                     }
 
                     VStack(alignment: .leading, spacing: 10) {
@@ -6905,6 +6613,7 @@ struct DevelopmentDetailView: View {
             }
 
             actions
+            documentsSection
 
             LuxSectionTitle(
                 "Unidades",
@@ -6943,28 +6652,67 @@ struct DevelopmentDetailView: View {
                 )
             }
 
-            LuxImagePlaceholder(
-                title: "Imagen principal",
-                subtitle: "Aqui podreis conectar la imagen de portada o el render principal de la promocion.",
-                height: 210
-            )
+            if let development = viewModel.development {
+                Image(DevelopmentImageMapper.mapIdToDrawable(development.id))
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 210)
+                    .frame(maxWidth: .infinity)
+                    .clipped()
+                    .clipShape(RoundedRectangle(cornerRadius: 24))
+            } else {
+                LuxImagePlaceholder(
+                    title: "Imagen principal",
+                    subtitle: "Aqui podreis conectar la imagen de portada o el render principal de la promocion.",
+                    height: 210
+                )
+            }
         }
     }
 
     private var actions: some View {
         LuxPanel {
             LuxSectionTitle(
-                "Recursos",
+                isBrokerMode ? "Acciones broker" : "Recursos",
                 eyebrow: "Accesos",
-                subtitle: "Documentacion e imagenes externas agrupadas con el mismo lenguaje visual."
+                subtitle: isBrokerMode
+                    ? "Accesos preparados para documentos, contratos y propuesta sin bloquear el flujo actual."
+                    : "Documentacion e imagenes externas agrupadas con el mismo lenguaje visual."
             )
 
-            NavigationLink {
-                ClientDocumentsView(developmentId: developmentId)
-            } label: {
-                Text("Ver documentos")
+            if let onOpenDocuments {
+                Button {
+                    onOpenDocuments(developmentId)
+                } label: {
+                    Text("Documentos")
+                }
+                .buttonStyle(LuxPrimaryButtonStyle())
+            } else {
+                NavigationLink {
+                    ClientDocumentsView(developmentId: developmentId)
+                } label: {
+                    Text("Ver documentos")
+                }
+                .buttonStyle(LuxPrimaryButtonStyle())
             }
-            .buttonStyle(LuxPrimaryButtonStyle())
+
+            if let onOpenContracts {
+                Button {
+                    onOpenContracts(developmentId)
+                } label: {
+                    Text("Contracts")
+                }
+                .buttonStyle(LuxSecondaryButtonStyle())
+            }
+
+            if let onOpenProposal {
+                Button {
+                    onOpenProposal(developmentId)
+                } label: {
+                    Text("Proposal")
+                }
+                .buttonStyle(LuxSecondaryButtonStyle())
+            }
 
             if let development = viewModel.development {
                 if !development.driveImagesFolderUrl.isEmpty {
@@ -6988,6 +6736,29 @@ struct DevelopmentDetailView: View {
         }
     }
 
+    private var documentsSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            LuxSectionTitle(
+                "Documentacion",
+                eyebrow: "Soporte",
+                subtitle: "Resumen de documentos visibles ya cargados para este development."
+            )
+
+            if viewModel.documents.isEmpty {
+                LuxEmptyState(
+                    title: "No hay documentos visibles",
+                    subtitle: "El detail sigue operativo y quedara listo para conectar el bloque final de documentos."
+                )
+            } else {
+                VStack(spacing: 16) {
+                    ForEach(viewModel.documents) { document in
+                        documentCard(document)
+                    }
+                }
+            }
+        }
+    }
+
     private var loadingState: some View {
         LuxPanel {
             VStack(spacing: 16) {
@@ -7004,6 +6775,27 @@ struct DevelopmentDetailView: View {
         }
     }
 
+    private func inlineWarning(_ message: String) -> some View {
+        LuxPanel {
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(spacing: 10) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .foregroundStyle(LuxTheme.warning)
+
+                    Text("Parte del contenido no se ha podido cargar")
+                        .font(.headline)
+                        .foregroundStyle(LuxTheme.textPrimary)
+                }
+
+                Text(message)
+                    .font(.subheadline)
+                    .foregroundStyle(LuxTheme.textSecondary)
+                    .multilineTextAlignment(.leading)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+
     private func errorState(_ message: String) -> some View {
         LuxPanel {
             VStack(spacing: 14) {
@@ -7017,6 +6809,23 @@ struct DevelopmentDetailView: View {
                     .multilineTextAlignment(.center)
             }
             .frame(maxWidth: .infinity)
+        }
+    }
+
+    private func documentCard(_ document: DevelopmentDocument) -> some View {
+        LuxPanel {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(document.name.isEmpty ? document.id : document.name)
+                    .font(.headline)
+                    .foregroundStyle(LuxTheme.textPrimary)
+                    .multilineTextAlignment(.leading)
+
+                if !document.category.isEmpty {
+                    LuxMetaText(text: document.category)
+                }
+
+                LuxValueBadge(document.fileType.isEmpty ? "Documento" : document.fileType)
+            }
         }
     }
 
@@ -7085,6 +6894,10 @@ struct DevelopmentDetailView: View {
     private func isAvailable(_ value: String) -> Bool {
         value.lowercased().contains("available")
     }
+
+    private var isBrokerMode: Bool {
+        onOpenDocuments != nil || onOpenContracts != nil || onOpenProposal != nil || onBack != nil
+    }
 }
 
 #Preview {
@@ -7095,304 +6908,304 @@ struct DevelopmentDetailView: View {
 
 ====================================================================================================
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 FILE: LuxPremium/DevelopmentDetailViewModel.swift
-SIZE_KB: 0.9
+SIZE_KB: 2.6
 =
 import Foundation
 import Combine
@@ -7401,6 +7214,7 @@ import Combine
 final class DevelopmentDetailViewModel: ObservableObject {
     @Published var development: Development?
     @Published var units: [PropertyUnit] = []
+    @Published var documents: [DevelopmentDocument] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
 
@@ -7416,12 +7230,61 @@ final class DevelopmentDetailViewModel: ObservableObject {
 
         do {
             development = try await developmentsRepository.getDevelopment(id: developmentId)
-            units = try await developmentsRepository.getUnits(developmentId: developmentId)
         } catch {
+            development = nil
+            units = []
+            documents = []
             errorMessage = error.localizedDescription
+            isLoading = false
+            return
         }
 
+        async let unitsResult = loadUnits(developmentId: developmentId)
+        async let documentsResult = loadDocuments(developmentId: developmentId)
+
+        let loadedUnits = await unitsResult
+        let loadedDocuments = await documentsResult
+
+        units = loadedUnits.value
+        documents = loadedDocuments.value
+
+        let partialErrors = [loadedUnits.errorMessage, loadedDocuments.errorMessage]
+            .compactMap { $0 }
+
+        errorMessage = partialErrors.isEmpty ? nil : partialErrors.joined(separator: "\n")
         isLoading = false
+    }
+
+    private func loadUnits(developmentId: String) async -> ResourceLoadResult<[PropertyUnit]> {
+        do {
+            return ResourceLoadResult(value: try await developmentsRepository.getUnits(developmentId: developmentId))
+        } catch {
+            return ResourceLoadResult(
+                value: [],
+                errorMessage: "No se pudieron cargar las unidades: \(error.localizedDescription)"
+            )
+        }
+    }
+
+    private func loadDocuments(developmentId: String) async -> ResourceLoadResult<[DevelopmentDocument]> {
+        do {
+            return ResourceLoadResult(value: try await developmentsRepository.getClientDocuments(developmentId: developmentId))
+        } catch {
+            return ResourceLoadResult(
+                value: [],
+                errorMessage: "No se pudieron cargar los documentos: \(error.localizedDescription)"
+            )
+        }
+    }
+}
+
+private struct ResourceLoadResult<Value> {
+    let value: Value
+    let errorMessage: String?
+
+    init(value: Value, errorMessage: String? = nil) {
+        self.value = value
+        self.errorMessage = errorMessage
     }
 }
 
@@ -8044,7 +7907,7 @@ import Foundation
 enum DevelopmentGroupingMapper {
     static func map(_ developments: [Development]) -> [ClientPromotionGroup] {
         let grouped = Dictionary(grouping: developments) { development in
-            baseId(for: development)
+            resolvedBaseId(for: development)
         }
 
         return grouped.map { baseId, developments in
@@ -8061,7 +7924,7 @@ enum DevelopmentGroupingMapper {
         .sorted { $0.displayName < $1.displayName }
     }
 
-    private static func baseId(for development: Development) -> String {
+    static func resolvedBaseId(for development: Development) -> String {
         let baseId = development.baseId.trimmingCharacters(in: .whitespacesAndNewlines)
 
         if !baseId.isEmpty {
@@ -10902,304 +10765,304 @@ struct PropertyUnit: Identifiable, Codable {
 
 ====================================================================================================
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 FILE: LuxPremium/RootView.swift
-SIZE_KB: 2.3
+SIZE_KB: 5.8
 =
 import SwiftUI
 
@@ -11208,20 +11071,71 @@ struct RootView: View {
     @State private var role: String = "CLIENT"
     @State private var isLoadingRole: Bool = false
     @State private var roleErrorMessage: String?
+    @State private var brokerSelectedBaseId: String?
+    @State private var brokerSelectedDevelopmentId: String?
 
-    // 1. AÑADIMOS LA VARIABLE DEL IDIOMA AQUÍ
-    // Esto guarda el idioma en el iPhone y avisa a todas las pantallas si cambia
     @AppStorage("app_language") private var language: String = "es"
 
     private let authRepository =***MASKED***
 
     var body: some View {
         Group {
-            if sessionManager.isAuthenticated, let _ =***MASKED***
+            if sessionManager.isAuthenticated, sessionManager.currentUid !=***MASKED***
+                authenticatedContent
+            } else {
+                LoginView()
+            }
+        }
+        .environment(\.locale, Locale(identifier: language))
+        .task(id: sessionManager.currentUid) {
+            await loadRoleIfNeeded()
+        }
+    }
 
+    @ViewBuilder
+    private var authenticatedContent: ***MASKED***
+        if isLoadingRole {
+            RoleLoadingView()
+        } else if normalizedRole == "BROKER" {
+            if let brokerSelectedDevelopmentId {
+                DevelopmentDetailView(
+                    developmentId: brokerSelectedDevelopmentId,
+                    onBack: {
+                        self.brokerSelectedDevelopmentId = nil
+                    },
+                    onOpenDocuments: { developmentId in
+                        print("Abrir documentos broker del desarrollo: \(developmentId)")
+                    },
+                    onOpenContracts: { developmentId in
+                        print("Abrir contracts broker del desarrollo: \(developmentId)")
+                    },
+                    onOpenProposal: { developmentId in
+                        print("Abrir proposal broker del desarrollo: \(developmentId)")
+                    }
+                )
+            } else if let brokerSelectedBaseId {
+                BrokerPromotionLotsView(
+                    baseId: brokerSelectedBaseId,
+                    onBack: {
+                        self.brokerSelectedBaseId = nil
+                    },
+                    onNavigateToDetail: { developmentId in
+                        brokerSelectedDevelopmentId = developmentId
+                    }
+                )
+            } else {
+                BrokerHomeScreen(
+                    onLogout: sessionManager.logOut,
+                    onNavigateToLots: { baseId in
+                        brokerSelectedDevelopmentId = nil
+                        brokerSelectedBaseId = baseId
+                    }
+                )
+            }
+        } else {
+            ZStack(alignment: .top) {
                 ClientHomeScreen(
                     onLogout: {
-                        // 1. Llama a la función de tu SessionManager para cerrar la sesión en Firebase
                         sessionManager.logOut()
                     },
                     onNavigateToAssistant: {
@@ -11233,22 +11147,27 @@ struct RootView: View {
                     viewModel: ClientHomeViewModel()
                 )
 
-            } else {
-                LoginView()
+                if let roleErrorMessage, !roleErrorMessage.isEmpty {
+                    RoleErrorBanner(message: roleErrorMessage)
+                        .padding(.horizontal, 16)
+                        .padding(.top, 8)
+                }
             }
         }
-        // 2. INYECTAMOS EL IDIOMA A TODA LA APP AQUÍ
-        // Esto le dice a SwiftUI: "Traduce todo lo que haya dentro del Group a este idioma"
-        .environment(\.locale, Locale(identifier: language))
-        .task(id: sessionManager.currentUid) {
-            await loadRoleIfNeeded()
-        }
+    }
+
+    private var normalizedRole: String {
+        let trimmedRole = role.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmedRole.isEmpty ? "CLIENT" : trimmedRole.uppercased()
     }
 
     private func loadRoleIfNeeded() async {
         guard let uid = sessionManager.currentUid else {
             role = "CLIENT"
+            isLoadingRole = false
             roleErrorMessage = nil
+            brokerSelectedBaseId = nil
+            brokerSelectedDevelopmentId = nil
             return
         }
 
@@ -11271,6 +11190,60 @@ private struct LoginView: View {
 
     var body: some View {
         LoginScreen(viewModel: viewModel)
+    }
+}
+
+private struct RoleLoadingView: View {
+    var body: some View {
+        ZStack {
+            LinearGradient(
+                colors: [Color.black, Color(white: 0.12)],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
+
+            VStack(spacing: 16) {
+                ProgressView()
+                    .tint(.white)
+                    .scaleEffect(1.1)
+
+                Text("Preparando tu experiencia")
+                    .font(.headline)
+                    .foregroundColor(.white)
+
+                Text("Estamos validando tu perfil de acceso.")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
+            .padding(24)
+        }
+    }
+}
+
+private struct RoleErrorBanner: View {
+    let message: String
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .foregroundColor(.yellow)
+
+            Text("No se pudo cargar el rol. Se ha abierto el flujo cliente. \(message)")
+                .font(.footnote)
+                .foregroundColor(.white)
+                .multilineTextAlignment(.leading)
+
+            Spacer(minLength: 0)
+        }
+        .padding(12)
+        .background(Color.black.opacity(0.9))
+        .clipShape(RoundedRectangle(cornerRadius: 14))
+        .overlay(
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(Color.white.opacity(0.12), lineWidth: 1)
+        )
+        .shadow(color: .black.opacity(0.2), radius: 10, y: 4)
     }
 }
 
@@ -13142,6 +13115,4197 @@ final class AuthRepository {
     func getUserRole(uid: String) async throws -> String {
         let document = try await db.collection("users").document(uid).getDocument()
         return document.get("role") as? String ?? "CLIENT"
+    }
+}
+
+====================================================================================================
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+FILE: LuxPremium/feature/broker/BrokerContractsScreen.swift
+SIZE_KB: 3.3
+=
+import SwiftUI
+
+struct BrokerContractsScreen: View {
+    let devId: String
+    let onBack: () -> Void
+
+    @StateObject private var viewModel: BrokerDocumentsViewModel
+
+    init(devId: String, onBack: @escaping () -> Void) {
+        self.devId = devId
+        self.onBack = onBack
+        // Inicializamos el ViewModel con el ID de la promoción
+        _viewModel = StateObject(wrappedValue: BrokerDocumentsViewModel(devId: devId))
+    }
+
+    var body: some View {
+        NavigationStack {
+            ZStack(alignment: .bottomTrailing) {
+                // Fondo oscuro principal
+                Color.black.ignoresSafeArea()
+
+                content
+
+                // Botón flotante de contacto (FloatingActionButton)
+                PremiumContactFab()
+                    .padding(16)
+            }
+            // Configuración del TopAppBar
+            .toolbarBackground(Color.black, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: onBack) {
+                        Image(systemName: "arrow.left")
+                            .foregroundColor(.white)
+                    }
+                }
+            }
+            .task {
+                // Se ejecuta al abrir la pantalla para cargar los datos
+                await viewModel.loadDocuments()
+            }
+        }
+    }
+
+    // El contenido principal que cambia según el estado (Loading, Error, Success)
+    @ViewBuilder
+    private var content: some View {
+        if viewModel.isLoading {
+            ProgressView()
+                .tint(.white)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+        } else if let errorMessage = viewModel.errorMessage {
+            Text(errorMessage) // En tu stringResource usas "contracts_error"
+                .foregroundColor(.red)
+                .padding(24)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+        } else {
+            // Filtramos solo los contratos
+            let docs = viewModel.documents.filter { $0.category == "Contratos" }
+
+            if docs.isEmpty {
+                Text("No hay contratos disponibles.")
+                    .font(.body)
+                    .foregroundColor(.white.opacity(0.5)) // Similar al LocalContentColor.current.copy(alpha = 0.5f)
+                    .padding(24)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+            } else {
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 12) {
+                        // Título de la sección
+                        Text("Contratos")
+                            .font(.title2)
+                            .foregroundColor(.white)
+                            .padding(.bottom, 8)
+
+                        // Lista de contratos
+                        ForEach(docs) { doc in
+                            DocumentItemRow(doc: doc)
+                        }
+                    }
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 16)
+                }
+            }
+        }
+    }
+}
+
+====================================================================================================
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+FILE: LuxPremium/feature/broker/BrokerDevelopmentDetailScreen.swift
+SIZE_KB: 14.3
+=
+import SwiftUI
+
+struct BrokerDevelopmentDetailScreen: View {
+    let devId: String
+    let onBack: () -> Void
+    let onNavigateToProposal: (PropertyUnit) -> Void
+    let onNavigateToDocuments: () -> Void
+    let onNavigateToContracts: () -> Void
+    let onNavigateToAssistant: (PropertyUnit?) -> Void
+
+    @StateObject private var viewModel: BrokerDevelopmentDetailViewModel
+
+    init(
+        devId: String,
+        onBack: @escaping () -> Void,
+        onNavigateToProposal: @escaping (PropertyUnit) -> Void,
+        onNavigateToDocuments: @escaping () -> Void,
+        onNavigateToContracts: @escaping () -> Void,
+        onNavigateToAssistant: @escaping (PropertyUnit?) -> Void
+    ) {
+        self.devId = devId
+        self.onBack = onBack
+        self.onNavigateToProposal = onNavigateToProposal
+        self.onNavigateToDocuments = onNavigateToDocuments
+        self.onNavigateToContracts = onNavigateToContracts
+        self.onNavigateToAssistant = onNavigateToAssistant
+        _viewModel = StateObject(wrappedValue: BrokerDevelopmentDetailViewModel(devId: devId))
+    }
+
+    var body: some View {
+        NavigationStack {
+            ZStack(alignment: .bottomTrailing) {
+                // Fondo base
+                Color.black.ignoresSafeArea()
+
+                content
+
+                // FAB Overlay
+                PremiumContactFab()
+                    .padding(16)
+            }
+            .toolbarBackground(Color.black, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: onBack) {
+                        Image(systemName: "arrow.left")
+                            .foregroundColor(.white)
+                    }
+                }
+            }
+            .task {
+                await viewModel.loadData()
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var content: some View {
+        if viewModel.isLoading {
+            ProgressView()
+                .tint(.white)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        } else if let errorMessage = viewModel.errorMessage {
+            Text(errorMessage)
+                .foregroundColor(.red)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        } else if let development = viewModel.development {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    // Imagen de cabecera
+                    if !development.coverImageUrl.isEmpty {
+                        AsyncImage(url: URL(string: development.coverImageUrl.trimmingCharacters(in: .whitespacesAndNewlines))) { phase in
+                            if let image = phase.image {
+                                image.resizable().aspectRatio(2.0, contentMode: .fill)
+                            } else {
+                                Color.gray.opacity(0.3).aspectRatio(2.0, contentMode: .fill)
+                            }
+                        }
+                        .clipped()
+                    }
+
+                    // Contenido principal de la promoción
+                    VStack(alignment: .leading, spacing: 16) {
+                        Text(development.name)
+                            .font(.title)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+
+                        Text(development.location)
+                            .font(.subheadline)
+                            .foregroundColor(.white.opacity(0.6))
+
+                        Spacer().frame(height: 8)
+
+                        // Botón Asistente IA Promoción
+                        Button(action: { onNavigateToAssistant(nil) }) {
+                            HStack {
+                                Image(systemName: "sparkles")
+                                Text("Asistente IA")
+                                    .fontWeight(.semibold)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 54)
+                            .background(Color.blue.opacity(0.12)) // Reemplaza Color.blue por el de tu tema si es distinto
+                            .foregroundColor(.blue)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color.blue.opacity(0.6), lineWidth: 1)
+                            )
+                        }
+
+                        Spacer().frame(height: 0)
+
+                        // Tarjetas de Documentos y Contratos
+                        HStack(spacing: 12) {
+                            PremiumCompactActionCard(
+                                title: "Documentos",
+                                icon: "doc.text.fill",
+                                onClick: onNavigateToDocuments
+                            )
+                            PremiumCompactActionCard(
+                                title: "Contratos",
+                                icon: "hammer.fill",
+                                onClick: onNavigateToContracts
+                            )
+                        }
+
+                        // Banco de imágenes (Si hay URL)
+                        if !development.driveImagesFolderUrl.isEmpty {
+                            Spacer().frame(height: 0)
+                            PremiumCompactActionCard(
+                                title: "Ver banco de imágenes",
+                                icon: "photo.fill",
+                                onClick: {
+                                    if let url = URL(string: development.driveImagesFolderUrl.trimmingCharacters(in: .whitespacesAndNewlines)) {
+                                        UIApplication.shared.open(url)
+                                    }
+                                }
+                            )
+                        }
+
+                        Spacer().frame(height: 16)
+
+                        Text("TODAS LAS UNIDADES")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .tracking(1.2)
+                            .foregroundColor(.white)
+
+                        Spacer().frame(height: 0)
+
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(width: 32, height: 1)
+
+                        Spacer().frame(height: 0)
+                    }
+                    .padding(24)
+
+                    // Lotes / Unidades
+                    LazyVStack(spacing: 20) {
+                        if viewModel.units.isEmpty {
+                            Text("No hay unidades disponibles")
+                                .foregroundColor(.white.opacity(0.5))
+                                .padding(24)
+                        } else {
+                            ForEach(viewModel.units) { unit in
+                                UnitCard(
+                                    unit: unit,
+                                    onProposal: { onNavigateToProposal(unit) },
+                                    onAssistant: { onNavigateToAssistant(unit) }
+                                )
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 24)
+
+                    Spacer().frame(height: 80) // Espacio para que el último elemento no quede oculto bajo el FAB
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Componentes Visuales
+
+struct PremiumCompactActionCard: View {
+    let title: String
+    let icon: String
+    let onClick: () -> Void
+
+    var body: some View {
+        Button(action: onClick) {
+            HStack(spacing: 12) {
+                Image(systemName: icon)
+                    .foregroundColor(.blue)
+                    .font(.system(size: 20))
+                Text(title)
+                    .font(.subheadline)
+                    .foregroundColor(.white.opacity(0.9))
+                    .lineLimit(1)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 16)
+            .frame(height: 60)
+            .background(Color.gray.opacity(0.15))
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .overlay(
+                RoundedRectangle(cornerRadius: 14)
+                    .stroke(Color.blue.opacity(0.4), lineWidth: 1)
+            )
+        }
+    }
+}
+
+struct UnitCard: View {
+    let unit: PropertyUnit
+    let onProposal: () -> Void
+    let onAssistant: () -> Void
+
+    var body: some View {
+        let statusInfo = getStatusDisplayInfo(status: unit.availability)
+
+        VStack(spacing: 20) {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("FRAÇÃO \(unit.id)".uppercased())
+                        .font(.caption2)
+                        .foregroundColor(.gray)
+                    Text(unit.typology)
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                }
+                Spacer()
+                Text(formatCurrency(unit.price))
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.blue)
+            }
+
+            HStack(spacing: 24) {
+                UnitInfoTag(icon: "ruler.fill", text: "\(formatSqm(unit.sqm)) m²")
+                UnitInfoTag(icon: "bed.double.fill", text: "\(unit.bedrooms)")
+                UnitInfoTag(icon: "bolt.fill", text: unit.energyCertificate)
+                Spacer()
+            }
+
+            Spacer().frame(height: 4)
+
+            HStack {
+                // Etiqueta de estado
+                Text(statusInfo.label.uppercased())
+                    .font(.caption2)
+                    .fontWeight(.semibold)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(statusInfo.backgroundColor)
+                    .foregroundColor(statusInfo.textColor)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(statusInfo.textColor.opacity(0.2), lineWidth: 1)
+                    )
+
+                Spacer()
+
+                // Botones solo si está "Available"
+                if unit.availability.lowercased() == "available" {
+                    HStack(spacing: 8) {
+                        Button(action: onAssistant) {
+                            Image(systemName: "sparkles")
+                                .frame(width: 44, height: 44)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.gray.opacity(0.45), lineWidth: 1)
+                                )
+                                .foregroundColor(.white)
+                        }
+
+                        Button(action: onProposal) {
+                            Text("PROPONER COMPRA")
+                                .font(.caption)
+                                .fontWeight(.bold)
+                                .frame(height: 44)
+                                .padding(.horizontal, 12)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                        }
+                    }
+                }
+            }
+        }
+        .padding(24)
+        .background(Color(UIColor.darkGray).opacity(0.3)) // Simula el MaterialTheme.colorScheme.surface
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.gray.opacity(0.4), lineWidth: 1)
+        )
+    }
+
+    // Funciones de formato de la tarjeta
+    private func formatCurrency(_ value: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale(identifier: "pt_PT")
+        formatter.maximumFractionDigits = 0
+        return formatter.string(from: NSNumber(value: value)) ?? "\(value) €"
+    }
+
+    private func formatSqm(_ value: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.locale = Locale(identifier: "pt_PT")
+        formatter.maximumFractionDigits = 2
+        formatter.usesGroupingSeparator = false
+        return formatter.string(from: NSNumber(value: value)) ?? "\(value)"
+    }
+
+    // Helper de colores y etiquetas
+    private func getStatusDisplayInfo(status: String) -> (label: String, textColor: Color, backgroundColor: Color) {
+        switch status.lowercased() {
+        case "available":
+            return ("DISPONÍVEL", Color(hex: 0x81C784), Color(hex: 0x1B5E20).opacity(0.1))
+        case "reserved":
+            return ("RESERVADO", Color(hex: 0xFFFFB74D), Color(hex: 0xE65100).opacity(0.1))
+        case "sold":
+            return ("VENDIDO", Color(hex: 0xE57373), Color(hex: 0xB71C1C).opacity(0.1))
+        default:
+            return (status, .gray, .gray.opacity(0.1))
+        }
+    }
+}
+
+struct UnitInfoTag: View {
+    let icon: String
+    let text: String
+
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(systemName: icon)
+                .foregroundColor(.gray)
+                .font(.system(size: 14))
+            Text(text)
+                .font(.subheadline)
+                .foregroundColor(.gray)
+        }
+    }
+}
+
+// Extensión para usar los mismos códigos Hexadecimales de Android
+extension Color {
+    init(hex: UInt, alpha: Double = 1) {
+        self.init(
+            .sRGB,
+            red: Double((hex >> 16) & 0xff) / 255,
+            green: Double((hex >> 08) & 0xff) / 255,
+            blue: Double((hex >> 00) & 0xff) / 255,
+            opacity: alpha
+        )
+    }
+}
+
+====================================================================================================
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+FILE: LuxPremium/feature/broker/BrokerDocumentsScreen.swift
+SIZE_KB: 5.3
+=
+import SwiftUI
+
+struct BrokerDocumentsScreen: View {
+    let devId: String
+    let onBack: () -> Void
+
+    @StateObject private var viewModel: BrokerDocumentsViewModel
+
+    init(devId: String, onBack: @escaping () -> Void) {
+        self.devId = devId
+        self.onBack = onBack
+        _viewModel = StateObject(wrappedValue: BrokerDocumentsViewModel(devId: devId))
+    }
+
+    var body: some View {
+        NavigationStack {
+            ZStack(alignment: .bottomTrailing) {
+                // Fondo base oscuro
+                Color.black.ignoresSafeArea()
+
+                content
+
+                // Botón flotante
+                PremiumContactFab()
+                    .padding(16)
+            }
+            .toolbarBackground(Color.black, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: onBack) {
+                        Image(systemName: "arrow.left")
+                            .foregroundColor(.white)
+                    }
+                }
+            }
+            .task {
+                await viewModel.loadDocuments()
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var content: some View {
+        if viewModel.isLoading {
+            ProgressView()
+                .tint(.white)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+        } else if let errorMessage = viewModel.errorMessage {
+            Text(errorMessage)
+                .foregroundColor(.red)
+                .padding(24)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+        } else {
+            // Filtramos excluyendo los contratos
+            let docs = viewModel.documents.filter { $0.category != "Contratos" }
+
+            if docs.isEmpty {
+                Text("No hay documentos disponibles.")
+                    .font(.body)
+                    .foregroundColor(.white.opacity(0.5))
+                    .padding(24)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+            } else {
+                // Agrupamos por categoría
+                let grouped = Dictionary(grouping: docs, by: { $0.category })
+
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 16) {
+
+                        Text("Documentos")
+                            .font(.title2)
+                            .foregroundColor(.white)
+                            .padding(.bottom, 8)
+
+                        // Iteramos sobre las categorías ordenadas alfabéticamente
+                        ForEach(Array(grouped.keys.sorted()), id: \.self) { category in
+
+                            Text(category.uppercased())
+                                .font(.caption)
+                                .fontWeight(.bold)
+                                .foregroundColor(.blue) // Cambia esto por tu MaterialTheme.colorScheme.primary
+                                .tracking(0.5)
+                                .padding(.top, 8)
+
+                            // Mostramos los documentos de esta categoría
+                            ForEach(grouped[category] ?? []) { doc in
+                                DocumentItemRow(doc: doc)
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 16)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Componente Fila de Documento
+
+struct DocumentItemRow: View {
+    let doc: DevelopmentDocument
+
+    var body: some View {
+        Button(action: {
+            // Lógica del Intent de Android pasada a iOS
+            if let url = URL(string: doc.downloadUrl.trimmingCharacters(in: .whitespacesAndNewlines)) {
+                UIApplication.shared.open(url)
+            }
+        }) {
+            HStack(spacing: 16) {
+                // Icono Description
+                Image(systemName: "doc.text.fill")
+                    .foregroundColor(.blue)
+                    .font(.system(size: 24))
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(doc.name)
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .foregroundColor(.white)
+
+                    Text("TIPO DE ARCHIVO: \(doc.fileType.uppercased())")
+                        .font(.caption2)
+                        .foregroundColor(.gray)
+                }
+
+                Spacer()
+
+                // Icono Download
+                Image(systemName: "arrow.down.circle")
+                    .foregroundColor(.gray)
+                    .font(.system(size: 20))
+            }
+            .padding(16)
+            .background(Color.gray.opacity(0.15)) // Simula el surfaceVariant
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .overlay(
+                RoundedRectangle(cornerRadius: 14)
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+            )
+        }
+        // Para que la celda entera sea clicable como el Modifier.clickable
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+====================================================================================================
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+FILE: LuxPremium/feature/broker/BrokerHomeScreen.swift
+SIZE_KB: 6.9
+=
+import SwiftUI
+
+struct BrokerHomeScreen: View {
+    let onLogout: () -> Void
+    let onNavigateToAssistant: () -> Void
+    let onNavigateToLots: (String) -> Void
+
+    @StateObject private var viewModel: BrokerHomeViewModel
+
+    init(
+        onLogout: @escaping () -> Void,
+        onNavigateToAssistant: @escaping () -> Void,
+        onNavigateToLots: @escaping (String) -> Void
+    ) {
+        self.onLogout = onLogout
+        self.onNavigateToAssistant = onNavigateToAssistant
+        self.onNavigateToLots = onNavigateToLots
+        // Asumimos que ya tienes tu BrokerHomeViewModel creado
+        _viewModel = StateObject(wrappedValue: BrokerHomeViewModel())
+    }
+
+    var body: some View {
+        NavigationStack {
+            ZStack(alignment: .bottomTrailing) {
+                // Fondo oscuro
+                Color.black.ignoresSafeArea()
+
+                content
+
+                // Botón flotante de contacto
+                PremiumContactFab()
+                    .padding(16)
+            }
+            .toolbarBackground(Color.black, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("BROKER DESK")
+                        .font(.system(size: 13, weight: .bold))
+                        .tracking(1.5)
+                        .foregroundColor(.white)
+                }
+
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: onLogout) {
+                        Image(systemName: "rectangle.portrait.and.arrow.right")
+                            .foregroundColor(.white)
+                    }
+                }
+            }
+            .task {
+                if viewModel.promotionGroups.isEmpty {
+                    await viewModel.loadPromotions()
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var content: some View {
+        if viewModel.isLoading {
+            ProgressView()
+                .tint(.white)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+        } else if let errorMessage = viewModel.errorMessage {
+            VStack(spacing: 16) {
+                Text("Error al cargar las promociones")
+                    .foregroundColor(.red)
+
+                Button("Reintentar") {
+                    Task { await viewModel.loadPromotions() }
+                }
+                .padding()
+                .background(Color.white)
+                .foregroundColor(.black)
+                .clipShape(Capsule())
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+        } else if viewModel.promotionGroups.isEmpty {
+            Text("No hay promociones disponibles")
+                .foregroundColor(.white.opacity(0.6))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+        } else {
+            ScrollView {
+                LazyVStack(spacing: 20) {
+
+                    // HEADER (Título y Banner IA)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Promociones broker")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(width: 40, height: 1)
+
+                        Spacer().frame(height: 16)
+
+                        // BANNER DEL ASISTENTE IA
+                        Button(action: onNavigateToAssistant) {
+                            HStack(spacing: 16) {
+                                // Icono IA
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 14)
+                                        .fill(Color.blue) // Reemplaza por tu color primario
+                                        .frame(width: 56, height: 56)
+                                    Image(systemName: "sparkles")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 24))
+                                }
+
+                                // Textos
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("Asistente IA")
+                                        .font(.headline)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+
+                                    Text("Consulta rápida de información y dudas sobre las promociones.")
+                                        .font(.subheadline)
+                                        .foregroundColor(.white.opacity(0.7))
+                                        .multilineTextAlignment(.leading)
+                                        .lineLimit(2)
+                                }
+                                Spacer()
+                            }
+                            .padding(20)
+                            .background(Color.blue.opacity(0.1))
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.blue.opacity(0.3), lineWidth: 1)
+                            )
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 8)
+
+                    // LISTA DE PROMOCIONES
+                    ForEach(viewModel.promotionGroups) { group in
+                        let count = group.developments.count
+                        let coverId = group.developments.first?.id ?? group.baseId
+
+                        DevelopmentCard(
+                            title: group.displayName,
+                            location: group.location,
+                            price: lotsLabel(for: count),
+                            status: "",
+                            id: coverId,
+                            badgeCount: 0,
+                            onClick: {
+                                // Aquí puedes llamar también a viewModel.onPromotionClicked(group) si lo necesitas
+                                onNavigateToLots(group.baseId)
+                            }
+                        )
+                    }
+                }
+                .padding(.horizontal, 24)
+                .padding(.vertical, 16)
+
+                Spacer().frame(height: 80) // Espacio para el FAB
+            }
+        }
+    }
+
+    private func lotsLabel(for count: Int) -> String {
+        count == 1 ? "1 lote disponible" : "\(count) lotes disponibles"
+    }
+}
+
+====================================================================================================
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+FILE: LuxPremium/feature/broker/BrokerHomeViewModel.swift
+SIZE_KB: 0.8
+=
+import Foundation
+
+@MainActor
+final class BrokerHomeViewModel: ObservableObject {
+    @Published var promotionGroups: [ClientPromotionGroup] = []
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String?
+
+    private let developmentsRepository: DevelopmentsRepository
+
+    init(developmentsRepository: DevelopmentsRepository = DevelopmentsRepository()) {
+        self.developmentsRepository = developmentsRepository
+    }
+
+    func loadPromotions() async {
+        isLoading = true
+        errorMessage = nil
+
+        do {
+            let developments = try await developmentsRepository.getVisibleDevelopments()
+            promotionGroups = DevelopmentGroupingMapper.map(developments)
+        } catch {
+            promotionGroups = []
+            errorMessage = error.localizedDescription
+        }
+
+        isLoading = false
+    }
+}
+
+====================================================================================================
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsScreen.swift
+SIZE_KB: 6.8
+=
+import SwiftUI
+
+struct BrokerPromotionLotsScreen: View {
+    let baseId: String
+    let onBack: () -> Void
+    let onNavigateToDetail: (String) -> Void
+
+    @StateObject private var viewModel: BrokerPromotionLotsViewModel
+
+    init(
+        baseId: String,
+        onBack: @escaping () -> Void,
+        onNavigateToDetail: @escaping (String) -> Void
+    ) {
+        self.baseId = baseId
+        self.onBack = onBack
+        self.onNavigateToDetail = onNavigateToDetail
+        _viewModel = StateObject(wrappedValue: BrokerPromotionLotsViewModel(baseId: baseId))
+    }
+
+    var body: some View {
+        NavigationStack {
+            ZStack(alignment: .bottomTrailing) {
+                Color.black.ignoresSafeArea()
+
+                content
+
+                PremiumContactFab()
+                    .padding(16)
+            }
+            .toolbarBackground(Color.black, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(viewModel.promotionName.uppercased())
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                        .tracking(1.5)
+                        .foregroundColor(.white)
+                }
+
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: onBack) {
+                        Image(systemName: "arrow.left")
+                            .foregroundColor(.white)
+                    }
+                }
+            }
+            .task(id: baseId) {
+                await viewModel.loadLots(baseId: baseId)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var content: some View {
+        if viewModel.isLoading {
+            ProgressView()
+                .tint(.white)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+        } else if let errorMessage = viewModel.errorMessage {
+            Text(errorMessage)
+                .foregroundColor(.red)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+        } else if viewModel.developments.isEmpty {
+            Text("No hay lotes disponibles")
+                .font(.body)
+                .foregroundColor(.white.opacity(0.6))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+        } else {
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 16) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Todas las unidades")
+                            .font(.title2)
+                            .foregroundColor(.white)
+
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(width: 40, height: 1)
+                    }
+                    .padding(.bottom, 8)
+
+                    ForEach(viewModel.developments) { lot in
+                        LotItem(lot: lot, onClick: {
+                            onNavigateToDetail(lot.id)
+                        })
+                    }
+                }
+                .padding(.horizontal, 24)
+                .padding(.vertical, 16)
+            }
+        }
+    }
+}
+
+// MARK: - Componente Fila de Lote
+
+struct LotItem: View {
+    let lot: Development
+    let onClick: () -> Void
+
+    private var cleanId: String {
+        let parts = lot.id.components(separatedBy: "_")
+        guard let lastPart = parts.last else { return lot.id }
+
+        if lastPart.lowercased().hasPrefix("lote") {
+            let number = lastPart.dropFirst(4)
+            return "Lote \(number)"
+        }
+        return lot.id
+    }
+
+    var body: some View {
+        Button(action: onClick) {
+            HStack(alignment: .center) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(cleanId)
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .tracking(1)
+                        .foregroundColor(.blue) // Cambiar al color primary de tu tema
+
+                    Text(lot.name)
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+
+                    Text(lot.location)
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
+
+                Spacer()
+
+                HStack(spacing: 12) {
+                    LotStatusBadge(status: lot.status)
+
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.blue.opacity(0.7))
+                        .font(.system(size: 16, weight: .semibold))
+                }
+            }
+            .padding(20)
+            .background(Color.gray.opacity(0.15))
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color.blue.opacity(0.4), lineWidth: 1)
+            )
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+// MARK: - Componente Etiqueta de Estado
+
+struct LotStatusBadge: View {
+    let status: String
+
+    var body: some View {
+        let info = getStatusInfo(status)
+
+        Text(info.label.uppercased())
+            .font(.caption2)
+            .fontWeight(.semibold)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
+            .background(info.backgroundColor)
+            .foregroundColor(info.textColor)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(info.textColor.opacity(0.2), lineWidth: 1)
+            )
+    }
+
+    private func getStatusInfo(_ status: String) -> (label: String, textColor: Color, backgroundColor: Color) {
+        switch status.lowercased() {
+        case "available":
+            return ("DISPONÍVEL", Color(hex: 0x81C784), Color(hex: 0x1B5E20).opacity(0.1))
+        case "reserved":
+            return ("RESERVADO", Color(hex: 0xFFFFB74D), Color(hex: 0xE65100).opacity(0.1))
+        case "sold":
+            return ("VENDIDO", Color(hex: 0xE57373), Color(hex: 0xB71C1C).opacity(0.1))
+        default:
+            return (status, .gray, .gray.opacity(0.1))
+        }
+    }
+}
+
+// MARK: - Extensión Color (Si no la tienes definida ya globalmente)
+#if !DEBUG
+extension Color {
+    init(hex: UInt, alpha: Double = 1) {
+        self.init(
+            .sRGB,
+            red: Double((hex >> 16) & 0xff) / 255,
+            green: Double((hex >> 08) & 0xff) / 255,
+            blue: Double((hex >> 00) & 0xff) / 255,
+            opacity: alpha
+        )
+    }
+}
+#endif
+
+====================================================================================================
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsView.swift
+SIZE_KB: 5.4
+=
+import SwiftUI
+
+struct BrokerPromotionLotsView: View {
+    let baseId: String
+    let onBack: () -> Void
+    let onNavigateToDetail: (String) -> Void
+
+    @StateObject private var viewModel: BrokerPromotionLotsViewModel
+
+    init(
+        baseId: String,
+        onBack: @escaping () -> Void,
+        onNavigateToDetail: @escaping (String) -> Void
+    ) {
+        self.baseId = baseId
+        self.onBack = onBack
+        self.onNavigateToDetail = onNavigateToDetail
+        _viewModel = StateObject(wrappedValue: BrokerPromotionLotsViewModel())
+    }
+
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                Color.black.ignoresSafeArea()
+
+                content
+            }
+            .toolbarBackground(Color.black, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: onBack) {
+                        HStack(spacing: 6) {
+                            Image(systemName: "chevron.left")
+                            Text("Promociones")
+                        }
+                        .foregroundColor(.white)
+                    }
+                }
+            }
+            .task(id: baseId) {
+                await viewModel.loadLots(baseId: baseId)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var content: some View {
+        if viewModel.isLoading {
+            ProgressView()
+                .tint(.white)
+        } else if let errorMessage = viewModel.errorMessage {
+            BrokerLotsErrorView(
+                message: errorMessage,
+                onRetry: {
+                    Task { await viewModel.loadLots(baseId: baseId) }
+                }
+            )
+            .padding(24)
+        } else if viewModel.developments.isEmpty {
+            BrokerLotsEmptyView(baseId: baseId)
+                .padding(24)
+        } else {
+            ScrollView {
+                LazyVStack(spacing: 20) {
+                    header
+
+                    ForEach(viewModel.developments) { development in
+                        DevelopmentCard(
+                            title: displayLotTitle(for: development),
+                            location: development.location,
+                            price: development.status,
+                            status: "",
+                            id: development.id,
+                            badgeCount: 0,
+                            onClick: {
+                                onNavigateToDetail(development.id)
+                            }
+                        )
+                    }
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 16)
+            }
+        }
+    }
+
+    private var header: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Lotes de la promoción")
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+
+            Text(baseId)
+                .font(.headline)
+                .foregroundColor(.gray)
+
+            Spacer().frame(height: 16)
+
+            Rectangle()
+                .fill(Color.gray.opacity(0.3))
+                .frame(width: 40, height: 1)
+
+            Spacer().frame(height: 8)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private func displayLotTitle(for development: Development) -> String {
+        let trimmedName = development.name.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if !trimmedName.isEmpty {
+            return trimmedName
+        }
+
+        return development.id
+    }
+}
+
+private struct BrokerLotsErrorView: View {
+    let message: String
+    let onRetry: () -> Void
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "wifi.exclamationmark")
+                .font(.system(size: 28))
+                .foregroundColor(.white)
+
+            Text("No se pudieron cargar los lotes")
+                .font(.headline)
+                .foregroundColor(.white)
+
+            Text(message)
+                .font(.subheadline)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
+
+            Button("Reintentar", action: onRetry)
+                .foregroundColor(.black)
+                .padding(.horizontal, 18)
+                .padding(.vertical, 10)
+                .background(Color.white)
+                .clipShape(Capsule())
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+private struct BrokerLotsEmptyView: View {
+    let baseId: String
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "square.grid.2x2")
+                .font(.system(size: 30))
+                .foregroundColor(.white)
+
+            Text("No hay lotes disponibles")
+                .font(.headline)
+                .foregroundColor(.white)
+
+            Text("La promoción \(baseId) no tiene lotes visibles en este momento.")
+                .font(.subheadline)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+#Preview {
+    BrokerPromotionLotsView(
+        baseId: "promo-preview",
+        onBack: {},
+        onNavigateToDetail: { _ in }
+    )
+}
+
+====================================================================================================
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+FILE: LuxPremium/feature/broker/BrokerPromotionLotsViewModel.swift
+SIZE_KB: 1.0
+=
+import Foundation
+
+@MainActor
+final class BrokerPromotionLotsViewModel: ObservableObject {
+    @Published var developments: [Development] = []
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String?
+
+    private let developmentsRepository: DevelopmentsRepository
+
+    init(developmentsRepository: DevelopmentsRepository = DevelopmentsRepository()) {
+        self.developmentsRepository = developmentsRepository
+    }
+
+    func loadLots(baseId: String) async {
+        isLoading = true
+        errorMessage = nil
+
+        let normalizedBaseId = baseId.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        do {
+            let visibleDevelopments = try await developmentsRepository.getVisibleDevelopments()
+            developments = visibleDevelopments.filter { development in
+                DevelopmentGroupingMapper.resolvedBaseId(for: development) == normalizedBaseId
+            }
+        } catch {
+            developments = []
+            errorMessage = error.localizedDescription
+        }
+
+        isLoading = false
+    }
+}
+
+====================================================================================================
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+FILE: LuxPremium/feature/broker/ProposalScreen.swift
+SIZE_KB: 9.9
+=
+import SwiftUI
+
+struct ProposalScreen: View {
+    let devId: String
+    let unitId: String
+    let originalPrice: Double // En Swift es más común usar Double para moneda
+    let typology: String
+    let onBack: () -> Void
+
+    @StateObject private var viewModel: ProposalViewModel
+
+    // Variables de estado para los inputs
+    @State private var proposedPrice: String = ""
+    @State private var paymentConditions: String = ""
+
+    // Para controlar el teclado y poder ocultarlo al tocar fuera
+    @FocusState private var isInputFocused: Bool
+
+    init(
+        devId: String,
+        unitId: String,
+        originalPrice: Double,
+        typology: String,
+        onBack: @escaping () -> Void
+    ) {
+        self.devId = devId
+        self.unitId = unitId
+        self.originalPrice = originalPrice
+        self.typology = typology
+        self.onBack = onBack
+
+        // Inicializamos el valor por defecto del precio propuesto ya formateado
+        _proposedPrice = State(initialValue: Self.formatInitialPrice(originalPrice))
+
+        _viewModel = StateObject(wrappedValue: ProposalViewModel(
+            devId: devId,
+            unitId: unitId,
+            originalPrice: originalPrice,
+            typology: typology
+        ))
+    }
+
+    var body: some View {
+        NavigationStack {
+            ZStack(alignment: .bottomTrailing) {
+                // Fondo oscuro principal
+                Color.black.ignoresSafeArea()
+
+                // Usamos un tap gesture en el fondo para ocultar el teclado
+                Color.clear
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        isInputFocused = false
+                    }
+
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 24) {
+
+                        // Título principal
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Propuesta de compra")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+
+                            Rectangle()
+                                .fill(Color.gray.opacity(0.3))
+                                .frame(width: 40, height: 1)
+                        }
+
+                        // Summary Card (Tarjeta de resumen)
+                        VStack(alignment: .leading, spacing: 16) {
+                            Text("UNIDAD \(unitId)".uppercased())
+                                .font(.caption)
+                                .fontWeight(.bold)
+                                .foregroundColor(.blue) // Cambiar por primary color
+                                .tracking(1)
+
+                            Text(typology)
+                                .font(.title3)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(formatCurrency(originalPrice))
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+
+                                Text("Precio de venta actual")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        .padding(24)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.gray.opacity(0.15))
+                        .clipShape(RoundedRectangle(cornerRadius: 24))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 24)
+                                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                        )
+
+                        // Formularios
+                        VStack(spacing: 16) {
+                            // Input: Precio Propuesto
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("Precio propuesto (€)")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+
+                                TextField("Ej: 150.000", text: $proposedPrice)
+                                    .keyboardType(.numberPad)
+                                    .focused($isInputFocused)
+                                    .padding()
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(16)
+                                    .foregroundColor(.white)
+                                    .onChange(of: proposedPrice) { newValue in
+                                        // Esto simula tu VisualTransformation
+                                        proposedPrice = formatThousands(newValue)
+                                    }
+                            }
+
+                            // Input: Condiciones de pago
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("Condiciones de pago (opcional)")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+
+                                TextField("Añade detalles sobre las condiciones de pago...", text: $paymentConditions, axis: .vertical)
+                                    .lineLimit(5...8)
+                                    .focused($isInputFocused)
+                                    .padding()
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(16)
+                                    .foregroundColor(.white)
+                            }
+                        }
+
+                        // Mensaje de Error
+                        if let errorMessage = viewModel.errorMessage {
+                            Text(errorMessage)
+                                .font(.caption)
+                                .foregroundColor(.red)
+                                .padding(12)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background(Color.red.opacity(0.1))
+                                .cornerRadius(12)
+                        }
+
+                        // Submit Button (Botón Enviar)
+                        Button(action: {
+                            isInputFocused = false // Oculta el teclado al enviar
+                            // Quitamos los puntos para enviar el número limpio al backend
+                            let cleanPrice = proposedPrice.replacingOccurrences(of: ".", with: "")
+                            let numericPrice = Double(cleanPrice) ?? 0
+                            viewModel.sendProposal(price: numericPrice, conditions: paymentConditions)
+                        }) {
+                            if viewModel.isLoading {
+                                ProgressView().tint(.white)
+                            } else {
+                                Text("ENVIAR PROPUESTA")
+                                    .fontWeight(.bold)
+                                    .tracking(1)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 54)
+                        .background(Color.blue) // Usa tu MaterialTheme.colorScheme.primary
+                        .foregroundColor(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .padding(.bottom, 32)
+
+                    }
+                    .padding(.horizontal, 24)
+                    .padding(.top, 8)
+                }
+
+                // Botón flotante
+                PremiumContactFab()
+                    .padding(16)
+            }
+            .toolbarBackground(Color.black, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: onBack) {
+                        Image(systemName: "arrow.left")
+                            .foregroundColor(.white)
+                    }
+                }
+            }
+            // Equivalente a LaunchedEffect(uiState) de Android
+            .onChange(of: viewModel.isSuccess) { success in
+                if success {
+                    onBack()
+                }
+            }
+        }
+    }
+
+    // MARK: - Funciones de Formateo
+
+    // Simula tu ThousandsSeparatorVisualTransformation
+    private func formatThousands(_ value: String) -> String {
+        let rawNumbers = value.filter { $0.isNumber }
+        guard !rawNumbers.isEmpty, let integerValue = Int(rawNumbers) else { return "" }
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = "."
+        return formatter.string(from: NSNumber(value: integerValue)) ?? value
+    }
+
+    private static func formatInitialPrice(_ price: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = "."
+        formatter.maximumFractionDigits = 0
+        return formatter.string(from: NSNumber(value: price)) ?? ""
+    }
+
+    private func formatCurrency(_ value: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale(identifier: "pt_PT")
+        formatter.maximumFractionDigits = 0
+        return formatter.string(from: NSNumber(value: value)) ?? "\(value) €"
     }
 }
 

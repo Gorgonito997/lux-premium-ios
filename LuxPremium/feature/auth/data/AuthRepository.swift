@@ -7,7 +7,8 @@ final class AuthRepository {
     private let db = Firestore.firestore()
 
     func signIn(email: String, password: String) async throws -> String {
-        let result = try await auth.signIn(withEmail: email, password: password)
+        let normalizedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
+        let result = try await auth.signIn(withEmail: normalizedEmail, password: password)
         let uid = result.user.uid
         return uid
     }

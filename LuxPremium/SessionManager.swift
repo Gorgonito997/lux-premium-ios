@@ -5,7 +5,7 @@ import FirebaseAuth
 @MainActor
 final class SessionManager: ObservableObject {
     @Published var isAuthenticated: Bool = false
-    @Published var currentUid: String? = nil
+    @Published var currentUid: String?
 
     private var authHandle: AuthStateDidChangeListenerHandle?
 
@@ -22,19 +22,20 @@ final class SessionManager: ObservableObject {
         }
     }
 
+    func logOut() {
+        do {
+            try Auth.auth().signOut()
+            currentUid = nil
+            isAuthenticated = false
+        } catch {
+            currentUid = Auth.auth().currentUser?.uid
+            isAuthenticated = currentUid != nil
+        }
+    }
+
     deinit {
         if let authHandle {
             Auth.auth().removeStateDidChangeListener(authHandle)
         }
     }
-
-        func logOut() {
-            do {
-                try Auth.auth().signOut()
-                // Al hacer esto, Firebase avisará al "listener" y
-                // isAuthenticated se pondrá en false automáticamente.
-            } catch {
-                print("Error al cerrar sesión: \(error.localizedDescription)")
-            }
-        }
 }

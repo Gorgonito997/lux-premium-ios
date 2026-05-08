@@ -57,7 +57,7 @@ struct BrokerDocumentsScreen: View {
 
         } else {
             // Filtramos excluyendo los contratos
-            let docs = viewModel.documents.filter { $0.category != "Contratos" }
+            let docs = viewModel.documents.filter { !$0.isContractDocument }
 
             if docs.isEmpty {
                 Text("No hay documentos disponibles.")
@@ -148,5 +148,12 @@ struct DocumentItemRow: View {
         }
         // Para que la celda entera sea clicable como el Modifier.clickable
         .buttonStyle(PlainButtonStyle())
+    }
+}
+
+extension DevelopmentDocument {
+    var isContractDocument: Bool {
+        category.trimmingCharacters(in: .whitespacesAndNewlines)
+            .localizedCaseInsensitiveContains("contrato")
     }
 }

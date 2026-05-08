@@ -7,7 +7,6 @@ struct LoginScreen: View {
     @State private var password = ""
     @State private var passwordVisible = false
     @State private var selectedRole = "CLIENT"
-    @State private var isLoading = false
 
     // --- 1. AÑADIMOS LA VARIABLE DEL IDIOMA ---
     @AppStorage("app_language") private var language: String = "es"
@@ -90,6 +89,14 @@ struct LoginScreen: View {
 
                         LuxTextField(value: $password, label: "Contraseña", isPassword: true, isPasswordVisible: $passwordVisible)
 
+                        if let errorMessage = viewModel.state.errorMessage {
+                            Text(errorMessage)
+                                .font(.caption)
+                                .foregroundStyle(Color.red.opacity(0.95))
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.top, 10)
+                        }
+
                         // Botón Olvidaste Contraseña
                         HStack {
                             Spacer()
@@ -110,37 +117,67 @@ struct LoginScreen: View {
                                 await viewModel.signIn()
                             }
                         }) {
-                            Text("ENTRAR")
-                                .font(.callout)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.black)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 14)
-                                .background(Color.white)
-                                .cornerRadius(16)
+                            if viewModel.state.isLoading {
+                                ProgressView()
+                                    .tint(.black)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 14)
+                            } else {
+                                Text("ENTRAR")
+                                    .font(.callout)
+                                    .fontWeight(.semibold)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 14)
+                            }
                         }
+                        .foregroundStyle(.black)
+                        .background(Color.white.opacity(viewModel.state.isLoading ? 0.75 : 1))
+                        .cornerRadius(16)
+                        .disabled(viewModel.state.isLoading)
 
                         Spacer().frame(height: 12)
 
                         // Botón Google
-                        Button(action: { }) {
+                        Button(action: {}) {
                             HStack {
                                 Text("G")
                                     .fontWeight(.bold)
-                                Text("Continuar con Google")
+                                Text("Google - Disponible próximamente")
                                     .fontWeight(.semibold)
                             }
                             .font(.callout)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.white.opacity(0.45))
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
-                            .background(Color(hex: "181818").opacity(0.8))
+                            .background(Color(hex: "181818").opacity(0.45))
                             .cornerRadius(16)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 16)
                                     .stroke(Color(hex: "383838"), lineWidth: 1)
                             )
                         }
+                        .disabled(true)
+
+                        Spacer().frame(height: 12)
+
+                        Button(action: {}) {
+                            HStack {
+                                Image(systemName: "f.circle.fill")
+                                Text("Facebook - Disponible próximamente")
+                                    .fontWeight(.semibold)
+                            }
+                            .font(.callout)
+                            .foregroundStyle(.white.opacity(0.45))
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .background(Color(hex: "181818").opacity(0.45))
+                            .cornerRadius(16)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color(hex: "383838"), lineWidth: 1)
+                            )
+                        }
+                        .disabled(true)
 
                         Spacer().frame(height: 18)
 

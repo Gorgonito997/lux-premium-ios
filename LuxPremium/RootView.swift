@@ -7,6 +7,8 @@ struct RootView: View {
     @State private var roleErrorMessage: String?
     @State private var brokerSelectedBaseId: String?
     @State private var brokerSelectedDevelopmentId: String?
+    @State private var brokerDetailDestination: BrokerDetailDestination?
+    @State private var brokerProposalUnit: PropertyUnit?
 
     @AppStorage("app_language") private var language: String = "es"
 
@@ -32,21 +34,7 @@ struct RootView: View {
             RoleLoadingView()
         } else if normalizedRole == "BROKER" {
             if let brokerSelectedDevelopmentId {
-                DevelopmentDetailView(
-                    developmentId: brokerSelectedDevelopmentId,
-                    onBack: {
-                        self.brokerSelectedDevelopmentId = nil
-                    },
-                    onOpenDocuments: { developmentId in
-                        print("Abrir documentos broker del desarrollo: \(developmentId)")
-                    },
-                    onOpenContracts: { developmentId in
-                        print("Abrir contracts broker del desarrollo: \(developmentId)")
-                    },
-                    onOpenProposal: { developmentId in
-                        print("Abrir proposal broker del desarrollo: \(developmentId)")
-                    }
-                )
+                brokerDevelopmentContent(developmentId: brokerSelectedDevelopmentId)
             } else if let brokerSelectedBaseId {
                 BrokerPromotionLotsView(
                     baseId: brokerSelectedBaseId,
@@ -60,8 +48,11 @@ struct RootView: View {
             } else {
                 BrokerHomeScreen(
                     onLogout: sessionManager.logOut,
+                    onNavigateToAssistant: {},
                     onNavigateToLots: { baseId in
                         brokerSelectedDevelopmentId = nil
+                        brokerDetailDestination = nil
+                        brokerProposalUnit = nil
                         brokerSelectedBaseId = baseId
                     }
                 )
@@ -95,6 +86,54 @@ struct RootView: View {
         return trimmedRole.isEmpty ? "CLIENT" : trimmedRole.uppercased()
     }
 
+    @ViewBuilder
+    private func brokerDevelopmentContent(developmentId: String) -> some View {
+        if let brokerProposalUnit {
+            ProposalScreen(
+                devId: developmentId,
+                unitId: brokerProposalUnit.id,
+                originalPrice: Double(brokerProposalUnit.price),
+                typology: brokerProposalUnit.typology,
+                onBack: {
+                    self.brokerProposalUnit = nil
+                }
+            )
+        } else if brokerDetailDestination == .documents {
+            BrokerDocumentsScreen(
+                devId: developmentId,
+                onBack: {
+                    brokerDetailDestination = nil
+                }
+            )
+        } else if brokerDetailDestination == .contracts {
+            BrokerContractsScreen(
+                devId: developmentId,
+                onBack: {
+                    brokerDetailDestination = nil
+                }
+            )
+        } else {
+            BrokerDevelopmentDetailScreen(
+                devId: developmentId,
+                onBack: {
+                    brokerDetailDestination = nil
+                    brokerProposalUnit = nil
+                    brokerSelectedDevelopmentId = nil
+                },
+                onNavigateToProposal: { unit in
+                    brokerProposalUnit = unit
+                },
+                onNavigateToDocuments: {
+                    brokerDetailDestination = .documents
+                },
+                onNavigateToContracts: {
+                    brokerDetailDestination = .contracts
+                },
+                onNavigateToAssistant: { _ in }
+            )
+        }
+    }
+
     private func loadRoleIfNeeded() async {
         guard let uid = sessionManager.currentUid else {
             role = "CLIENT"
@@ -102,11 +141,17 @@ struct RootView: View {
             roleErrorMessage = nil
             brokerSelectedBaseId = nil
             brokerSelectedDevelopmentId = nil
+            brokerDetailDestination = nil
+            brokerProposalUnit = nil
             return
         }
 
         isLoadingRole = true
         roleErrorMessage = nil
+        brokerSelectedBaseId = nil
+        brokerSelectedDevelopmentId = nil
+        brokerDetailDestination = nil
+        brokerProposalUnit = nil
 
         do {
             role = try await authRepository.getUserRole(uid: uid)
@@ -117,6 +162,11 @@ struct RootView: View {
 
         isLoadingRole = false
     }
+}
+
+private enum BrokerDetailDestination: Equatable {
+    case documents
+    case contracts
 }
 
 private struct LoginView: View {

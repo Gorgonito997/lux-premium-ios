@@ -8,7 +8,7 @@ struct BrokerDevelopmentDetailScreen: View {
     let onNavigateToContracts: () -> Void
     let onNavigateToAssistant: (PropertyUnit?) -> Void
 
-    @StateObject private var viewModel: BrokerDevelopmentDetailViewModel
+    @StateObject private var viewModel: DevelopmentDetailViewModel
 
     init(
         devId: String,
@@ -24,7 +24,7 @@ struct BrokerDevelopmentDetailScreen: View {
         self.onNavigateToDocuments = onNavigateToDocuments
         self.onNavigateToContracts = onNavigateToContracts
         self.onNavigateToAssistant = onNavigateToAssistant
-        _viewModel = StateObject(wrappedValue: BrokerDevelopmentDetailViewModel(devId: devId))
+        _viewModel = StateObject(wrappedValue: DevelopmentDetailViewModel())
     }
 
     var body: some View {
@@ -51,8 +51,8 @@ struct BrokerDevelopmentDetailScreen: View {
                     }
                 }
             }
-            .task {
-                await viewModel.loadData()
+            .task(id: devId) {
+                await viewModel.load(developmentId: devId)
             }
         }
     }
@@ -63,7 +63,7 @@ struct BrokerDevelopmentDetailScreen: View {
             ProgressView()
                 .tint(.white)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-        } else if let errorMessage = viewModel.errorMessage {
+        } else if viewModel.development == nil, let errorMessage = viewModel.errorMessage {
             Text(errorMessage)
                 .foregroundColor(.red)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -237,7 +237,7 @@ struct UnitCard: View {
                         .foregroundColor(.white)
                 }
                 Spacer()
-                Text(formatCurrency(unit.price))
+                Text(formatCurrency(Double(unit.price)))
                     .font(.title3)
                     .fontWeight(.semibold)
                     .foregroundColor(.blue)
