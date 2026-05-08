@@ -16,7 +16,6 @@ struct ClientHomeScreen: View {
         self.onNavigateToAssistant = onNavigateToAssistant
         self.onNavigateToDetail = onNavigateToDetail
 
-        // Asumimos que tienes un ClientHomeViewModel creado
         _viewModel = StateObject(wrappedValue: ClientHomeViewModel())
     }
 
@@ -38,7 +37,7 @@ struct ClientHomeScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Text("ÁREA DE CLIENTE") // Sustituto del stringResource R.string.client_home_title
+                    Text("ÁREA DE CLIENTE")
                         .font(.caption)
                         .fontWeight(.semibold)
                         .tracking(1.5)
@@ -53,7 +52,6 @@ struct ClientHomeScreen: View {
                 }
             }
             .task {
-                // Equivalente al loadDevelopments de Android
                 await viewModel.loadDevelopments()
             }
         }
@@ -83,7 +81,7 @@ struct ClientHomeScreen: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
 
         } else if viewModel.promotions.isEmpty {
-            Text("No hay propiedades disponibles") // R.string.broker_home_empty equivalente
+            Text("No hay propiedades disponibles")
                 .foregroundColor(.white.opacity(0.6))
                 .font(.body)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -97,18 +95,18 @@ struct ClientHomeScreen: View {
 
                     // LISTA DE TARJETAS
                     ForEach(viewModel.promotions) { promotion in
-                        // Accedemos a la representativa igual que en el código Kotlin
-                        let development = promotion.representativeDevelopment
 
                         DevelopmentCard(
-                            title: development.name,
-                            location: development.location,
-                            price: development.status, // En tu Kotlin pasas el status al parámetro price
+                            title: promotion.displayName,
+                            location: promotion.location,
+                            price: promotion.developments.first?.status ?? "",
                             status: "",
                             id: promotion.baseId,
                             badgeCount: 0,
                             onClick: {
-                                onNavigateToDetail(development.id)
+                                if let firstDevId = promotion.developments.first?.id {
+                                    onNavigateToDetail(firstDevId)
+                                }
                             }
                         )
                     }
@@ -125,12 +123,12 @@ struct ClientHomeScreen: View {
     private var headerView: some View {
         VStack(alignment: .leading, spacing: 8) {
 
-            Text("Bienvenido") // R.string.client_home_welcome
+            Text("Bienvenido")
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
 
-            Text("Accede a la información y documentos de tus propiedades.") // R.string.client_home_subtitle
+            Text("Accede a la información y documentos de tus propiedades.")
                 .font(.body)
                 .foregroundColor(.white.opacity(0.6))
                 .padding(.bottom, 8)
@@ -146,7 +144,7 @@ struct ClientHomeScreen: View {
                     // Icono IA
                     ZStack {
                         RoundedRectangle(cornerRadius: 14)
-                            .fill(Color.blue) // Usa el color principal de tu tema
+                            .fill(Color.blue)
                             .frame(width: 56, height: 56)
                         Image(systemName: "sparkles")
                             .foregroundColor(.white)

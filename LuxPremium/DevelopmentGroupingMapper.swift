@@ -1,5 +1,6 @@
 import Foundation
 
+// MARK: - Mapper (El que ya tenías tú)
 enum DevelopmentGroupingMapper {
     static func map(_ developments: [Development]) -> [ClientPromotionGroup] {
         let grouped = Dictionary(grouping: developments) { development in
