@@ -9,104 +9,91 @@ struct ClientDocumentsScreen: View {
     init(devId: String, onBack: @escaping () -> Void) {
         self.devId = devId
         self.onBack = onBack
-        // Asumimos que tienes un ClientDocumentsViewModel para esta vista
         _viewModel = StateObject(wrappedValue: ClientDocumentsViewModel(devId: devId))
     }
 
     var body: some View {
-        NavigationStack {
-            ZStack(alignment: .bottomTrailing) {
-                // Fondo base oscuro
-                Color.black.ignoresSafeArea()
+        ZStack {
+            Color.black.ignoresSafeArea()
 
-                content
-
-                // Botón flotante de contacto
-                PremiumContactFab()
-                    .padding(16)
-            }
-            .toolbarBackground(Color.black, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("DOCUMENTOS")
-                        .font(.caption)
-                        .fontWeight(.semibold)
-                        .tracking(1.5)
-                        .foregroundColor(.white)
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
+            VStack(alignment: .leading) {
+                // Cabecera
+                HStack {
                     Button(action: onBack) {
-                        Image(systemName: "arrow.left")
+                        Image(systemName: "chevron.left")
                             .foregroundColor(.white)
+                            .padding(10)
+                            .background(Color.white.opacity(0.1))
+                            .clipShape(Circle())
                     }
+
+                    Text("Documentos")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding(.leading, 10)
                 }
-            }
-            .task {
-                await viewModel.loadDocuments()
+                .padding(.horizontal, 24)
+                .padding(.top, 20)
+
+                if viewModel.isLoading {
+                    Spacer()
+                    HStack { Spacer(); ProgressView().tint(.white); Spacer() }
+                    Spacer()
+                } else if viewModel.documents.isEmpty {
+                    Spacer()
+                    Text("No hay documentos disponibles para esta promoción.")
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity)
+                    Spacer()
+                } else {
+                    List(viewModel.documents) { doc in
+                        DocumentRow(document: doc)
+                            .listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
+                    }
+                    .listStyle(.plain)
+                }
             }
         }
-    }
-
-    @ViewBuilder
-    private var content: some View {
-        if viewModel.isLoading {
-            ProgressView()
-                .tint(.white)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-        } else if let errorMessage = viewModel.errorMessage {
-            Text(errorMessage)
-                .foregroundColor(.red)
-                .padding(24)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-        } else if viewModel.documents.isEmpty {
-            Text("No hay documentos disponibles.")
-                .font(.body)
-                .foregroundColor(.white.opacity(0.5))
-                .padding(24)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-        } else {
-            ClientDocumentsContent(documents: viewModel.documents)
+        .task {
+            await viewModel.loadDocuments()
         }
     }
 }
 
-// MARK: - Contenido Agrupado
-struct ClientDocumentsContent: View {
-    let documents: [DevelopmentDocument]
+// Componente pequeño para cada fila de documento
+struct DocumentRow: View {
+    let document: DevelopmentDocument
 
     var body: some View {
-        // Agrupamos los documentos por categoría (equivalente a groupBy de Kotlin)
-        let grouped = Dictionary(grouping: documents, by: { $0.category })
+        HStack(spacing: 16) {
+            Image(systemName: "filemenu.and.selection")
+                .font(.title2)
+                .foregroundColor(.blue)
 
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: 16) {
-                // Iteramos sobre las categorías ordenadas alfabéticamente
-                ForEach(Array(grouped.keys.sorted()), id: \.self) { category in
+            VStack(alignment: .leading, spacing: 4) {
+                Text(document.name)
+                    .font(.headline)
+                    .foregroundColor(.white)
+                Text(document.category)
+                    .font(.caption)
+                    .foregroundColor(.gray)
+            }
 
-                    Text(category.uppercased())
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .foregroundColor(.blue) // Reemplazar por tu MaterialTheme.colorScheme.primary
-                        .tracking(0.5)
-                        .padding(.top, 8)
-                        .padding(.bottom, 8)
+            Spacer()
 
-                    // Lista de documentos bajo esta categoría
-                    ForEach(grouped[category] ?? []) { document in
-                        // Reutilizamos el componente que ya creaste en la sección de Broker
-                        DocumentItemRow(doc: document)
-                    }
+            if let url = URL(string: document.downloadUrl) {
+                Link(destination: url) {
+                    Image(systemName: "arrow.down.circle")
+                        .font(.title2)
+                        .foregroundColor(.white.opacity(0.6))
                 }
             }
-            .padding(24)
-
-            Spacer().frame(height: 80) // Espacio para el FAB
         }
+        .padding()
+        .background(Color.white.opacity(0.05))
+        .cornerRadius(12)
+        .padding(.vertical, 4)
     }
 }

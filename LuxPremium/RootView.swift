@@ -5,10 +5,16 @@ struct RootView: View {
     @State private var role: String = "CLIENT"
     @State private var isLoadingRole: Bool = false
     @State private var roleErrorMessage: String?
+
+    // --- Variables de Navegación del Broker ---
     @State private var brokerSelectedBaseId: String?
     @State private var brokerSelectedDevelopmentId: String?
     @State private var brokerDetailDestination: BrokerDetailDestination?
     @State private var brokerProposalUnit: PropertyUnit?
+
+    // --- NUEVAS: Variables de Navegación del Cliente ---
+    @State private var clientSelectedDevelopmentId: String?
+    @State private var clientDetailDestination: ClientDetailDestination?
 
     @AppStorage("app_language") private var language: String = "es"
 
@@ -33,17 +39,14 @@ struct RootView: View {
         if isLoadingRole {
             RoleLoadingView()
         } else if normalizedRole == "BROKER" {
+            // Lógica de navegación del Broker (ya la tenías)
             if let brokerSelectedDevelopmentId {
                 brokerDevelopmentContent(developmentId: brokerSelectedDevelopmentId)
             } else if let brokerSelectedBaseId {
                 BrokerPromotionLotsView(
                     baseId: brokerSelectedBaseId,
-                    onBack: {
-                        self.brokerSelectedBaseId = nil
-                    },
-                    onNavigateToDetail: { developmentId in
-                        brokerSelectedDevelopmentId = developmentId
-                    }
+                    onBack: { self.brokerSelectedBaseId = nil },
+                    onNavigateToDetail: { devId in brokerSelectedDevelopmentId = devId }
                 )
             } else {
                 BrokerHomeScreen(
@@ -51,30 +54,45 @@ struct RootView: View {
                     onNavigateToAssistant: {},
                     onNavigateToLots: { baseId in
                         brokerSelectedDevelopmentId = nil
-                        brokerDetailDestination = nil
-                        brokerProposalUnit = nil
                         brokerSelectedBaseId = baseId
                     }
                 )
             }
         } else {
-            ZStack(alignment: .top) {
-                ClientHomeScreen(
-                    onLogout: {
-                        sessionManager.logOut()
-                    },
-                    onNavigateToAssistant: {
-                        print("Ir al asistente IA")
-                    },
-                    onNavigateToDetail: { propertyId in
-                        print("Navegar a los detalles de la propiedad: \(propertyId)")
-                    }
-                )
+            // --- Lógica de Navegación del Cliente Corregida ---
+            if let devId = clientSelectedDevelopmentId {
+                if clientDetailDestination == .documents {
+                    // Pantalla de Documentos del Cliente
+                    ClientDocumentsScreen(
+                        devId: devId,
+                        onBack: { clientDetailDestination = nil }
+                    )
+                } else {
+                    // Pantalla de Detalle del Cliente
+                    ClientDevelopmentDetailScreen(
+                        devId: devId,
+                        onBack: { clientSelectedDevelopmentId = nil },
+                        onNavigateToDocuments: { clientDetailDestination = .documents },
+                        onNavigateToAssistant: { print("Abrir Asistente IA") }
+                    )
+                }
+            } else {
+                // Pantalla Home del Cliente
+                ZStack(alignment: .top) {
+                    ClientHomeScreen(
+                        onLogout: { sessionManager.logOut() },
+                        onNavigateToAssistant: { print("Ir al asistente IA") },
+                        onNavigateToDetail: { propertyId in
+                            // Al pulsar la tarjeta, guardamos el ID para navegar
+                            self.clientSelectedDevelopmentId = propertyId
+                        }
+                    )
 
-                if let roleErrorMessage, !roleErrorMessage.isEmpty {
-                    RoleErrorBanner(message: roleErrorMessage)
-                        .padding(.horizontal, 16)
-                        .padding(.top, 8)
+                    if let roleErrorMessage, !roleErrorMessage.isEmpty {
+                        RoleErrorBanner(message: roleErrorMessage)
+                            .padding(.horizontal, 16)
+                            .padding(.top, 8)
+                    }
                 }
             }
         }
@@ -85,6 +103,7 @@ struct RootView: View {
         return trimmedRole.isEmpty ? "CLIENT" : trimmedRole.uppercased()
     }
 
+    // (Aquí va tu función brokerDevelopmentContent que ya tenías...)
     @ViewBuilder
     private func brokerDevelopmentContent(developmentId: String) -> some View {
         if let brokerProposalUnit {
@@ -93,24 +112,12 @@ struct RootView: View {
                 unitId: brokerProposalUnit.id,
                 originalPrice: Double(brokerProposalUnit.price),
                 typology: brokerProposalUnit.typology,
-                onBack: {
-                    self.brokerProposalUnit = nil
-                }
+                onBack: { self.brokerProposalUnit = nil }
             )
         } else if brokerDetailDestination == .documents {
-            BrokerDocumentsScreen(
-                devId: developmentId,
-                onBack: {
-                    brokerDetailDestination = nil
-                }
-            )
+            BrokerDocumentsScreen(devId: developmentId, onBack: { brokerDetailDestination = nil })
         } else if brokerDetailDestination == .contracts {
-            BrokerContractsScreen(
-                devId: developmentId,
-                onBack: {
-                    brokerDetailDestination = nil
-                }
-            )
+            BrokerContractsScreen(devId: developmentId, onBack: { brokerDetailDestination = nil })
         } else {
             BrokerDevelopmentDetailScreen(
                 devId: developmentId,
@@ -119,15 +126,9 @@ struct RootView: View {
                     brokerProposalUnit = nil
                     brokerSelectedDevelopmentId = nil
                 },
-                onNavigateToProposal: { unit in
-                    brokerProposalUnit = unit
-                },
-                onNavigateToDocuments: {
-                    brokerDetailDestination = .documents
-                },
-                onNavigateToContracts: {
-                    brokerDetailDestination = .contracts
-                },
+                onNavigateToProposal: { unit in brokerProposalUnit = unit },
+                onNavigateToDocuments: { brokerDetailDestination = .documents },
+                onNavigateToContracts: { brokerDetailDestination = .contracts },
                 onNavigateToAssistant: { _ in }
             )
         }
@@ -137,99 +138,54 @@ struct RootView: View {
         guard let uid = sessionManager.currentUid else {
             role = "CLIENT"
             isLoadingRole = false
-            roleErrorMessage = nil
-            brokerSelectedBaseId = nil
-            brokerSelectedDevelopmentId = nil
-            brokerDetailDestination = nil
-            brokerProposalUnit = nil
             return
         }
-
         isLoadingRole = true
-        roleErrorMessage = nil
-        brokerSelectedBaseId = nil
-        brokerSelectedDevelopmentId = nil
-        brokerDetailDestination = nil
-        brokerProposalUnit = nil
-
         do {
             role = try await authRepository.getUserRole(uid: uid)
         } catch {
             role = "CLIENT"
             roleErrorMessage = error.localizedDescription
         }
-
         isLoadingRole = false
     }
 }
 
+// MARK: - Enums de Destino
 private enum BrokerDetailDestination: Equatable {
-    case documents
-    case contracts
+    case documents, contracts
 }
 
+private enum ClientDetailDestination: Equatable {
+    case documents
+}
+
+// MARK: - Subvistas Auxiliares (Login, Loading, etc.)
 private struct LoginView: View {
     @StateObject private var viewModel = LoginViewModel()
-
-    var body: some View {
-        LoginScreen(viewModel: viewModel)
-    }
+    var body: some View { LoginScreen(viewModel: viewModel) }
 }
 
 private struct RoleLoadingView: View {
     var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [Color.black, Color(white: 0.12)],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea()
-
+            Color.black.ignoresSafeArea()
             VStack(spacing: 16) {
-                ProgressView()
-                    .tint(.white)
-                    .scaleEffect(1.1)
-
-                Text("Preparando tu experiencia")
-                    .font(.headline)
-                    .foregroundColor(.white)
-
-                Text("Estamos validando tu perfil de acceso.")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
+                ProgressView().tint(.white)
+                Text("Preparando tu experiencia").foregroundColor(.white)
             }
-            .padding(24)
         }
     }
 }
 
 private struct RoleErrorBanner: View {
     let message: String
-
     var body: some View {
-        HStack(spacing: 12) {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundColor(.yellow)
-
-            Text("No se pudo cargar el rol. Se ha abierto el flujo cliente. \(message)")
-                .font(.footnote)
-                .foregroundColor(.white)
-                .multilineTextAlignment(.leading)
-
-            Spacer(minLength: 0)
-        }
-        .padding(12)
-        .background(Color.black.opacity(0.9))
-        .clipShape(RoundedRectangle(cornerRadius: 14))
-        .overlay(
-            RoundedRectangle(cornerRadius: 14)
-                .stroke(Color.white.opacity(0.12), lineWidth: 1)
-        )
-        .shadow(color: .black.opacity(0.2), radius: 10, y: 4)
+        Text(message)
+            .font(.caption)
+            .padding()
+            .background(Color.red.opacity(0.8))
+            .foregroundColor(.white)
+            .cornerRadius(10)
     }
-}
-
-#Preview {
-    RootView()
 }
